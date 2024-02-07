@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "232729975874",
+    "project_id": "sms2324-bd9c4",
+    "storage_bucket": "sms2324-bd9c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232729975874:android:9240ec43553fc7450de1db",
+        "android_client_info": {
+          "package_name": "it.uniba.dib.sms23246"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATFE2WFGwOXbLPDixscLC56qlGX2-a00A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
