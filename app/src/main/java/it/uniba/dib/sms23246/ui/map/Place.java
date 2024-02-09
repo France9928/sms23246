@@ -1,4 +1,4 @@
-package it.uniba.dib.sms23246.map;
+package it.uniba.dib.sms23246.ui.map;
 
 public class Place {
     private String name;
