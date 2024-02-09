@@ -12,11 +12,11 @@ public class UserViewModel extends ViewModel {
 
     // Metodo per caricare i dati dell'utente dal database
     public static void loadUserDataFromDatabase(Context context, int userId) {
-        DBHelper dbHelper = new DBHelper(context);
-        UserData user = dbHelper.getUserData(userId);
+       // DBHelper dbHelper = new DBHelper(context);
+        //UserData user = dbHelper.getUserData(userId);
 
         // Aggiorna il MutableLiveData con i dati dell'utente
-        userData.postValue(user);
+       // userData.postValue(user);
     }
 
     public static LiveData<UserData> getUserData() {
