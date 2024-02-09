@@ -1,4 +1,4 @@
-package it.uniba.dib.sms23246.map;
+package it.uniba.dib.sms23246.ui.map;
 
 // MapFragment.java
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import android.widget.Button;
+
 import android.net.Uri;
 import android.content.Intent;
 

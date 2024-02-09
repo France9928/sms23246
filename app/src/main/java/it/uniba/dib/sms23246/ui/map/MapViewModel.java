@@ -1,4 +1,4 @@
-package it.uniba.dib.sms23246.map;
+package it.uniba.dib.sms23246.ui.map;
 
 // MapViewModel.java
 import androidx.lifecycle.LiveData;
