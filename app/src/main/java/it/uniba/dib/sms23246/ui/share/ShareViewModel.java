@@ -1,4 +1,4 @@
-package it.uniba.dib.sms23246.share;
+package it.uniba.dib.sms23246.ui.share;
 
 
 
