@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import it.uniba.dib.sms23246.user.UserData;
 
 public class ShopViewModel extends ViewModel{
     private final MutableLiveData<String> sText;
@@ -12,11 +11,11 @@ public class ShopViewModel extends ViewModel{
 
     private String nomeUt;
 
-    private UserData user = new UserData();
+//    private UserData user = new UserData();
 
     public ShopViewModel() {
 
-        nomeUt = user.getNome();
+  //      nomeUt = user.getNome();
 
         sText = new MutableLiveData<>();
         sText.setValue("Ciao, " + nomeUt);
