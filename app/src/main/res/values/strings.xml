@@ -1,14 +1,13 @@
 <resources>
-    <string name="app_name">sms23246</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="login">Login</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="register">Register</string>
-    <string name="click_to_login">Click to login</string>
-    <string name="click_to_register">Click to register</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">My Application</string>
+    <string name="title_user">User</string>
+    <string name="title_video">Video</string>
+    <string name="title_share">Share</string>
+    <string name="textDB">Text DB</string>
+    <string name="share_data">Share Data</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_map">Map</string>
+    <string name="dati_anagrafici">Dati anagrafici</string>
+    <string name="patologie">Patologie</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
