@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+
 import it.uniba.dib.sms23246.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
