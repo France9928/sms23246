@@ -23,7 +23,7 @@ import it.uniba.dib.sms23246.databinding.FragmentUserBinding;
 public class UserFragment extends Fragment {
     private FragmentUserBinding binding;
 
-    @SuppressLint("SetTextI18n")
+  @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         UserViewModel userViewModel =
