@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 
 public class ShopViewModel extends ViewModel{
     private final MutableLiveData<String> sText;
-    private final MutableLiveData<String> sText1;
 
     private String nomeUt;
 
@@ -20,18 +19,10 @@ public class ShopViewModel extends ViewModel{
         sText = new MutableLiveData<>();
         sText.setValue("Ciao, " + nomeUt);
 
-        sText1 = new MutableLiveData<>();
-        sText1.setValue("Qui potrai gestire le tue spese");
-
-
-
     }
 
     public LiveData<String> getText() {
         return sText;
-    }
-    public LiveData<String> getText1() {
-        return sText1;
     }
 
 }

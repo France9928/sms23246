@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 
 
@@ -26,15 +27,12 @@ public class ShopFragment extends Fragment {
         binding = FragmentShopBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textShop;
+        final TextView textView = binding.textViewWelcome;
         shopViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        final TextView textView1 = binding.textShop1;
-        shopViewModel.getText1().observe(getViewLifecycleOwner(), textView1::setText);
+        final Button buttonAggiungiSpese = root.findViewById(R.id.buttonAddExpense);
 
-        final Button button = root.findViewById(it.uniba.dib.sms23246.R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonAggiungiSpese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Azioni da eseguire quando il pulsante viene cliccato
@@ -42,15 +40,37 @@ public class ShopFragment extends Fragment {
             }
         });
 
-        final Button button2 = root.findViewById(android.R.id.button2);
+        final Button buttonSpeseSettimanali = root.findViewById(R.id.buttonWeeklyQuery);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonSpeseSettimanali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Azioni da eseguire quando il pulsante viene cliccato
                 //Puoi implementare qui la logica desiderata
             }
         });
+
+        final Button buttonSpeseMensili = root.findViewById(R.id.buttonMonthlyQuery);
+
+        buttonSpeseMensili.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Azioni da eseguire quando il pulsante viene cliccato
+                //Puoi implementare qui la logica desiderata
+            }
+        });
+
+        final Button buttonSpeseCategoria = root.findViewById(R.id.buttonCategoryQuery);
+
+        buttonSpeseCategoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Azioni da eseguire quando il pulsante viene cliccato
+                //Puoi implementare qui la logica desiderata
+            }
+        });
+
+
 
         return root;
 

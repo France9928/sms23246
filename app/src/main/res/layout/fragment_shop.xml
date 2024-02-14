@@ -67,11 +67,11 @@
         android:id="@+id/textViewQueryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Interrogazioni"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="Visualizza"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <!-- Pulsante per interrogazione settimanale -->
     <Button
