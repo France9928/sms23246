@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-5dp" />
+        tools:layout_editor_absoluteY="5dp" />
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -43,7 +43,14 @@
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/mobile_navigation" />
 
-
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="302dp"
+        tools:layout_editor_absoluteY="22dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
