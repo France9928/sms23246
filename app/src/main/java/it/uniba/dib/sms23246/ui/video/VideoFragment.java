@@ -2,6 +2,8 @@ package it.uniba.dib.sms23246.ui.video;
 
 import static android.os.Build.VERSION_CODES.R;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,10 +40,21 @@ public class VideoFragment extends Fragment {
         final TextView secondoT = root.findViewById(it.uniba.dib.sms23246.R.id.secondoT);
         final TextView terzoT = root.findViewById(it.uniba.dib.sms23246.R.id.terzoT);
         final VideoView videoView = root.findViewById(it.uniba.dib.sms23246.R.id.videoView);
+
         final SearchView searchView = root.findViewById(it.uniba.dib.sms23246.R.id.searchView);
         final RatingBar ratingBar = root.findViewById(it.uniba.dib.sms23246.R.id.ratingBar);
 
 
+        videoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String videoLink = videoViewModel.getVideoLink().getValue();
+                if (videoLink != null) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoLink));
+                    startActivity(intent);
+                }
+            }
+        });
 
 
 
