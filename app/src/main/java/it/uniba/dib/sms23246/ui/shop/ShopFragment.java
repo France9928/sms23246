@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 
-
+//guidovedisefunziona
 
 public class ShopFragment extends Fragment {
     private FragmentShopBinding binding;
