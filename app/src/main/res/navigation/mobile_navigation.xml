@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_user"
-        android:name="it.uniba.dib.sms23246.user.UserFragment"
+        android:name="it.uniba.dib.sms23246.ui.user.UserFragment"
         android:label="@string/title_user"
         tools:layout="@layout/fragment_user" />
 
@@ -19,18 +19,18 @@
 
     <fragment
         android:id="@+id/navigation_shop"
-        android:name="it.uniba.dib.sms23246.shop.ShopFragment"
+        android:name="it.uniba.dib.sms23246.ui.shop.ShopFragment"
         android:label="@string/title_shop"
         tools:layout="@layout/fragment_shop" />
 
     <fragment
         android:id="@+id/navigation_share"
-        android:name="it.uniba.dib.sms23246.share.ShareFragment"
+        android:name="it.uniba.dib.sms23246.ui.share.ShareFragment"
         android:label="@string/title_share"
         tools:layout="@layout/fragment_share" />
     <fragment
         android:id="@+id/navigation_map"
-        android:name="it.uniba.dib.sms23246.map.MapFragment"
+        android:name="it.uniba.dib.sms23246.ui.map.MapFragment"
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 
