@@ -3,7 +3,7 @@ package it.uniba.dib.sms23246.ui.shop;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
+//gggggggggg
 
 public class ShopViewModel extends ViewModel{
     private final MutableLiveData<String> sText;
