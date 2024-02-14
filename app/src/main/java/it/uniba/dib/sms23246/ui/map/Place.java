@@ -24,7 +24,7 @@ public class Place {
     }
 
     private String formatLink(String rawLink) {
-        // Aggiunge uno schema "http://" se mancante
+        // Aggiunge uno schema "http://" se mancante e
         if (!rawLink.startsWith("http://") && !rawLink.startsWith("https://")) {
             return "http://" + rawLink;
         }
