@@ -1,12 +1,20 @@
 package it.uniba.dib.sms23246.ui.user;
 
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import it.uniba.dib.sms23246.Login;
+import it.uniba.dib.sms23246.R;
+
 public class UserViewModel extends ViewModel {
+
+
     private static MutableLiveData<UserData> userData = new MutableLiveData<>();
     private static MutableLiveData<Patologia> patologia = new MutableLiveData<>();
 
