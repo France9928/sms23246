@@ -51,7 +51,7 @@
         android:ems="10"
         android:inputType="date"
         android:hint="Data Spesa"
-        android:drawableRight="@drawable/ic_calendar_24dp"/>
+        android:drawableLeft="@drawable/ic_calendar_24dp"/>
 
     <Button
         android:id="@+id/buttonAddExpense"
