@@ -63,30 +63,56 @@ public class UserViewModel extends ViewModel {
                         String lastName = documentSnapshot.getString("cognome");
                         String birthplace = documentSnapshot.getString("luogoDiNascita");
                         String patologia1 = documentSnapshot.getString("patologia1");
-                        Integer patologylevel1 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia1")).intValue();
+                        Long patologyLevel1 = (documentSnapshot.getLong("livelloPatologia1"));
                         String patologia2 = documentSnapshot.getString("patologia2");
-                        Integer patologylevel2 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia2")).intValue();
+                        Long patologyLevel2 = (documentSnapshot.getLong("livelloPatologia2"));
                         String patologia3 = documentSnapshot.getString("patologia3");
-                        Integer patologylevel3 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia3")).intValue();
+                        Long patologyLevel3 = (documentSnapshot.getLong("livelloPatologia3"));
                         String patologia4 = documentSnapshot.getString("patologia4");
-                        Integer patologylevel4 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia4")).intValue();
+                        Long patologylevel4 = (documentSnapshot.getLong("livelloPatologia4"));
                         String patologia5 = documentSnapshot.getString("patologia5");
-                        Integer patologylevel5 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia5")).intValue();
+                        Long patologylevel5 = (documentSnapshot.getLong("livelloPatologia5"));
 
                         userName.setValue(name);
                         userAge.setValue(age);
                         userLastName.setValue(lastName);
                         userBirthplace.setValue(birthplace);
                         nomePatologia1.setValue(patologia1);
-                        livelloPatologia1.setValue(patologylevel1);
+                        // Controlla se il valore è null prima di tentare la conversione
+                        if (patologyLevel1 != null) {
+                            int patologiaLevel1 = patologyLevel1.intValue();
+                            livelloPatologia1.setValue(patologiaLevel1);
+                        } else {
+                            livelloPatologia1.setValue(0);
+                        }
                         nomePatologia2.setValue(patologia2);
-                        livelloPatologia2.setValue(patologylevel2);
+                        if (patologyLevel2 != null) {
+                            int patologiaLevel2 = patologyLevel2.intValue();
+                            livelloPatologia2.setValue(patologiaLevel2);
+                        } else {
+                            livelloPatologia2.setValue(0);
+                        }
                         nomePatologia3.setValue(patologia3);
-                        livelloPatologia3.setValue(patologylevel3);
+                        if (patologyLevel3 != null) {
+                            int patologiaLevel3 = patologyLevel3.intValue();
+                            livelloPatologia1.setValue(patologiaLevel3);
+                        } else {
+                            livelloPatologia3.setValue(0);
+                        }
                         nomePatologia4.setValue(patologia4);
-                        livelloPatologia4.setValue(patologylevel4);
+                        if (patologylevel4 != null) {
+                            int patologiaLevel4 = patologylevel4.intValue();
+                            livelloPatologia4.setValue(patologiaLevel4);
+                        } else {
+                            livelloPatologia4.setValue(0);
+                        }
                         nomePatologia5.setValue(patologia5);
-                        livelloPatologia5.setValue(patologylevel5);
+                        if (patologylevel5 != null) {
+                            int patologiaLevel5 = patologylevel5.intValue();
+                            livelloPatologia5.setValue(patologiaLevel5);
+                        } else {
+                            livelloPatologia5.setValue(0);
+                        }
 
                     }
                 }

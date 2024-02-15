@@ -24,4 +24,8 @@
     <string name="condividi">Condividi</string>
     <string name="cognome">Cognome:</string>
     <string name="nome">Nome:</string>
+    <string name="first_name">Nome</string>
+    <string name="last_name">Cognome</string>
+    <string name="age">Età</string>
+    <string name="place_of_birth">Luogo di nascita</string>
 </resources>
