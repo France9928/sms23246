@@ -18,13 +18,20 @@ public class UserViewModel extends ViewModel {
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-
     private MutableLiveData<String> userName = new MutableLiveData<>();
     private MutableLiveData<Integer> userAge = new MutableLiveData<>();
     private MutableLiveData<String> userLastName = new MutableLiveData<>();
-
-    private MutableLiveData<String> nomePatologia = new MutableLiveData<>();
-    private MutableLiveData<Integer> livelloPatologia = new MutableLiveData<>();
+    private MutableLiveData<String> userBirthplace = new MutableLiveData<>();
+    private MutableLiveData<String> nomePatologia1 = new MutableLiveData<>();
+    private MutableLiveData<Integer> livelloPatologia1 = new MutableLiveData<>();
+    private MutableLiveData<String> nomePatologia2 = new MutableLiveData<>();
+    private MutableLiveData<Integer> livelloPatologia2 = new MutableLiveData<>();
+    private MutableLiveData<String> nomePatologia3 = new MutableLiveData<>();
+    private MutableLiveData<Integer> livelloPatologia3 = new MutableLiveData<>();
+    private MutableLiveData<String> nomePatologia4 = new MutableLiveData<>();
+    private MutableLiveData<Integer> livelloPatologia4 = new MutableLiveData<>();
+    private MutableLiveData<String> nomePatologia5 = new MutableLiveData<>();
+    private MutableLiveData<Integer> livelloPatologia5 = new MutableLiveData<>();
 
     public UserViewModel() {
         db = FirebaseFirestore.getInstance();
@@ -32,8 +39,6 @@ public class UserViewModel extends ViewModel {
 
         // Carica i dati dell'utente corrente quando viene istanziata la view model
         loadUserData();
-        // Carica i dati della patologia corrente quando viene istanziata la view model
-        loadPatologiaData();
     }
 
     // Metodo per caricare i dati dell'utente corrente da Firestore
@@ -56,45 +61,33 @@ public class UserViewModel extends ViewModel {
                         String name = documentSnapshot.getString("nome");
                         Integer age = Objects.requireNonNull(documentSnapshot.getLong("eta")).intValue();
                         String lastName = documentSnapshot.getString("cognome");
-                        String patologia = documentSnapshot.getString("patologia");
-                        Integer patologylevel = Objects.requireNonNull(documentSnapshot.getLong("livello patologia")).intValue();
+                        String birthplace = documentSnapshot.getString("luogoDiNascita");
+                        String patologia1 = documentSnapshot.getString("patologia1");
+                        Integer patologylevel1 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia1")).intValue();
+                        String patologia2 = documentSnapshot.getString("patologia2");
+                        Integer patologylevel2 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia2")).intValue();
+                        String patologia3 = documentSnapshot.getString("patologia3");
+                        Integer patologylevel3 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia3")).intValue();
+                        String patologia4 = documentSnapshot.getString("patologia4");
+                        Integer patologylevel4 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia4")).intValue();
+                        String patologia5 = documentSnapshot.getString("patologia5");
+                        Integer patologylevel5 = Objects.requireNonNull(documentSnapshot.getLong("livelloPatologia5")).intValue();
 
                         userName.setValue(name);
                         userAge.setValue(age);
                         userLastName.setValue(lastName);
-                        nomePatologia.setValue(patologia);
-                        livelloPatologia.setValue(patologylevel);
+                        userBirthplace.setValue(birthplace);
+                        nomePatologia1.setValue(patologia1);
+                        livelloPatologia1.setValue(patologylevel1);
+                        nomePatologia2.setValue(patologia2);
+                        livelloPatologia2.setValue(patologylevel2);
+                        nomePatologia3.setValue(patologia3);
+                        livelloPatologia3.setValue(patologylevel3);
+                        nomePatologia4.setValue(patologia4);
+                        livelloPatologia4.setValue(patologylevel4);
+                        nomePatologia5.setValue(patologia5);
+                        livelloPatologia5.setValue(patologylevel5);
 
-
-
-                    }
-                }
-            });
-        }
-    }
-
-    // Metodo per caricare i dati della patologia corrente da Firestore
-    private void loadPatologiaData() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String userId = currentUser.getUid();
-            DocumentReference patologiaDocRef = db.collection("patologie").document(userId);
-
-            patologiaDocRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
-                    if (e != null) {
-                        // Gestisci errori
-                        return;
-                    }
-
-                    if (documentSnapshot.exists()) {
-                        // Ottieni i dati della patologia e aggiorna la view model
-                        String nomePatologia = documentSnapshot.getString("nomePatologia");
-                        Integer livelloPatologia = documentSnapshot.getLong("livelloPatologia").intValue();
-
-                        UserViewModel.this.nomePatologia.setValue(nomePatologia);
-                        UserViewModel.this.livelloPatologia.setValue(livelloPatologia);
                     }
                 }
             });
@@ -105,22 +98,44 @@ public class UserViewModel extends ViewModel {
     public LiveData<String> getUserName() {
         return userName;
     }
-
     public LiveData<Integer> getUserAge() {
         return userAge;
     }
-
     public LiveData<String> getUserLastName() {
         return userLastName;
     }
-
-
-    // Metodi per ottenere i dati della patologia
-    public LiveData<String> getNomePatologia() {
-        return nomePatologia;
+    public LiveData<String> getUserBirthplace() {
+        return userBirthplace;
+    }
+    public LiveData<String> getNomePatologia1() {
+        return nomePatologia1;
+    }
+    public LiveData<Integer> getLivelloPatologia1() {
+        return livelloPatologia1;
+    }
+    public LiveData<String> getNomePatologia2() {
+        return nomePatologia2;
+    }
+    public LiveData<Integer> getLivelloPatologia2() {
+        return livelloPatologia2;
+    }
+    public LiveData<String> getNomePatologia3() {
+        return nomePatologia3;
+    }
+    public LiveData<Integer> getLivelloPatologia3() {
+        return livelloPatologia3;
+    }
+    public LiveData<String> getNomePatologia4() {
+        return nomePatologia4;
+    }
+    public LiveData<Integer> getLivelloPatologia4() {
+        return livelloPatologia4;
+    }
+    public LiveData<String> getNomePatologia5() {
+        return nomePatologia5;
+    }
+    public LiveData<Integer> getLivelloPatologia5() {
+        return livelloPatologia5;
     }
 
-    public LiveData<Integer> getLivelloPatologia() {
-        return livelloPatologia;
-    }
 }
