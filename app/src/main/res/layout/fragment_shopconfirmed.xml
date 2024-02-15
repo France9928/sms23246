@@ -1,4 +1,4 @@
-<!-- fragment_expenses.xml -->
+<!-- fragment_shopconfirmed.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,45 +22,50 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="Gestione Spese"
+        android:text="Riepilogo Spesa"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <!-- Campo per la registrazione del prodotto -->
 
-    <EditText
-        android:id="@+id/editTextProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prodotto" />
-
     <!-- Campo per la registrazione della Categoria -->
-    <EditText
-        android:id="@+id/editTextCategory"
+    <TextView
+        android:id="@+id/textViewProdotto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Categoria" />
+        android:layout_height="41dp"
+        android:text="Prodotto"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
 
     <!-- Campo per la registrazione del Costo -->
-    <EditText
-        android:id="@+id/editTextCost"
+
+    <TextView
+        android:id="@+id/textViewCategoria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Costo"
-        android:inputType="numberDecimal" />
+        android:layout_height="41dp"
+        android:text="Categoria"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
     <!-- Campo per la registrazione della Data -->
-    <EditText
-        android:id="@+id/editTextDate"
+    <TextView
+        android:id="@+id/textViewCosto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_calendar_24dp"
-        android:ems="10"
-        android:hint="Data Spesa"
-        android:inputType="date" />
+        android:layout_height="41dp"
+        android:text="Costo"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
     <!-- Pulsante per registrare la spesa -->
+    <TextView
+        android:id="@+id/textViewData"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:text="Data"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
     <Button
         android:id="@+id/buttonAddExpense"
         android:layout_width="wrap_content"
@@ -68,7 +73,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:onClick="addExpense"
-        android:text="Registra Spesa" />
+        android:text="Registra altre spese" />
 
     <!-- Sezione di interrogazione -->
     <TextView
