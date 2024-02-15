@@ -1,4 +1,4 @@
-<!-- fragment_spesesettimanali.xml -->
+<!-- fragment_spesemensili.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,21 +22,24 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="Riepilogo Spese Settimanali"
+        android:text="Riepilogo Spese Mensili"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <!-- Pulsante per registrare la spesa -->
+
+    <!-- Campo per la registrazione della Categoria -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="143dp"
         android:orientation="horizontal">
 
-        <!-- Pulsante per registrare la spesa -->
         <TextView
             android:id="@+id/textViewData"
-            android:layout_width="128dp"
+            android:layout_width="143dp"
             android:layout_height="41dp"
-            android:text="Settimana: "
+            android:text="Mese: "
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -48,15 +51,13 @@
             android:dateTextAppearance="@style/TextAppearance.AppCompat.Small" />
     </LinearLayout>
 
-
-    <!-- Campo per la registrazione della Categoria -->
     <TextView
         android:id="@+id/textViewProdotto"
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:text="Prodotto:"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <!-- Campo per la registrazione del Costo -->
@@ -67,7 +68,7 @@
         android:layout_height="41dp"
         android:text="Categoria:"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <!-- Campo per la registrazione della Data -->
     <TextView
@@ -76,7 +77,7 @@
         android:layout_height="41dp"
         android:text="Costo:"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <!-- Sezione di interrogazione -->
@@ -99,14 +100,14 @@
         android:onClick="addExpense"
         android:text="Registra altre spese" />
 
-    <!-- Pulsante per interrogazione mensile -->
+    <!-- Pulsante per interrogazione settimanale -->
     <Button
-        android:id="@+id/buttonMonthlyQuery"
+        android:id="@+id/buttonWeeklyQuery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:onClick="monthlyQuery"
-        android:text="Spese Mensili" />
+        android:onClick="weeklyQuery"
+        android:text="Spese Settimanali" />
 
     <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
     <Button
