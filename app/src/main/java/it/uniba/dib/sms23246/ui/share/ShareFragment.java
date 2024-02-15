@@ -67,9 +67,11 @@ public class ShareFragment extends Fragment {
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
                 sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+
 
                 // Avvia l'activity per la condivisione
-                startActivity(sendIntent);
+                startActivity(shareIntent);
             }
         });
 
