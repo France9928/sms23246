@@ -10,5 +10,6 @@
     <color name="colorLow">#00FF00</color>
     <color name="colorMedium">#FFFF00</color>
     <color name="colorHigh">#FF0000</color>
+    <color name="grey">#808080</color>
 
 </resources>
