@@ -1,7 +1,11 @@
 package it.uniba.dib.sms23246.ui.shop;
 
+import static android.text.TextUtils.replace;
 import static android.widget.Toast.*;
 
+import static androidx.fragment.app.FragmentManagerKt.commit;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,27 +14,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
+import android.app.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
+
+import it.uniba.dib.sms23246.Login;
+import it.uniba.dib.sms23246.MainActivity;
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
-
-//guidovedisefunziona
+import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
 
 public class ShopFragment extends Fragment {
-    private FragmentShopBinding binding;
+    public FragmentShopBinding binding;
     private EditText editTextNomeProdotto;
     private EditText editTextCategoriaProdotto;
     private EditText editTextCosto;
     private EditText editTextData;
+
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser user = auth.getCurrentUser();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,11 +106,9 @@ public class ShopFragment extends Fragment {
         });
 
 
-
         return root;
 
     }
-
 
     private void registraProdotto() {
         // Ottieni i dati dai campi di input
@@ -102,35 +117,58 @@ public class ShopFragment extends Fragment {
         double costo = Double.parseDouble(editTextCosto.getText().toString());
         String data = editTextData.getText().toString();
 
-        // Crea un oggetto Prodotto con i dati
-        Prodotto prodotto = new Prodotto();
-        prodotto.setNomeProdotto(nomeProdotto);
-        prodotto.setCategoriaProdotto(categoriaProdotto);
-        prodotto.setCosto(costo);
-        prodotto.setData(data);
+        if (user != null) {
+            String idUtente = user.getUid();
+            DocumentReference utenteRef = database.collection("utenti").document(idUtente);
 
-        // Ottieni il riferimento al tuo database Firestore
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+            // Creare un nuovo prodotto
+            Prodotto nuovoProdotto = new Prodotto();
+            nuovoProdotto.setNomeProdotto(nomeProdotto);
+            nuovoProdotto.setCategoriaProdotto(categoriaProdotto);
+            nuovoProdotto.setCosto(costo);
+            nuovoProdotto.setData(data);
 
-        // Aggiungi il prodotto al database
-        db.collection("prodotti")
-                .add(prodotto)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
+            // Inserire il prodotto nel sotto-documento "prodotti" di questo utente
+            utenteRef.collection("prodotti").add(nuovoProdotto.toMap())
+                    .addOnSuccessListener(documentReference -> {
                         // Gestisci il successo
-                        makeText(getContext(), "Prodotto registrato con successo", LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+                        visualizzaProdotto(nuovoProdotto);
+
+                        /*ShopConfirmedFragment shopConfirmedFragment = new ShopConfirmedFragment();
+
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragmentShop, shopConfirmedFragment);
+                        fragmentTransaction.addToBackStack(null);  // Aggiungi alla back stack se necessario
+                        fragmentTransaction.commit();
+
+                        /*Intent intent = new Intent(getContext(), ShopConfirmedFragment.class);
+                        startActivity(intent);*/
+
+                    })
+                    .addOnFailureListener(e -> {
                         // Gestisci l'errore
-                        makeText(getContext(), "Errore durante la registrazione del prodotto", LENGTH_SHORT).show();
-                    }
-                });
+                        Toast.makeText(getContext(), "Errore durante la registrazione del prodotto", Toast.LENGTH_SHORT).show();
+                    });
+        }
     }
 
+    public void visualizzaProdotto(Prodotto prodotto) {
+        // Crea un bundle e aggiungi il prodotto ad esso
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("prodotto", (Serializable) prodotto);
+
+        // Crea un nuovo fragment e imposta il bundle
+        ShopConfirmedFragment shopConfirmedFragment = new ShopConfirmedFragment();
+        shopConfirmedFragment.setArguments(bundle);
+
+        // Esegui la transazione per visualizzare il nuovo fragment
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragmentShop, shopConfirmedFragment)
+                .addToBackStack(null)
+                .commit();
+        Toast.makeText(getContext(), "Prodotto registrato con successo", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onDestroyView() {

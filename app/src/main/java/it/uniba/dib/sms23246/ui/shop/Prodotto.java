@@ -1,6 +1,11 @@
 package it.uniba.dib.sms23246.ui.shop;
 
-public class Prodotto {
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Prodotto implements Serializable {
     private String nomeProdotto;
     private String categoriaProdotto;
     private double costo;
@@ -57,4 +62,29 @@ public class Prodotto {
                 ", data='" + data + '\'' +
                 '}';
     }
+
+    // Metodo per convertire l'oggetto Prodotto in una mappa (Map) per Firebase
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("nomeProdotto", nomeProdotto);
+        result.put("categoriaProdotto", categoriaProdotto);
+        result.put("costoProdotto", costo);
+        result.put("dataProdotto", data);
+        return result;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+        out.writeObject(nomeProdotto);
+        out.writeObject(categoriaProdotto);
+        out.writeDouble(costo);
+        out.writeObject(data);
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+        nomeProdotto = (String) in.readObject();
+        categoriaProdotto = (String) in.readObject();
+        costo = in.readDouble();
+        data = (String) in.readObject();
+    }
+
 }

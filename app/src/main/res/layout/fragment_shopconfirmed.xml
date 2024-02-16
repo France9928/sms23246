@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!-- fragment_shopconfirmed.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shopConfirmed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -35,7 +37,7 @@
         android:layout_height="41dp"
         android:text="Prodotto"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <!-- Campo per la registrazione del Costo -->
@@ -46,7 +48,7 @@
         android:layout_height="41dp"
         android:text="Categoria"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <!-- Campo per la registrazione della Data -->
     <TextView
@@ -55,7 +57,7 @@
         android:layout_height="41dp"
         android:text="Costo"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <!-- Pulsante per registrare la spesa -->
     <TextView
@@ -64,7 +66,7 @@
         android:layout_height="41dp"
         android:text="Data"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonAddExpense"
