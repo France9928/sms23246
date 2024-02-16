@@ -163,10 +163,16 @@ public class ShopFragment extends Fragment {
         shopConfirmedFragment.setArguments(bundle);
 
         // Esegui la transazione per visualizzare il nuovo fragment
-        getParentFragmentManager().beginTransaction()
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragmentShop, shopConfirmedFragment);
+        transaction.commit();
+
+/*        getChildFragmentManager().beginTransaction()
                 .replace(R.id.fragmentShop, shopConfirmedFragment)
                 .addToBackStack(null)
-                .commit();
+                .commit();*/
+
         Toast.makeText(getContext(), "Prodotto registrato con successo", Toast.LENGTH_SHORT).show();
     }
 
