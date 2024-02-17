@@ -57,18 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
         userDocRef.addSnapshotListener((documentSnapshot, e) -> {
             if (e != null) {
-                // Handle errors
+                // Gestisce errori
                 return;
             }
 
             if (documentSnapshot.exists()) {
-                // Check if it's a health operator
+                // Verifica che sia un operatore sanitario
                 String flagOperatore = documentSnapshot.getString("flag operatore");
                 if (Objects.equals(flagOperatore, "yes")) {
                     redirectToOperatorActivity();
                 } else {
-                    // If not a health operator, proceed with MainActivity setup
-                    // (You can add additional logic here if needed)
+                    // Se non è un operatore sanitario, fa il setup della MainActivity
                     setupMainActivity();
                 }
             }
