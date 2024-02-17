@@ -28,4 +28,6 @@
     <string name="last_name">Cognome</string>
     <string name="age">Età</string>
     <string name="place_of_birth">Luogo di nascita</string>
+    <string name="title_activity_operator">operatorActivity</string>
+    <string name="codice_operatore">Codice operatore</string>
 </resources>

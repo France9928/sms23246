@@ -15,6 +15,10 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Objects;
 
 
 public class Login extends AppCompatActivity {
@@ -24,6 +28,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
+    private FirebaseFirestore db;
 
 
     @Override
@@ -60,12 +65,14 @@ public class Login extends AppCompatActivity {
             password = String.valueOf(editTextPassword.getText());
 
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Inserisci email", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(password)) {
-                Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Inserisci Password", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
                 return;
             }
 
@@ -74,14 +81,38 @@ public class Login extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            Toast.makeText(getApplicationContext(), "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            db = FirebaseFirestore.getInstance();
+                            if (currentUser != null) {
+                                String userId = currentUser.getUid();
+                                DocumentReference userDocRef = db.collection("utenti").document(userId);
+                                userDocRef.addSnapshotListener((documentSnapshot, e) -> {
+                                    if (e != null) {
+                                        // Gestisci errori
+                                        return;
+                                    }
 
-                        } else {
+                                    if (documentSnapshot.exists()) {
+                                        // Verifica se è un operatore sanitario
+                                        String flagOperatore = documentSnapshot.getString("flag operatore");
+                                        if (Objects.equals(flagOperatore, "yes")) {
+                                            Intent intent = new Intent(getApplicationContext(), operatorActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else {
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                        else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(Login.this, "Authentication failed.",
+                            Toast.makeText(Login.this, "Autenticazione fallita",
                                     Toast.LENGTH_SHORT).show();
                         }
                     });

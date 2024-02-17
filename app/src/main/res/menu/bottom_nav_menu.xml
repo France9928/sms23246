@@ -26,6 +26,4 @@
         android:icon="@drawable/ic_shopping_bag_24"
         android:title="@string/title_shop" />
 
-
-
 </menu>

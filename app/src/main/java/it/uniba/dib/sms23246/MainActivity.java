@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -16,57 +18,88 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
+import java.util.Objects;
+
 import it.uniba.dib.sms23246.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth auth;
+    private Button button;
+    private TextView textView;
+    private FirebaseUser user;
+    private FirebaseFirestore db;
 
-        FirebaseAuth auth;
-        Button button;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        TextView textView;
-        FirebaseUser user;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            it.uniba.dib.sms23246.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
-            setContentView(binding.getRoot());
+        auth = FirebaseAuth.getInstance();
+        button = findViewById(R.id.logout);
+        textView = findViewById(R.id.user_details);
+        user = auth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
 
+        if (user == null) {
+            redirectToLogin();
+        } else {
+            textView.setText(user.getEmail());
+            checkUserIsHealthOperator(user);
+        }
 
-            auth =FirebaseAuth.getInstance();
-            button = findViewById(R.id.logout);
-            textView = findViewById(R.id.user_details);
-            user = auth.getCurrentUser();
-            if(user == null){
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
+    }
 
+    private void checkUserIsHealthOperator(FirebaseUser user) {
+        String userId = user.getUid();
+        DocumentReference userDocRef = db.collection("utenti").document(userId);
+
+        userDocRef.addSnapshotListener((documentSnapshot, e) -> {
+            if (e != null) {
+                // Handle errors
+                return;
             }
-            else{
-                textView.setText(user.getEmail());
+
+            if (documentSnapshot.exists()) {
+                // Check if it's a health operator
+                String flagOperatore = documentSnapshot.getString("flag operatore");
+                if (Objects.equals(flagOperatore, "yes")) {
+                    redirectToOperatorActivity();
+                } else {
+                    // If not a health operator, proceed with MainActivity setup
+                    // (You can add additional logic here if needed)
+                    setupMainActivity();
+                }
             }
+        });
+    }
 
-            button.setOnClickListener(v -> {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
+    private void redirectToLogin() {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
+        finish();
+    }
 
+    private void redirectToOperatorActivity() {
+        Intent intent = new Intent(getApplicationContext(), operatorActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
-            });
-
+    private void setupMainActivity() {
+        button.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            redirectToLogin();
+        });
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-            AppBarConfiguration appBarConfiguration;
-            appBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.navigation_map, R.id.navigation_user, R.id.navigation_video, R.id.navigation_share, R.id.navigation_shop,R.id.navigation_shopConfirmed)
-                    .build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_map, R.id.navigation_user, R.id.navigation_video, R.id.navigation_share, R.id.navigation_shop, R.id.navigation_shopConfirmed)
+                .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
-
 }
