@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="it.uniba.dib.sms23246.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_datiOperatore"
+        android:name="it.uniba.dib.sms23246.ui.datiOperatore.DatiOperatoreFragment"
+        android:label="@string/title_datiOperatore"
+        tools:layout="@layout/fragment_datioperatore" />
 
     <fragment
         android:id="@+id/navigation_notifications"
