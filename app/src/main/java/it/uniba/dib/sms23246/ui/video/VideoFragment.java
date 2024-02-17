@@ -37,7 +37,7 @@ public class VideoFragment extends Fragment {
         searchView = view.findViewById(R.id.searchView);
         ratingBar = view.findViewById(R.id.ratingBar);
 
-
+//
 
         return view;
     }
