@@ -21,7 +21,8 @@
         android:id="@+id/navigation_shop"
         android:name="it.uniba.dib.sms23246.ui.shop.ShopFragment"
         android:label="@string/title_shop"
-        tools:layout="@layout/fragment_shop" />
+        tools:layout="@layout/fragment_shop" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_share"
@@ -33,12 +34,5 @@
         android:name="it.uniba.dib.sms23246.ui.map.MapFragment"
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
-
-    <fragment
-        android:id="@+id/navigation_shopConfirmed"
-        android:name="it.uniba.dib.sms23246.ui.shop.ShopConfirmedFragment"
-        android:label="Confirmed"
-        tools:layout="@layout/fragment_shopconfirmed" />
-
 
 </navigation>

@@ -38,6 +38,8 @@ import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
 import it.uniba.dib.sms23246.MainActivity;
+import androidx.navigation.fragment.NavHostFragment.*;
+
 
 public class ShopFragment extends Fragment {
     public FragmentShopBinding binding;
@@ -151,14 +153,13 @@ public class ShopFragment extends Fragment {
         // Crea un nuovo fragment e imposta il bundle
         ShopConfirmedFragment shopConfirmedFragment = new ShopConfirmedFragment();
         shopConfirmedFragment.setArguments(bundle);
-
         // Esegui la transazione per visualizzare il nuovo fragment
         getChildFragmentManager().beginTransaction()
-                .replace(R.id.navigation_shop, shopConfirmedFragment)
+                .replace(R.id.nav_host_fragment, shopConfirmedFragment)
                 .addToBackStack(null)
                 .commit();
 
-        Toast.makeText(getContext(), "Prodotto registrato con successo", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Prodotto registrato con successo", LENGTH_SHORT).show();
     }
 
     @Override
