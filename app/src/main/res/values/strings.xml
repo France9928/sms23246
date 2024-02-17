@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="title_user">User</string>
+    <string name="title_user">Utente</string>
     <string name="title_video">Video</string>
-    <string name="title_share">Share</string>
+    <string name="title_share">Condividi</string>
     <string name="textDB">Text DB</string>
-    <string name="share_data">Share Data</string>
-    <string name="title_shop">Shop</string>
-    <string name="title_map">Map</string>
+    <string name="share_data">Condividi i dati</string>
+    <string name="title_shop">Spese</string>
+    <string name="title_map">Mappa</string>
     <string name="dati_anagrafici">Dati anagrafici</string>
     <string name="patologie">Patologie</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -16,9 +16,9 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register">Register</string>
-    <string name="click_to_login">Click to login</string>
-    <string name="click_to_register">Click to register</string>
+    <string name="register">Regitrazione</string>
+    <string name="click_to_login">Clicca per il login</string>
+    <string name="click_to_register">Clicca per la registrazione</string>
     <string name="logout">Logout</string>
     <string name="età">Età:</string>
     <string name="condividi">Condividi</string>
