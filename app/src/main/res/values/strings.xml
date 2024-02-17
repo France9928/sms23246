@@ -17,8 +17,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="register">Regitrazione</string>
-    <string name="click_to_login">Clicca per il login</string>
-    <string name="click_to_register">Clicca per la registrazione</string>
+    <string name="click_to_login">Clicca qui per il login</string>
+    <string name="click_to_register">Clicca qui per la registrazione</string>
     <string name="logout">Logout</string>
     <string name="età">Età:</string>
     <string name="condividi">Condividi</string>
