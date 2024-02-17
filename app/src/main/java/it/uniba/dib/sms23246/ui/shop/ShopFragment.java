@@ -37,6 +37,7 @@ import it.uniba.dib.sms23246.MainActivity;
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
+import it.uniba.dib.sms23246.MainActivity;
 
 public class ShopFragment extends Fragment {
     public FragmentShopBinding binding;
@@ -134,17 +135,6 @@ public class ShopFragment extends Fragment {
                         // Gestisci il successo
                         visualizzaProdotto(nuovoProdotto);
 
-                        /*ShopConfirmedFragment shopConfirmedFragment = new ShopConfirmedFragment();
-
-                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.fragmentShop, shopConfirmedFragment);
-                        fragmentTransaction.addToBackStack(null);  // Aggiungi alla back stack se necessario
-                        fragmentTransaction.commit();
-
-                        /*Intent intent = new Intent(getContext(), ShopConfirmedFragment.class);
-                        startActivity(intent);*/
-
                     })
                     .addOnFailureListener(e -> {
                         // Gestisci l'errore
@@ -163,15 +153,10 @@ public class ShopFragment extends Fragment {
         shopConfirmedFragment.setArguments(bundle);
 
         // Esegui la transazione per visualizzare il nuovo fragment
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragmentShop, shopConfirmedFragment);
-        transaction.commit();
-
-/*        getChildFragmentManager().beginTransaction()
-                .replace(R.id.fragmentShop, shopConfirmedFragment)
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.navigation_shop, shopConfirmedFragment)
                 .addToBackStack(null)
-                .commit();*/
+                .commit();
 
         Toast.makeText(getContext(), "Prodotto registrato con successo", Toast.LENGTH_SHORT).show();
     }
