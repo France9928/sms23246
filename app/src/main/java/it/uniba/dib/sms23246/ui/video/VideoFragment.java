@@ -9,7 +9,12 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.RatingBar.OnRatingBarChangeListener;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.WindowDecorActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -37,8 +42,18 @@ public class VideoFragment extends Fragment {
         searchView = view.findViewById(R.id.searchView);
         ratingBar = view.findViewById(R.id.ratingBar);
 
-//
+        float ratingValue = 5f; // impostare il valore di valutazione desiderato
+        ratingBar.setRating(ratingValue);
+
+
+
+        metodo();
 
         return view;
+    }
+    private void metodo(){
+
+
+
     }
 }
