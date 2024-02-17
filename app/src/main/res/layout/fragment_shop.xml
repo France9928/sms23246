@@ -1,6 +1,5 @@
 <!-- fragment_shop.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragmentShop"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"

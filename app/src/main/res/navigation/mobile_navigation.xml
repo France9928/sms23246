@@ -33,10 +33,11 @@
         android:name="it.uniba.dib.sms23246.ui.map.MapFragment"
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
+
     <fragment
         android:id="@+id/navigation_shopConfirmed"
         android:name="it.uniba.dib.sms23246.ui.shop.ShopConfirmedFragment"
-        android:label="ShopConfirmedFragment"
+        android:label="Confirmed"
         tools:layout="@layout/fragment_shopconfirmed" />
 
 

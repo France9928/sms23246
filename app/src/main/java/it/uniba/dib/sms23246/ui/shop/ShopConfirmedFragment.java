@@ -25,25 +25,27 @@ public class ShopConfirmedFragment extends Fragment {
         // Utilizza il metodo inflate per ottenere un'istanza del binding
         binding = FragmentShopconfirmedBinding.inflate(inflater, container, false);
         // Ottieni il prodotto dal bundle
+        final TextView textView = binding.textViewWelcome;
+        shopConfirmedViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
             //noinspection deprecation
             Prodotto prodotto = (Prodotto) bundle.getSerializable("prodotto");
+            if (getView() != null) {
+                // Utilizzo i dati del prodotto per la visualizzazione
+                TextView textViewProdotto = getView().findViewById(R.id.textViewProdotto);
+                textViewProdotto.setText("Prodotto:" + prodotto.getNomeProdotto());
 
-            // Utilizzo i dati del prodotto per la visualizzazione
-            TextView textViewProdotto = getView().findViewById(R.id.textViewProdotto);
-            textViewProdotto.setText("Prodotto:" + prodotto.getNomeProdotto());
+                TextView textViewCategoria = getView().findViewById(R.id.textViewCategoria);
+                textViewCategoria.setText("Categoria: " + prodotto.getCategoriaProdotto());
 
-            TextView textViewCategoria = getView().findViewById(R.id.textViewCategoria);
-            textViewCategoria.setText("Categoria: "+prodotto.getCategoriaProdotto());
+                TextView textViewCosto = getView().findViewById(R.id.textViewCosto);
+                textViewCosto.setText("Costo: " + (int) prodotto.getCosto());
 
-            TextView textViewCosto = getView().findViewById(R.id.textViewCosto);
-            textViewCosto.setText("Costo: "+(int) prodotto.getCosto());
-
-            TextView textViewData = getView().findViewById(R.id.textViewData);
-            textViewData.setText("Data: "+prodotto.getData());
-
+                TextView textViewData = getView().findViewById(R.id.textViewData);
+                textViewData.setText("Data: " + prodotto.getData());
+            }
 
         }
 
