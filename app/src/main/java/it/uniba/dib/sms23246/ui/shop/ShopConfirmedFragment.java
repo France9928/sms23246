@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import it.uniba.dib.sms23246.R;
+import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
 
 public class ShopConfirmedFragment extends Fragment {
@@ -24,6 +25,8 @@ public class ShopConfirmedFragment extends Fragment {
 
         // Utilizza il metodo inflate per ottenere un'istanza del binding
         binding = FragmentShopconfirmedBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
         // Ottieni il prodotto dal bundle
         final TextView textView = binding.textViewWelcome;
         shopConfirmedViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -32,15 +35,15 @@ public class ShopConfirmedFragment extends Fragment {
         if (bundle != null) {
             //noinspection deprecation
             Prodotto prodotto = (Prodotto) bundle.getSerializable("prodotto");
-            if (getView() != null) {
+            if (root != null) {
                 // Utilizzo i dati del prodotto per la visualizzazione
-                TextView textViewProdotto = getView().findViewById(R.id.textViewProdotto);
+                TextView textViewProdotto = root.findViewById(R.id.textViewProdotto);
                 textViewProdotto.setText("Prodotto:" + prodotto.getNomeProdotto());
 
-                TextView textViewCategoria = getView().findViewById(R.id.textViewCategoria);
+                TextView textViewCategoria = root.findViewById(R.id.textViewCategoria);
                 textViewCategoria.setText("Categoria: " + prodotto.getCategoriaProdotto());
 
-                TextView textViewCosto = getView().findViewById(R.id.textViewCosto);
+                TextView textViewCosto = root.findViewById(R.id.textViewCosto);
                 textViewCosto.setText("Costo: " + (int) prodotto.getCosto());
 
                 TextView textViewData = getView().findViewById(R.id.textViewData);
@@ -49,7 +52,7 @@ public class ShopConfirmedFragment extends Fragment {
 
         }
 
-        return inflater.inflate(R.layout.fragment_shopconfirmed, container, false);
+        return root;
     }
 
     // Resto del codice del fragment...

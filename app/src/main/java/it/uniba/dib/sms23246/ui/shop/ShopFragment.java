@@ -154,10 +154,10 @@ public class ShopFragment extends Fragment {
         ShopConfirmedFragment shopConfirmedFragment = new ShopConfirmedFragment();
         shopConfirmedFragment.setArguments(bundle);
         // Esegui la transazione per visualizzare il nuovo fragment
-        getChildFragmentManager().beginTransaction()
-                .replace(R.id.nav_host_fragment, shopConfirmedFragment)
-                .addToBackStack(null)
-                .commit();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_confirmed, shopConfirmedFragment);
+        fragmentTransaction.commit();
 
         Toast.makeText(getContext(), "Prodotto registrato con successo", LENGTH_SHORT).show();
     }

@@ -53,4 +53,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <FrameLayout
+        android:id="@+id/fragment_confirmed"
+        android:name="it.uniba.dib.sms23246.ui.shop.ShopConfirmedFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:label="@string/confirmed"
+        tools:layout="@layout/fragment_shopconfirmed"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="64dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

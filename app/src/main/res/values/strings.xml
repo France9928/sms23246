@@ -30,4 +30,5 @@
     <string name="place_of_birth">Luogo di nascita</string>
     <string name="title_activity_operator">operatorActivity</string>
     <string name="codice_operatore">Codice operatore</string>
+    <string name="confirmed">Confirmed</string>
 </resources>
