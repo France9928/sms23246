@@ -29,10 +29,12 @@
         android:name="it.uniba.dib.sms23246.ui.share.ShareFragment"
         android:label="@string/title_share"
         tools:layout="@layout/fragment_share" />
+
     <fragment
         android:id="@+id/navigation_map"
         android:name="it.uniba.dib.sms23246.ui.map.MapFragment"
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
+
 
 </navigation>
