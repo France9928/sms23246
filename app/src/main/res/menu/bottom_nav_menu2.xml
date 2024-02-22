@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_gestioneUtenti"
-        android:icon="@drawable/ic_map_24"
+        android:icon="@drawable/ic_edit_users"
         android:title="@string/title_gestioneUtenti" />
 
     <item
@@ -11,7 +11,12 @@
         android:title="@string/title_datiOperatore" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_cassettaAttrezzi"
+        android:icon="@drawable/ic_cassetta_attrezzi"
+        android:title="@string/title_cassettaAttrezzi" />
+    <item
+        android:id="@+id/navigation_sensori"
+        android:icon="@drawable/ic_sensors"
+        android:title="@string/title_sensori" />
+
 </menu>
