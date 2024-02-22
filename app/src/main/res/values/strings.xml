@@ -11,8 +11,7 @@
     <string name="patologie">Patologie</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_gestioneUtenti">Gestione utenti</string>
-    <string name="title_datiOperatore">Dati Personali</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_datiOperatore">Info Personali</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -33,4 +32,6 @@
     <string name="confirmed">Confirmed</string>
     <string name="userID">User Id</string>
     <string name="condivisione_dati">Condivisione Dati</string>
+    <string name="title_sensori">Sensori</string>
+    <string name="title_cassettaAttrezzi">Cassetta Attrezzi</string>
 </resources>

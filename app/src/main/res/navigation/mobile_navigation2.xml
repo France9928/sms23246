@@ -18,8 +18,13 @@
         tools:layout="@layout/fragment_datioperatore" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_cassettaAttrezzi"
         android:name="it.uniba.dib.sms23246.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_cassettaAttrezzi"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_sensori"
+        android:name="it.uniba.dib.sms23246.ui.notifications.NotificationsFragment"
+        android:label="@string/title_sensori"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
