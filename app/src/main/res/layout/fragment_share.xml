@@ -33,6 +33,15 @@
         android:layout_below="@id/cognomeTextView"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"/>
+    <TextView
+        android:id="@+id/userIdTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userID"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_below="@id/etaTextView"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"/>
 
     <Button
         android:id="@+id/shareButton"

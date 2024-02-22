@@ -3,6 +3,7 @@ package it.uniba.dib.sms23246.ui.share;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class ShareFragment extends Fragment {
         final TextView nomeTextView = root.findViewById(R.id.nomeTextView);
         final TextView cognomeTextView = root.findViewById(R.id.cognomeTextView);
         final TextView etaTextView = root.findViewById(R.id.etaTextView);
+        final TextView userIdTextView = root.findViewById(R.id.userIdTextView);
 
         // Ottieni i dati dell'utente da UserViewModel
         userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
@@ -48,6 +50,10 @@ public class ShareFragment extends Fragment {
             etaTextView.setText(String.valueOf(eta));
         });
 
+        userViewModel.getUserId().observe(getViewLifecycleOwner(),userIde -> {
+            userIdTextView.setText(String.valueOf(userIde));
+        });
+
         Button shareButton = root.findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +62,15 @@ public class ShareFragment extends Fragment {
                 String nome = nomeTextView.getText().toString();
                 String cognome = cognomeTextView.getText().toString();
                 String eta = etaTextView.getText().toString();
+                String userIde = userIdTextView.getText().toString(); // Ottieni l'ID dell'utente
+
 
                 // Crea il testo da condividere
                 String textToShare = "Nome: " + nome + "\n" +
                         "Cognome: " + cognome + "\n" +
-                        "Età: " + eta;
+                        "Età: " + eta + "\n" +
+                        "User ID: " + userIde; // Aggiungi l'ID dell'utente al testo da condividere
+
 
                 // Crea l'intent per la condivisione
                 Intent sendIntent = new Intent();
@@ -68,7 +78,6 @@ public class ShareFragment extends Fragment {
                 sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
-
 
                 // Avvia l'activity per la condivisione
                 startActivity(shareIntent);
@@ -78,3 +87,4 @@ public class ShareFragment extends Fragment {
         return root;
     }
 }
+

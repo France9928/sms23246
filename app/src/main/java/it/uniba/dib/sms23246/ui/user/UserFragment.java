@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentUserBinding;
 
@@ -35,40 +38,50 @@ public class UserFragment extends Fragment {
         final TextView etaTextView = binding.etaTextView;
         final TextView luogoNascitaTextView = binding.luogoNascitaTextView;
 
-        // Ottiene i dati dell'utente da UserViewModel
-        userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
-            nomeTextView.setText("Nome: " + nome);
-        });
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            final TextView userIdTextView = binding.userIdTextView;
+            userViewModel.getUserId().observe(getViewLifecycleOwner(), userId -> {
+                userIdTextView.setText("User Id: " + userId);
+            });
+        }
 
-        userViewModel.getUserLastName().observe(getViewLifecycleOwner(), cognome -> {
-            cognomeTextView.setText("Cognome: " + cognome);
-        });
 
-        userViewModel.getUserAge().observe(getViewLifecycleOwner(), age -> {
-            etaTextView.setText("Età: " + age);
-        });
+            // Ottiene i dati dell'utente da UserViewModel
+            userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
+                nomeTextView.setText("Nome: " + nome);
+            });
 
-        userViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), birthplace -> {
-            luogoNascitaTextView.setText("Luogo di nascita: " + birthplace);
-        });
+            userViewModel.getUserLastName().observe(getViewLifecycleOwner(), cognome -> {
+                cognomeTextView.setText("Cognome: " + cognome);
+            });
 
-        RecyclerView recyclerView = binding.patologieRecyclerView;
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        patologieAdapter = new PatologieAdapter();
-        recyclerView.setAdapter(patologieAdapter);
+            userViewModel.getUserAge().observe(getViewLifecycleOwner(), age -> {
+                etaTextView.setText("Età: " + age);
+            });
 
-        // Osserva le patologie
-        userViewModel.getPatologieList().observe(getViewLifecycleOwner(), patologie -> {
-            // Aggiorna l'adapter con la nuova lista di patologie
-            patologieAdapter.setPatologie(patologie);
-        });
+            userViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), birthplace -> {
+                luogoNascitaTextView.setText("Luogo di nascita: " + birthplace);
+            });
 
-        return root;
+            RecyclerView recyclerView = binding.patologieRecyclerView;
+            recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+            patologieAdapter = new PatologieAdapter();
+            recyclerView.setAdapter(patologieAdapter);
+
+            // Osserva le patologie
+            userViewModel.getPatologieList().observe(getViewLifecycleOwner(), patologie -> {
+                // Aggiorna l'adapter con la nuova lista di patologie
+                patologieAdapter.setPatologie(patologie);
+            });
+
+            return root;
+
     }
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            binding = null;
+        }}
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-}

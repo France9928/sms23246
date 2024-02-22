@@ -25,6 +25,7 @@ public class UserViewModel extends ViewModel {
     private MutableLiveData<String> userLastName = new MutableLiveData<>();
     private MutableLiveData<String> userBirthplace = new MutableLiveData<>();
     private MutableLiveData<List<Patologia>> patologieList = new MutableLiveData<>();
+    private MutableLiveData<String> userId = new MutableLiveData<>();
 
     public UserViewModel() {
         db = FirebaseFirestore.getInstance();
@@ -42,9 +43,9 @@ public class UserViewModel extends ViewModel {
     private void loadUserData() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            String userId = currentUser.getUid();
-            DocumentReference userDocRef = db.collection("utenti").document(userId);
-
+            String userIde = currentUser.getUid();
+            DocumentReference userDocRef = db.collection("utenti").document(userIde);
+            userId.setValue(userIde);
             userDocRef.addSnapshotListener((documentSnapshot, e) -> {
                 if (e != null) {
                     // Gestisci errori
@@ -61,6 +62,8 @@ public class UserViewModel extends ViewModel {
                     userAge.setValue(age);
                     userLastName.setValue(lastName);
                     userBirthplace.setValue(birthplace);
+
+
 
                     // Ottieni la lista di patologie dell'utente e aggiorna la view model
                     List<Patologia> patologie = new ArrayList<>();
@@ -81,6 +84,9 @@ public class UserViewModel extends ViewModel {
     }
 
     // Metodi per ottenere i dati dell'utente
+    public LiveData<String> getUserId(){
+        return userId;
+    }
     public LiveData<String> getUserName() {
         return userName;
     }

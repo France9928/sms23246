@@ -31,4 +31,5 @@
     <string name="title_activity_operator">operatorActivity</string>
     <string name="codice_operatore">Codice operatore</string>
     <string name="confirmed">Confirmed</string>
+    <string name="userID">User Id</string>
 </resources>
