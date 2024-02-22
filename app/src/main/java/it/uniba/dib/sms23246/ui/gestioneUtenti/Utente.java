@@ -4,13 +4,11 @@ public class Utente {
     private String userId;
     private String nome;
     private String cognome;
-    private int eta;
 
-    public Utente(String userId, String nome, String cognome, int eta) {
+    public Utente(String userId, String nome, String cognome) {
         this.userId = userId;
         this.nome = nome;
         this.cognome = cognome;
-        this.eta = eta;
     }
 
     public String getUserId() {
@@ -23,9 +21,5 @@ public class Utente {
 
     public String getCognome() {
         return cognome;
-    }
-
-    public int getEta() {
-        return eta;
     }
 }

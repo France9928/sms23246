@@ -47,13 +47,12 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
 
         public UtenteViewHolder(@NonNull View itemView) {
             super(itemView);
-            nomeCognomeTextView = itemView.findViewById(R.id.userId);
+            nomeCognomeTextView = itemView.findViewById(R.id.user);
         }
 
         public void bind(Utente user) {
                 String nome = user.getNome();
                 String cognome = user.getCognome();
-                int eta = user.getEta();
 
                 if (nome != null && cognome != null) {
                     String nomeCognome = nome + " " + cognome;

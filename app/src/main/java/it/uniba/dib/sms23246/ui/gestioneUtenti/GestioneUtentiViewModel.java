@@ -43,11 +43,10 @@ public class GestioneUtentiViewModel extends ViewModel {
                         // Ottieni i dettagli dell'utente dal documento
                         String nome = document.getString("nome");
                         String cognome = document.getString("cognome");
-                        int eta = document.getLong("eta").intValue();
                         String isOperator = document.getString("flag operatore");
                         if (!Objects.equals(isOperator, "yes")) {
                             // Crea un oggetto User e aggiungilo alla lista
-                            @SuppressLint("RestrictedApi") Utente user = new Utente(document.getId(), nome, cognome, eta);
+                            @SuppressLint("RestrictedApi") Utente user = new Utente(document.getId(), nome, cognome);
                             utenti.add(user);
                         }
                     }
