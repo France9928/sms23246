@@ -1,20 +1,15 @@
 package it.uniba.dib.sms23246.ui.share;
 
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.ui.user.UserViewModel;
 
@@ -25,11 +20,8 @@ public class ShareFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                new ViewModelProvider(this).get(ShareViewModel.class);
-        userViewModel =
-                new ViewModelProvider(this).get(UserViewModel.class);
-
+        shareViewModel = new ViewModelProvider(this).get(ShareViewModel.class);
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_share, container, false);
 
         final TextView nomeTextView = root.findViewById(R.id.nomeTextView);
@@ -51,42 +43,35 @@ public class ShareFragment extends Fragment {
             etaTextView.setText(String.valueOf(eta));
         });
 
-        userViewModel.getUserId().observe(getViewLifecycleOwner(),userIde -> {
+        userViewModel.getUserId().observe(getViewLifecycleOwner(), userIde -> {
             userIdTextView.setText(String.valueOf(userIde));
         });
+
         userViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), luogoNascita -> {
             luogoNascitaTextView.setText(luogoNascita);
         });
-
-
 
         Button shareButton = root.findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Ottieni i dati attuali dell'utente
                 String nome = nomeTextView.getText().toString();
                 String cognome = cognomeTextView.getText().toString();
                 String eta = etaTextView.getText().toString();
-                String userIde = userIdTextView.getText().toString(); // Ottieni l'ID dell'utente
+                String userIde = userIdTextView.getText().toString();
                 String luogoNascita = luogoNascitaTextView.getText().toString();
 
-                // Crea il testo da condividere
                 String textToShare = "Nome: " + nome + "\n" +
                         "Cognome: " + cognome + "\n" +
                         "Età: " + eta + "\n" +
                         "User ID: " + userIde + "\n" +
-                        "Luogo nascita " + luogoNascita;// Aggiungi l'ID dell'utente al testo da condividere
+                        "Luogo nascita " + luogoNascita;
 
-
-                // Crea l'intent per la condivisione
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
-
-                // Avvia l'activity per la condivisione
                 startActivity(shareIntent);
             }
         });
@@ -94,4 +79,3 @@ public class ShareFragment extends Fragment {
         return root;
     }
 }
-
