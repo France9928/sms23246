@@ -12,9 +12,10 @@ import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GestioneUtentiViewModel extends ViewModel {
-    private final MutableLiveData<List<User>> userList;
+    private final MutableLiveData<List<Utente>> userList;
 
     public GestioneUtentiViewModel() {
         userList = new MutableLiveData<>();
@@ -22,12 +23,12 @@ public class GestioneUtentiViewModel extends ViewModel {
         userList.setValue(new ArrayList<>());
     }
 
-    public LiveData<List<User>> getUserList() {
+    public LiveData<List<Utente>> getUserList() {
         return userList;
     }
 
     // Metodo per aggiornare la lista degli utenti nel ViewModel
-    public void updateUserList(List<User> users) {
+    public void updateUserList(List<Utente> users) {
         userList.setValue(users);
     }
 
@@ -37,21 +38,20 @@ public class GestioneUtentiViewModel extends ViewModel {
         db.collection("utenti")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<User> utenti = new ArrayList<>();
+                    List<Utente> utenti = new ArrayList<>();
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         // Ottieni i dettagli dell'utente dal documento
                         String nome = document.getString("nome");
                         String cognome = document.getString("cognome");
                         int eta = document.getLong("eta").intValue();
-
-                        // Crea un oggetto User e aggiungilo alla lista
-                        @SuppressLint("RestrictedApi") User user = new User(document.getId());
-                        utenti.add(user);
+                        String isOperator = document.getString("flag operatore");
+                        if (!Objects.equals(isOperator, "yes")) {
+                            // Crea un oggetto User e aggiungilo alla lista
+                            @SuppressLint("RestrictedApi") Utente user = new Utente(document.getId(), nome, cognome, eta);
+                            utenti.add(user);
+                        }
                     }
                     updateUserList(utenti);
-                })
-                .addOnFailureListener(e -> {
-                    // Gestisci errori durante il recupero degli utenti
                 });
     }
 }

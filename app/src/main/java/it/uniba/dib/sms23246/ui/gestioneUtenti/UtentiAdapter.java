@@ -1,6 +1,5 @@
 package it.uniba.dib.sms23246.ui.gestioneUtenti;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,9 @@ import it.uniba.dib.sms23246.R;
 
 public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteViewHolder> {
 
-    private List<User> utenti = new ArrayList<>();
+    private List<Utente> utenti = new ArrayList<>();
 
-    public void setUtenti(List<User> utenti) {
+    public void setUtenti(List<Utente> utenti) {
         this.utenti = utenti;
         notifyDataSetChanged();
     }
@@ -34,7 +33,7 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
 
     @Override
     public void onBindViewHolder(@NonNull UtenteViewHolder holder, int position) {
-        User utente = utenti.get(position);
+        Utente utente = utenti.get(position);
         holder.bind(utente);
     }
 
@@ -51,9 +50,15 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
             nomeCognomeTextView = itemView.findViewById(R.id.userId);
         }
 
-        public void bind(User utente) {
-            @SuppressLint("RestrictedApi") String userId = utente.getUid();
-            nomeCognomeTextView.setText(userId);
+        public void bind(Utente user) {
+                String nome = user.getNome();
+                String cognome = user.getCognome();
+                int eta = user.getEta();
+
+                if (nome != null && cognome != null) {
+                    String nomeCognome = nome + " " + cognome;
+                    nomeCognomeTextView.setText(nomeCognome);
+                }
         }
     }
 }
