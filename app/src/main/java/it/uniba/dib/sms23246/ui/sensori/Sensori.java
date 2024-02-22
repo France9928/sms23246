@@ -1,38 +1,27 @@
 package it.uniba.dib.sms23246.ui.sensori;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import it.uniba.dib.sms23246.R;
 
 public class Sensori extends Fragment {
 
-    private SensoriViewModel mViewModel;
+    private Button button1, button2, button3, button4, button5;
 
-    public static Sensori newInstance() {
-        return new Sensori();
-    }
 
+
+    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Infla il layout del fragment
         return inflater.inflate(R.layout.fragment_sensori, container, false);
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SensoriViewModel.class);
-        // TODO: Use the ViewModel
     }
-
 }

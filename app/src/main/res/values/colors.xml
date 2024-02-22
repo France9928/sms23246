@@ -11,5 +11,7 @@
     <color name="colorMedium">#FFFF00</color>
     <color name="colorHigh">#FF0000</color>
     <color name="grey">#808080</color>
+    <color name="button_background">#FF5733</color>
+    <color name="button_text">#FFFFFF</color>
 
 </resources>

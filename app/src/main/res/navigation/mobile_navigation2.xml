@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/navigation_sensori"
-        android:name="it.uniba.dib.sms23246.ui.notifications.NotificationsFragment"
+        android:name="it.uniba.dib.sms23246.ui.sensori.Sensori"
         android:label="@string/title_sensori"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_sensori" />
 </navigation>
