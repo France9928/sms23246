@@ -36,6 +36,7 @@ public class ShareFragment extends Fragment {
         final TextView cognomeTextView = root.findViewById(R.id.cognomeTextView);
         final TextView etaTextView = root.findViewById(R.id.etaTextView);
         final TextView userIdTextView = root.findViewById(R.id.userIdTextView);
+        final TextView luogoNascitaTextView = root.findViewById(R.id.luogoNascitaTextView);
 
         // Ottieni i dati dell'utente da UserViewModel
         userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
@@ -53,6 +54,11 @@ public class ShareFragment extends Fragment {
         userViewModel.getUserId().observe(getViewLifecycleOwner(),userIde -> {
             userIdTextView.setText(String.valueOf(userIde));
         });
+        userViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), luogoNascita -> {
+            luogoNascitaTextView.setText(luogoNascita);
+        });
+
+
 
         Button shareButton = root.findViewById(R.id.shareButton);
         shareButton.setOnClickListener(new View.OnClickListener() {
@@ -63,13 +69,14 @@ public class ShareFragment extends Fragment {
                 String cognome = cognomeTextView.getText().toString();
                 String eta = etaTextView.getText().toString();
                 String userIde = userIdTextView.getText().toString(); // Ottieni l'ID dell'utente
-
+                String luogoNascita = luogoNascitaTextView.getText().toString();
 
                 // Crea il testo da condividere
                 String textToShare = "Nome: " + nome + "\n" +
                         "Cognome: " + cognome + "\n" +
                         "Età: " + eta + "\n" +
-                        "User ID: " + userIde; // Aggiungi l'ID dell'utente al testo da condividere
+                        "User ID: " + userIde + "\n" +
+                        "Luogo nascita " + luogoNascita;// Aggiungi l'ID dell'utente al testo da condividere
 
 
                 // Crea l'intent per la condivisione

@@ -1,54 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><!-- fragment_share.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_share.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.share.ShareFragment">
+    <TextView
+        android:id="@+id/text_user"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/condivisione_dati"
+        android:textSize="26sp" />
 
-    <TextView
-        android:id="@+id/nomeTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/textViewsContainer"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nome"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/cognomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cognome"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_below="@id/nomeTextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"/>
+        <TextView
+            android:id="@+id/userIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/userID"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/etaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/età"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_below="@id/cognomeTextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"/>
-    <TextView
-        android:id="@+id/userIdTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/userID"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_below="@id/etaTextView"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"/>
+        <TextView
+            android:id="@+id/nomeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cognomeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cognome"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/etaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/età"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/luogoNascitaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/place_of_birth"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/shareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/condividi"
-        android:layout_below="@id/etaTextView"
+        android:layout_below="@id/textViewsContainer"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
