@@ -3,8 +3,10 @@
     android:id="@+id/fragment_sensori"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.sensori.Sensori">
+
 
 
     <Button

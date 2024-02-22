@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import it.uniba.dib.sms23246.databinding.ActivityOperatorBinding;
+import it.uniba.dib.sms23246.ui.cassettaAttrezzi.CassettaAttrezzi;
 
 public class operatorActivity extends AppCompatActivity {
     private ActivityOperatorBinding binding;
@@ -22,9 +23,9 @@ public class operatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-     binding = ActivityOperatorBinding.inflate(getLayoutInflater());
-     setContentView(binding.getRoot());
-     button = findViewById(R.id.logout);
+        binding = ActivityOperatorBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        button = findViewById(R.id.logout);
 
         button.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
@@ -33,9 +34,12 @@ public class operatorActivity extends AppCompatActivity {
             finish();
         });
 
+        // Inizializza il fragment della cassetta degli attrezzi
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.cassettaAttrezziContainer, new CassettaAttrezzi())
+                .commit();
+
         BottomNavigationView navView2 = findViewById(R.id.nav_view2);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_gestioneUtenti, R.id.navigation_datiOperatore, R.id.navigation_cassettaAttrezzi, R.id.navigation_sensori)
                 .build();
@@ -43,5 +47,4 @@ public class operatorActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView2, navController);
     }
-
 }
