@@ -10,7 +10,7 @@
     <string name="dati_anagrafici">Dati anagrafici</string>
     <string name="patologie">Patologie</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_home">Home</string>
+    <string name="title_gestioneUtenti">Gestione utenti</string>
     <string name="title_datiOperatore">Dati Personali</string>
     <string name="title_notifications">Notifications</string>
     <string name="login">Login</string>
