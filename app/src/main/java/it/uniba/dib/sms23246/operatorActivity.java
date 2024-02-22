@@ -34,9 +34,7 @@ public class operatorActivity extends AppCompatActivity {
             finish();
         });
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainer, new CassettaAttrezzi())
-                .commit();
+        
         BottomNavigationView navView2 = findViewById(R.id.nav_view2);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_gestioneUtenti, R.id.navigation_datiOperatore, R.id.navigation_cassettaAttrezzi, R.id.navigation_sensori)

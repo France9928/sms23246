@@ -34,4 +34,5 @@
     <string name="condivisione_dati">Condivisione Dati</string>
     <string name="title_sensori">Sensori</string>
     <string name="title_cassettaAttrezzi">Cassetta Attrezzi</string>
+    <string name="title_aggiungiPatologia">Aggiungi patologia</string>
 </resources>

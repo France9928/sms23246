@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +34,7 @@ public class GestioneUtentiFragment extends Fragment {
 
         // Inizializza il RecyclerView e l'Adapter
         recyclerView = root.findViewById(R.id.recyclerView);
-        utentiAdapter = new UtentiAdapter();
+        utentiAdapter = new UtentiAdapter(requireContext());
 
         // Collega l'Adapter al RecyclerView
         recyclerView.setAdapter(utentiAdapter);
@@ -46,6 +47,21 @@ public class GestioneUtentiFragment extends Fragment {
         gestioneUtentiViewModel.caricaListaUtenti();
 
         return root;
+    }
+
+    public void apriAggiungiPatologiaFragment(String userId) {
+        // Crea un nuovo fragment e passa l'ID dell'utente come argomento
+        AggiungiPatologiaFragment fragment = new AggiungiPatologiaFragment();
+        Bundle args = new Bundle();
+        args.putString("userId", userId);
+        fragment.setArguments(args);
+
+        // Sostituisci il fragment corrente con il nuovo fragment
+        // Replace the current fragment with the new fragment
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.navigation_gestioneUtenti, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

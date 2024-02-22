@@ -21,10 +21,20 @@
         android:id="@+id/navigation_cassettaAttrezzi"
         android:name="it.uniba.dib.sms23246.ui.cassettaAttrezzi.CassettaAttrezzi"
         android:label="@string/title_cassettaAttrezzi"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_cassetta_attrezzi" />
     <fragment
         android:id="@+id/navigation_sensori"
         android:name="it.uniba.dib.sms23246.ui.sensori.Sensori"
         android:label="@string/title_sensori"
         tools:layout="@layout/fragment_sensori" />
+    <!-- Aggiungi un'azione per navigare da navigation_gestioneUtenti a aggiungiPatologia -->
+    <action
+        android:id="@+id/action_gestioneUtenti_to_aggiungiPatologia"
+        app:destination="@id/aggiungiPatologiaFragment" />
+
+    <fragment
+        android:id="@+id/aggiungiPatologiaFragment"
+        android:name="it.uniba.dib.sms23246.ui.gestioneUtenti.AggiungiPatologiaFragment"
+        android:label="@string/title_aggiungiPatologia"
+        tools:layout="@layout/fragment_aggiungi_patologia" />
 </navigation>
