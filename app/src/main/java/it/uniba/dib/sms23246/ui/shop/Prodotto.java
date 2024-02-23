@@ -1,7 +1,10 @@
 package it.uniba.dib.sms23246.ui.shop;
 
+import android.widget.DatePicker;
+
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,12 +12,12 @@ public class Prodotto implements Serializable {
     private String nomeProdotto;
     private String categoriaProdotto;
     private double costo;
-    private String data;
+    private Date data;
 
     public Prodotto() {
     }
 
-    public Prodotto(String nomeProdotto, String categoriaProdotto, double costo, String data) {
+    public Prodotto(String nomeProdotto, String categoriaProdotto, double costo, Date data) {
         this.nomeProdotto = nomeProdotto;
         this.categoriaProdotto = categoriaProdotto;
         this.costo = costo;
@@ -45,11 +48,11 @@ public class Prodotto implements Serializable {
         this.costo = costo;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -84,7 +87,7 @@ public class Prodotto implements Serializable {
         nomeProdotto = (String) in.readObject();
         categoriaProdotto = (String) in.readObject();
         costo = in.readDouble();
-        data = (String) in.readObject();
+        data = (Date) in.readObject();
     }
 
 }

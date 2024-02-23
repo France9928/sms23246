@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +27,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import it.uniba.dib.sms23246.Login;
 import it.uniba.dib.sms23246.MainActivity;
@@ -51,7 +57,11 @@ public class ShopFragment extends Fragment {
     private EditText editTextNomeProdotto;
     private EditText editTextCategoriaProdotto;
     private EditText editTextCosto;
-    private EditText editTextData;
+    private DatePicker editTextData;
+
+    private int year;
+    private int month;
+    private int day;
 
     FirebaseFirestore database = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -69,18 +79,30 @@ public class ShopFragment extends Fragment {
         editTextNomeProdotto = root.findViewById(R.id.editTextProduct);
         editTextCategoriaProdotto = root.findViewById(R.id.editTextCategory);
         editTextCosto = root.findViewById(R.id.editTextCost);
-        editTextData = root.findViewById(R.id.editTextDate);
+        editTextData = root.findViewById(R.id.editData);
+
+
 
         final Button buttonAggiungiSpese = root.findViewById(R.id.buttonAddExpense);
 
         buttonAggiungiSpese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Ottieni i dati dai campi di input
                 String nomeProdotto = editTextNomeProdotto.getText().toString();
                 String categoriaProdotto = editTextCategoriaProdotto.getText().toString();
                 double costo = Double.parseDouble(editTextCosto.getText().toString());
-                String data = editTextData.getText().toString();
+                // Imposta un listener per la selezione della data
+
+                year = editTextData.getYear();
+                month = editTextData.getMonth();
+                day = editTextData.getDayOfMonth();
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+
+                Date dataSelezionata = calendar.getTime();
 
                 if (user != null) {
                     String idUtente = user.getUid();
@@ -91,7 +113,8 @@ public class ShopFragment extends Fragment {
                     nuovoProdotto.setNomeProdotto(nomeProdotto);
                     nuovoProdotto.setCategoriaProdotto(categoriaProdotto);
                     nuovoProdotto.setCosto(costo);
-                    nuovoProdotto.setData(data);
+                    Timestamp timestamp = new Timestamp(dataSelezionata);
+                    nuovoProdotto.setData(timestamp.toDate());
 
                     // Inserire il prodotto nel sotto-documento "prodotti" di questo utente
                     utenteRef.collection("prodotti").add(nuovoProdotto.toMap())
@@ -115,40 +138,41 @@ public class ShopFragment extends Fragment {
             }
         });
 
-        final Button buttonSpeseSettimanali = root.findViewById(R.id.buttonWeeklyQuery);
+                final Button buttonSpeseSettimanali = root.findViewById(R.id.buttonWeeklyQuery);
 
-        buttonSpeseSettimanali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
-                navController.navigate(R.id.action_ShopSettimanali);
+                buttonSpeseSettimanali.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                        navController.navigate(R.id.action_ShopSettimanali);
+                    }
+                });
+
+                final Button buttonSpeseMensili = root.findViewById(R.id.buttonMonthlyQuery);
+
+                buttonSpeseMensili.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                        navController.navigate(R.id.action_ShopMensili);
+                    }
+                });
+
+                final Button buttonSpeseCategoria = root.findViewById(R.id.buttonCategoryQuery);
+
+                buttonSpeseCategoria.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                        navController.navigate(R.id.action_ShopCategoria);
+                    }
+                });
+
+
+                return root;
+
             }
-        });
 
-        final Button buttonSpeseMensili = root.findViewById(R.id.buttonMonthlyQuery);
-
-        buttonSpeseMensili.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
-                navController.navigate(R.id.action_ShopMensili);
-            }
-        });
-
-        final Button buttonSpeseCategoria = root.findViewById(R.id.buttonCategoryQuery);
-
-        buttonSpeseCategoria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
-                navController.navigate(R.id.action_ShopCategoria);
-            }
-        });
-
-
-        return root;
-
-    }
 
 
     @Override
