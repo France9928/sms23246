@@ -1,91 +1,100 @@
 package it.uniba.dib.sms23246.ui.video;
 
-import android.content.Context;
-import android.media.MediaPlayer;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
-import android.widget.SearchView;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
-import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.RatingBar.OnRatingBarChangeListener;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.WindowDecorActionBar;
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import it.uniba.dib.sms23246.R;
+
 
 public class VideoFragment extends Fragment {
 
 
     private VideoViewModel viewModel;
 
-    private TextView primoT, secondoT, terzoT;
-    private VideoView videoView;
-    private RatingBar ratingBar;
+    private TextView textVideo1, textVideo2, textMalattie, textEsercizi, textRating;
+
+    private Button pulsanteVideo1, pulsanteVideo2, pulsanteMalattie, pulsanteEsercizi, pulsanteRating;
+
+    @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         VideoViewModel videoViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
 
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
-        primoT = view.findViewById(R.id.primoT);
-        secondoT = view.findViewById(R.id.secondoT);
-        terzoT = view.findViewById(R.id.terzoT);
-        videoView = view.findViewById(R.id.videoView);
-        ratingBar = view.findViewById(R.id.ratingBar);
+        // Initialize ViewModel
+        viewModel = new ViewModelProvider(this).get(VideoViewModel.class);
 
-        //mettere valutazione ma controllare se prima l'utente è autenticato
-        /*float ratingValue = 5f;//valutazione impostata a 5
-        // impostare il valore di valutazione desiderato
-        ratingBar.setRating(ratingValue);*/
+        //dichiarazione delle view
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                boolean userIsAuthenticated= false;
-                if (userIsAuthenticated) {
-                    // Invia la valutazione
-                    Toast.makeText(getApplicationContext(), "Valutazione inviata!", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Mostra un messaggio di errore all'utente
-                    Toast.makeText(getApplicationContext(), "Devi essere autenticato per inviare una valutazione", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        textVideo1 = view.findViewById(R.id.textVideo1);
+        pulsanteVideo1 = view.findViewById(R.id.pulsanteVideo1);
 
+        // References to elements in the 2 card
+        textVideo2 = view.findViewById(R.id.textVideo2);
+        pulsanteVideo2 = view.findViewById(R.id.pulsanteVideo2);
 
-        //far vedere i due video di presentazione
-        String videoUrl1 = "URL_DEL_PRIMO_VIDEO";
-        String videoUrl2 = "URL_DEL_SECONDO_VIDEO";
-        videoView.setVideoPath(videoUrl1);
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                              @Override
-                                              public void onCompletion(MediaPlayer mp) {
-                                                  videoView.setVideoPath(videoUrl2);
-                                                  videoView.start();
-                                              }
-                                          });
+        // References to elements in the 3 card
+        textMalattie = view.findViewById(R.id.textMalattie);
+        pulsanteMalattie = view.findViewById(R.id.pulsanteMalattie);
 
-        metodo();
+        // References to elements in the 4 card
+        textEsercizi = view.findViewById(R.id.textEsercizi);
+        pulsanteEsercizi = view.findViewById(R.id.pulsanteEsercizi);
+
+        // References to elements in the 5 card
+        textRating = view.findViewById(R.id.textRating);
+        pulsanteRating = view.findViewById(R.id.pulsanteRating);
+
+        metodoFaiVedereCose();
 
         return view;
     }
 
-    private Context getApplicationContext() {
-        return null;
+
+
+    private void metodoFaiVedereCose(){
+
+        viewModel.getPlacesLiveData().observe(getViewLifecycleOwner(), piuVideo -> {
+            if ((piuVideo != null) && (piuVideo.size() >= 4)) {
+                // Card 1
+                PiuVideo video1 = piuVideo.get(0);
+                textVideo1.setText(video1.getName());
+                pulsanteVideo1.setOnClickListener(v -> onButtonClick(video1.getLink()));
+
+                // Card 2
+                PiuVideo video2 = piuVideo.get(1);
+                textVideo2.setText(video2.getName());
+                pulsanteVideo2.setOnClickListener(v -> onButtonClick(video2.getLink()));
+            }
+        });
     }
 
-    private void metodo(){
-
-
-
+    // Method to handle button click
+    private void onButtonClick(String url) {
+        // Actions to perform on button click
+        openLink(url);
     }
+
+    // Open the link using an Intent
+    private void openLink(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+
+        // Verifica se esiste un'app in grado di gestire l'intent
+
+        startActivity(intent);
+    }
+
 }
