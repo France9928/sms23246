@@ -41,6 +41,7 @@ public class ProdottoAdapter extends RecyclerView.Adapter<ProdottoAdapter.Prodot
         } else {
             holder.textViewData.setText("Data non disponibile");
         }
+
     }
 
     @Override

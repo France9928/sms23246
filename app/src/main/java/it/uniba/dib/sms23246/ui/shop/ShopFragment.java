@@ -152,6 +152,7 @@ public class ShopFragment extends Fragment {
 
                 return root;
 
+
             }
 
 

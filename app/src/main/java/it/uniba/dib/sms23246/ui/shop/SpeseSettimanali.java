@@ -136,6 +136,7 @@ public class SpeseSettimanali extends Fragment {
         });
 
 
+
         final Button buttonSpeseCategoria = root.findViewById(R.id.buttonCategoryQuery);
         buttonSpeseCategoria.setOnClickListener(new View.OnClickListener() {
             @Override

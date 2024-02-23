@@ -23,6 +23,7 @@ public ShopConfirmedViewModel() {
 
 }
 
+
     public LiveData<String> getText() {
         return sText;
     }

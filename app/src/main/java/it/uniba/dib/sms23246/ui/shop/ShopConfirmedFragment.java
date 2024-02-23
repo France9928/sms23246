@@ -20,6 +20,7 @@ import it.uniba.dib.sms23246.ui.shop.ShopFragment;
 
 public class ShopConfirmedFragment extends Fragment {
 
+
     public FragmentShopconfirmedBinding binding;
     public ShopFragment shop= new ShopFragment();
 

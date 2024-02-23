@@ -66,6 +66,7 @@ public class SpeseMensiliFragment extends Fragment {
         recyclerViewProdotti.setAdapter(prodottoAdapter);
         recyclerViewProdotti.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         buttonVisualizzaSpese.setOnClickListener(new View.OnClickListener() {
 
             @Override
