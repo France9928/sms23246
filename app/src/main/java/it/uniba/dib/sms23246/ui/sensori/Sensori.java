@@ -71,8 +71,49 @@ public class Sensori extends Fragment {
                 }
             }
         });
+        button2 = rootView.findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Sfigmomanometro: " + getRandomValue());
+            }
+        });
+        button3 = rootView.findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Misuratore di pressione: " + getRandomValue());
+            }
+        });
+
+        button4 = rootView.findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Bilancia: " + getRandomValue());
+            }
+        });
+
+        button5 = rootView.findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Glucometro: " + getRandomValue());
+            }
+        });
 
         return rootView;
+    }
+
+
+    // Metodo di utilità per ottenere un valore random
+    private float getRandomValue() {
+        return (float) (Math.random() * 100); // Puoi regolare il range a seconda del valore desiderato
+    }
+
+    // Metodo di utilità per ottenere una temperatura random
+    private float getRandomTemperature() {
+        return (float) (Math.random() * 50); // Modifica il range a seconda delle tue esigenze
     }
 
     // Metodo di utilità per mostrare un Toast
