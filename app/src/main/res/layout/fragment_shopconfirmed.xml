@@ -7,15 +7,6 @@
     android:padding="16dp">
 
     <!-- Titolo -->
-    <TextView
-        android:id="@+id/textViewWelcome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Ciao, utente!"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -34,6 +25,7 @@
         android:id="@+id/textViewProdotto"
         android:layout_width="match_parent"
         android:layout_height="41dp"
+        android:text="Default Text"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -44,6 +36,7 @@
         android:id="@+id/textViewCategoria"
         android:layout_width="match_parent"
         android:layout_height="41dp"
+        android:text="Default Text"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -52,6 +45,7 @@
         android:id="@+id/textViewCosto"
         android:layout_width="match_parent"
         android:layout_height="41dp"
+        android:text="Default Text"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -60,6 +54,7 @@
         android:id="@+id/textViewData"
         android:layout_width="match_parent"
         android:layout_height="41dp"
+        android:text="Default Text"
         android:textSize="16sp"
         android:textStyle="bold" />
 

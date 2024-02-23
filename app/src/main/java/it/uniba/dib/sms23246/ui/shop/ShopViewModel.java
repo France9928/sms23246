@@ -10,20 +10,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 //gggggggggg
 
 public class ShopViewModel extends ViewModel{
-    private final MutableLiveData<String> sText;
     FirebaseFirestore database = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser user = auth.getCurrentUser();
 
     public ShopViewModel() {
 
-        sText = new MutableLiveData<>();
-        sText.setValue("Ciao, " + user.getDisplayName());
 
     }
 
-    public LiveData<String> getText() {
-        return sText;
-    }
 
 }

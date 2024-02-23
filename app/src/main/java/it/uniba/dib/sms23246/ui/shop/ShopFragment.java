@@ -7,6 +7,7 @@ import static androidx.fragment.app.FragmentManagerKt.commit;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,10 @@ import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
 import it.uniba.dib.sms23246.MainActivity;
+import it.uniba.dib.sms23246.ui.cassettaAttrezzi.CassettaAttrezzi;
+
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.fragment.NavHostFragment.*;
 
 
@@ -60,9 +65,6 @@ public class ShopFragment extends Fragment {
         binding = FragmentShopBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textViewWelcome;
-        shopViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
         // Inizializza gli elementi UI
         editTextNomeProdotto = root.findViewById(R.id.editTextProduct);
         editTextCategoriaProdotto = root.findViewById(R.id.editTextCategory);
@@ -74,7 +76,42 @@ public class ShopFragment extends Fragment {
         buttonAggiungiSpese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registraProdotto();
+                // Ottieni i dati dai campi di input
+                String nomeProdotto = editTextNomeProdotto.getText().toString();
+                String categoriaProdotto = editTextCategoriaProdotto.getText().toString();
+                double costo = Double.parseDouble(editTextCosto.getText().toString());
+                String data = editTextData.getText().toString();
+
+                if (user != null) {
+                    String idUtente = user.getUid();
+                    DocumentReference utenteRef = database.collection("utenti").document(idUtente);
+
+                    // Creare un nuovo prodotto
+                    Prodotto nuovoProdotto = new Prodotto();
+                    nuovoProdotto.setNomeProdotto(nomeProdotto);
+                    nuovoProdotto.setCategoriaProdotto(categoriaProdotto);
+                    nuovoProdotto.setCosto(costo);
+                    nuovoProdotto.setData(data);
+
+                    // Inserire il prodotto nel sotto-documento "prodotti" di questo utente
+                    utenteRef.collection("prodotti").add(nuovoProdotto.toMap())
+                            .addOnSuccessListener(documentReference -> {
+                                // Gestisci il successo
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("prodotto", (Serializable) nuovoProdotto);
+
+                                Log.d("Contenuto del Bundle", bundle.toString());
+
+
+                                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                                navController.navigate(R.id.action_ShopConfirmed, bundle);
+                                makeText(getContext(), "Prodotto registrato con successo", LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(e -> {
+                                // Gestisci l'errore
+                                Toast.makeText(getContext(), "Errore durante la registrazione del prodotto", Toast.LENGTH_SHORT).show();
+                            });
+                }
             }
         });
 
@@ -83,8 +120,8 @@ public class ShopFragment extends Fragment {
         buttonSpeseSettimanali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Azioni da eseguire quando il pulsante viene cliccato
-                //Puoi implementare qui la logica desiderata
+                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                navController.navigate(R.id.action_ShopSettimanali);
             }
         });
 
@@ -93,8 +130,8 @@ public class ShopFragment extends Fragment {
         buttonSpeseMensili.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Azioni da eseguire quando il pulsante viene cliccato
-                //Puoi implementare qui la logica desiderata
+                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                navController.navigate(R.id.action_ShopMensili);
             }
         });
 
@@ -103,8 +140,8 @@ public class ShopFragment extends Fragment {
         buttonSpeseCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Azioni da eseguire quando il pulsante viene cliccato
-                //Puoi implementare qui la logica desiderata
+                NavController navController = NavHostFragment.findNavController(ShopFragment.this);
+                navController.navigate(R.id.action_ShopCategoria);
             }
         });
 
@@ -113,54 +150,6 @@ public class ShopFragment extends Fragment {
 
     }
 
-    private void registraProdotto() {
-        // Ottieni i dati dai campi di input
-        String nomeProdotto = editTextNomeProdotto.getText().toString();
-        String categoriaProdotto = editTextCategoriaProdotto.getText().toString();
-        double costo = Double.parseDouble(editTextCosto.getText().toString());
-        String data = editTextData.getText().toString();
-
-        if (user != null) {
-            String idUtente = user.getUid();
-            DocumentReference utenteRef = database.collection("utenti").document(idUtente);
-
-            // Creare un nuovo prodotto
-            Prodotto nuovoProdotto = new Prodotto();
-            nuovoProdotto.setNomeProdotto(nomeProdotto);
-            nuovoProdotto.setCategoriaProdotto(categoriaProdotto);
-            nuovoProdotto.setCosto(costo);
-            nuovoProdotto.setData(data);
-
-            // Inserire il prodotto nel sotto-documento "prodotti" di questo utente
-            utenteRef.collection("prodotti").add(nuovoProdotto.toMap())
-                    .addOnSuccessListener(documentReference -> {
-                        // Gestisci il successo
-                        visualizzaProdotto(nuovoProdotto);
-
-                    })
-                    .addOnFailureListener(e -> {
-                        // Gestisci l'errore
-                        Toast.makeText(getContext(), "Errore durante la registrazione del prodotto", Toast.LENGTH_SHORT).show();
-                    });
-        }
-    }
-
-    public void visualizzaProdotto(Prodotto prodotto) {
-        // Crea un bundle e aggiungi il prodotto ad esso
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("prodotto", (Serializable) prodotto);
-
-        // Crea un nuovo fragment e imposta il bundle
-        ShopConfirmedFragment shopConfirmedFragment = new ShopConfirmedFragment();
-        shopConfirmedFragment.setArguments(bundle);
-        // Esegui la transazione per visualizzare il nuovo fragment
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_confirmed, shopConfirmedFragment);
-        fragmentTransaction.commit();
-
-        Toast.makeText(getContext(), "Prodotto registrato con successo", LENGTH_SHORT).show();
-    }
 
     @Override
     public void onDestroyView() {

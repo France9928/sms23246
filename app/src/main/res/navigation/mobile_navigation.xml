@@ -36,6 +36,53 @@
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 
+    <fragment
+        android:id="@+id/navigation_shopConfirmed"
+        android:name="it.uniba.dib.sms23246.ui.shop.ShopConfirmedFragment"
+        android:label="@string/title_shopConfirmed"
+        tools:layout="@layout/fragment_shopconfirmed" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_speseSettimanali"
+        android:name="it.uniba.dib.sms23246.ui.shop.SpeseSettimanali"
+        android:label="@string/title_shopConfirmed"
+        tools:layout="@layout/fragment_spesesettimanali" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_speseMensili"
+        android:name="it.uniba.dib.sms23246.ui.shop.SpeseMensiliFragment"
+        android:label="@string/title_shopConfirmed"
+        tools:layout="@layout/fragment_spesemensili" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_speseCategoria"
+        android:name="it.uniba.dib.sms23246.ui.shop.SpeseCategoriaFragment"
+        android:label="@string/title_shopConfirmed"
+        tools:layout="@layout/fragment_spesecategoria" >
+    </fragment>
+
+    <action
+        android:id="@+id/action_ShopConfirmed"
+        app:destination="@+id/navigation_shopConfirmed">
+    </action>
+
+    <action
+        android:id="@+id/action_ShopSettimanali"
+        app:destination="@+id/navigation_speseSettimanali">
+    </action>
+
+    <action
+        android:id="@+id/action_ShopMensili"
+        app:destination="@+id/navigation_speseMensili">
+    </action>
+
+    <action
+        android:id="@+id/action_ShopCategoria"
+        app:destination="@+id/navigation_speseCategoria">
+    </action>
 
 
 </navigation>

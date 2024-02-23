@@ -1,6 +1,7 @@
 package it.uniba.dib.sms23246.ui.shop;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,12 @@ import androidx.lifecycle.ViewModelProvider;
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
 import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
+import it.uniba.dib.sms23246.ui.shop.ShopFragment;
 
 public class ShopConfirmedFragment extends Fragment {
 
     public FragmentShopconfirmedBinding binding;
+    public ShopFragment shop= new ShopFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,27 +30,37 @@ public class ShopConfirmedFragment extends Fragment {
         binding = FragmentShopconfirmedBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // Ottieni il prodotto dal bundle
-        final TextView textView = binding.textViewWelcome;
-        shopConfirmedViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
         Bundle bundle = getArguments();
+        Log.d("Contenuto del Bundle", bundle.toString());
+
         if (bundle != null) {
             //noinspection deprecation
             Prodotto prodotto = (Prodotto) bundle.getSerializable("prodotto");
             if (root != null) {
                 // Utilizzo i dati del prodotto per la visualizzazione
                 TextView textViewProdotto = root.findViewById(R.id.textViewProdotto);
-                textViewProdotto.setText("Prodotto:" + prodotto.getNomeProdotto());
+                if(textViewProdotto != null){
+                    String nomeProdotto = "Prodotto:" + prodotto.getNomeProdotto();
+                    textViewProdotto.setText(nomeProdotto);
+                }
 
                 TextView textViewCategoria = root.findViewById(R.id.textViewCategoria);
-                textViewCategoria.setText("Categoria: " + prodotto.getCategoriaProdotto());
+                if(textViewCategoria != null){
+                    String categoriaProdotto = "Categoria: " + prodotto.getCategoriaProdotto();
+                    textViewCategoria.setText(categoriaProdotto);
+                }
 
                 TextView textViewCosto = root.findViewById(R.id.textViewCosto);
-                textViewCosto.setText("Costo: " + (int) prodotto.getCosto());
+                if(textViewCosto != null) {
+                    String costoProdotto = "Costo: " + (int) prodotto.getCosto();
+                    textViewCosto.setText(costoProdotto);
+                }
 
-                TextView textViewData = getView().findViewById(R.id.textViewData);
-                textViewData.setText("Data: " + prodotto.getData());
+                TextView textViewData = root.findViewById(R.id.textViewData);
+               if(textViewData != null) {
+                   String dataProdotto = "Data: " + prodotto.getData();
+                   textViewData.setText(dataProdotto);
+               }
             }
 
         }
