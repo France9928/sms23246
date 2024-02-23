@@ -35,7 +35,7 @@ public class ProdottoAdapter extends RecyclerView.Adapter<ProdottoAdapter.Prodot
         // Imposta i dati del prodotto negli elementi del layout
         holder.textViewNome.setText(prodotto.getNomeProdotto());
         holder.textViewCategoria.setText(prodotto.getCategoriaProdotto());
-        holder.textViewCosto.setText(String.valueOf((int) prodotto.getCosto()));
+        holder.textViewCosto.setText(String.valueOf((Double) prodotto.getCosto()));
         if (prodotto.getData() != null) {
             holder.textViewData.setText(prodotto.getData().toString());
         } else {
