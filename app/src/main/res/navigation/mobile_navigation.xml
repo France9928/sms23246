@@ -84,5 +84,11 @@
         app:destination="@+id/navigation_speseCategoria">
     </action>
 
+    <action
+        android:id="@+id/action_Shop"
+        app:destination="@+id/navigation_shop">
+    </action>
+
+
 
 </navigation>

@@ -109,7 +109,7 @@
         android:text="Spese Mensili" />
 
     <Button
-        android:id="@+id/buttonAddExpense"
+        android:id="@+id/buttonShop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

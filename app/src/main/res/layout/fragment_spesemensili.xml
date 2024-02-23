@@ -1,120 +1,99 @@
-<!-- fragment_spesemensili.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- fragment_spesesettimanali.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <!-- Titolo -->
-    <TextView
-        android:id="@+id/textViewWelcome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Ciao, utente!"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Riepilogo Spese Mensili"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <!-- Pulsante per registrare la spesa -->
-
-    <!-- Campo per la registrazione della Categoria -->
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="143dp"
-        android:orientation="horizontal">
+        android:id="@+id/fragment_SpeseMensili"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Titolo -->
 
         <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="Riepilogo Spese Mensili"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Pulsante per registrare la spesa -->
+        <TextView
             android:id="@+id/textViewData"
-            android:layout_width="143dp"
+            android:layout_width="377dp"
             android:layout_height="41dp"
-            android:text="Mese: "
+            android:text="Seleziona il primo giorno del mese: "
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="162dp"
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="370dp" />
+
+        <Button
+            android:id="@+id/buttonVisualizzaSpese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="view"
+            android:text="Visualizza spese Mensili" />
+
+        <!-- Sezione di interrogazione -->
+        <TextView
+            android:id="@+id/textViewQueryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Altre Azioni"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="addExpense"
+            android:text="Registra altre spese" />
+
+        <!-- Pulsante per interrogazione mensile -->
+        <Button
+            android:id="@+id/buttonWeeklyQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="weeklyQuery"
+            android:text="Spese Settimanali" />
+
+        <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
+        <Button
+            android:id="@+id/buttonCategoryQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="categoryQuery"
+            android:text="Spese per Categoria" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewProdotti"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:dateTextAppearance="@style/TextAppearance.AppCompat.Small" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewProdotto"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:text="Prodotto:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-
-    <!-- Campo per la registrazione del Costo -->
-
-    <TextView
-        android:id="@+id/textViewCategoria"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:text="Categoria:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <!-- Campo per la registrazione della Data -->
-    <TextView
-        android:id="@+id/textViewCosto"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
-        android:text="Costo:"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-
-    <!-- Sezione di interrogazione -->
-    <TextView
-        android:id="@+id/textViewQueryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Altre Azioni"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/buttonAddExpense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:onClick="addExpense"
-        android:text="Registra altre spese" />
-
-    <!-- Pulsante per interrogazione settimanale -->
-    <Button
-        android:id="@+id/buttonWeeklyQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="weeklyQuery"
-        android:text="Spese Settimanali" />
-
-    <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
-    <Button
-        android:id="@+id/buttonCategoryQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="categoryQuery"
-        android:text="Spese per Categoria" />
-</LinearLayout>
+</ScrollView>

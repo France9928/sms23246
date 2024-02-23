@@ -1,11 +1,7 @@
 package it.uniba.dib.sms23246.ui.shop;
 
-import static android.text.TextUtils.replace;
 import static android.widget.Toast.*;
 
-import static androidx.fragment.app.FragmentManagerKt.commit;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,19 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Context;
-import android.app.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,22 +23,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
-import it.uniba.dib.sms23246.Login;
-import it.uniba.dib.sms23246.MainActivity;
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
-import it.uniba.dib.sms23246.databinding.FragmentShopconfirmedBinding;
-import it.uniba.dib.sms23246.MainActivity;
-import it.uniba.dib.sms23246.ui.cassettaAttrezzi.CassettaAttrezzi;
 
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.fragment.NavHostFragment.*;
 
 
 public class ShopFragment extends Fragment {
@@ -83,7 +64,7 @@ public class ShopFragment extends Fragment {
 
 
 
-        final Button buttonAggiungiSpese = root.findViewById(R.id.buttonAddExpense);
+        final Button buttonAggiungiSpese = root.findViewById(R.id.buttonShop);
 
         buttonAggiungiSpese.setOnClickListener(new View.OnClickListener() {
             @Override
