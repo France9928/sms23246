@@ -1,16 +1,19 @@
 package it.uniba.dib.sms23246.ui.cassettaAttrezzi;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import it.uniba.dib.sms23246.R;
-import it.uniba.dib.sms23246.ui.sensori.Sensori;
 
 public class CassettaAttrezzi extends Fragment {
 
@@ -37,10 +40,8 @@ public class CassettaAttrezzi extends Fragment {
                 String password = passwordEditText.getText().toString();
                 if (password.equals(CORRECT_PASSWORD)) {
                     // Password corretta, apri il fragment dei sensori
-                    requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentContainer, new Sensori())
-                            .addToBackStack(null)
-                            .commit();
+                    NavController navController = NavHostFragment.findNavController(CassettaAttrezzi.this);
+                    navController.navigate(R.id.action_cassettaAttrezzi_to_sensori);
                 } else {
                     // Password errata, gestisci di conseguenza
                     // Ad esempio, mostra un messaggio di errore

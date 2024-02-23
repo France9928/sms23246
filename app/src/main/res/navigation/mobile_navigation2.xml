@@ -22,6 +22,9 @@
         android:name="it.uniba.dib.sms23246.ui.cassettaAttrezzi.CassettaAttrezzi"
         android:label="@string/title_cassettaAttrezzi"
         tools:layout="@layout/fragment_cassetta_attrezzi" />
+    <action
+        android:id="@+id/action_cassettaAttrezzi_to_sensori"
+        app:destination="@+id/navigation_sensori" />
     <fragment
         android:id="@+id/navigation_sensori"
         android:name="it.uniba.dib.sms23246.ui.sensori.Sensori"

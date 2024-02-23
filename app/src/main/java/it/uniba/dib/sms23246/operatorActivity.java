@@ -34,13 +34,14 @@ public class operatorActivity extends AppCompatActivity {
             finish();
         });
 
-        
+
         BottomNavigationView navView2 = findViewById(R.id.nav_view2);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_gestioneUtenti, R.id.navigation_datiOperatore, R.id.navigation_cassettaAttrezzi, R.id.navigation_sensori)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_operator);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView2, navController);
+        NavigationUI.setupWithNavController(navView2, navController); // Utilizza navView2 anziché binding.navView2
+
     }
 }
