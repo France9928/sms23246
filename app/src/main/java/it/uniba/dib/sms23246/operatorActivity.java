@@ -42,6 +42,7 @@ public class operatorActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_operator);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView2, navController); // Utilizza navView2 anziché binding.navView2
+        navView2.getMenu().findItem(R.id.navigation_sensori).setEnabled(false);
 
     }
 }
