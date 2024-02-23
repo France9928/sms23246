@@ -1,4 +1,9 @@
 <!-- fragment_shop.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,14 +48,20 @@
         android:inputType="numberDecimal" />
 
     <!-- Campo per la registrazione della Data -->
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="131dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_calendar_24dp"
         android:ems="10"
-        android:hint="Data Spesa"
+        android:text="Data Spesa" />
+
+    <DatePicker
+        android:id="@+id/editData"
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
         android:inputType="date" />
+
 
     <!-- Pulsante per registrare la spesa -->
     <Button
@@ -101,3 +112,4 @@
         android:text="Spese per Categoria" />
 
 </LinearLayout>
+</ScrollView>
