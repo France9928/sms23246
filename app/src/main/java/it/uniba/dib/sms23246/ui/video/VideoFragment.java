@@ -54,9 +54,9 @@ public class VideoFragment extends Fragment {
         textEsercizi = view.findViewById(R.id.textEsercizi);
         pulsanteEsercizi = view.findViewById(R.id.pulsanteEsercizi);
 
-        // References to elements in the 5 card
+        /* References to elements in the 5 card
         textRating = view.findViewById(R.id.textRating);
-        pulsanteRating = view.findViewById(R.id.pulsanteRating);
+        pulsanteRating = view.findViewById(R.id.pulsanteRating);*/
 
         metodoFaiVedereCose();
 
@@ -67,7 +67,7 @@ public class VideoFragment extends Fragment {
 
     private void metodoFaiVedereCose(){
 
-        viewModel.getPlacesLiveData().observe(getViewLifecycleOwner(), piuVideo -> {
+        viewModel.getVideoLiveData().observe(getViewLifecycleOwner(), piuVideo -> {
             if ((piuVideo != null) && (piuVideo.size() >= 4)) {
                 // Card 1
                 PiuVideo video1 = piuVideo.get(0);
@@ -78,6 +78,18 @@ public class VideoFragment extends Fragment {
                 PiuVideo video2 = piuVideo.get(1);
                 textVideo2.setText(video2.getName());
                 pulsanteVideo2.setOnClickListener(v -> onButtonClick(video2.getLink()));
+                // Card 3
+                PiuVideo video3 = piuVideo.get(2);
+                textMalattie.setText(video2.getName());
+                pulsanteMalattie.setOnClickListener(v -> onButtonClick(video3.getLink()));
+                // Card 4
+                PiuVideo video4 = piuVideo.get(3);
+                textEsercizi.setText(video2.getName());
+                pulsanteEsercizi.setOnClickListener(v -> onButtonClick(video3.getLink()));
+                /* Card 2
+                PiuVideo video5 = piuVideo.get(4);
+                textVideo2.setText(video2.getName());
+                pulsanteVideo2.setOnClickListener(v -> onButtonClick(video5.getLink()));*/
             }
         });
     }
