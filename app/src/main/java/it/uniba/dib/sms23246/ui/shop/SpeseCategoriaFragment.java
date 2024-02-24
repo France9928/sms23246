@@ -2,6 +2,8 @@ package it.uniba.dib.sms23246.ui.shop;
 
 import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 
+import static java.lang.reflect.Array.get;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -86,7 +88,7 @@ public class SpeseCategoriaFragment extends Fragment {
                     prodottiRef
                             .orderBy("categoriaProdotto")
                             .startAt(categoriaMinuscola)
-                            .endAt(categoriaMinuscola + "\uf8ff")
+                            .endAt(categoriaMinuscola + "\uf8ff" + "\uf8ff")
                             .get()
                             .addOnSuccessListener(queryDocumentSnapshots -> {
                                 listaProdotti.clear();  // Pulisci la lista prima di aggiungere nuovi dati

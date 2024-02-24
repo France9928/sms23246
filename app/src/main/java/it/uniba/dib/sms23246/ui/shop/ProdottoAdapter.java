@@ -8,8 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import it.uniba.dib.sms23246.R;
 
@@ -35,9 +37,12 @@ public class ProdottoAdapter extends RecyclerView.Adapter<ProdottoAdapter.Prodot
         // Imposta i dati del prodotto negli elementi del layout
         holder.textViewNome.setText(prodotto.getNomeProdotto());
         holder.textViewCategoria.setText(prodotto.getCategoriaProdotto());
-        holder.textViewCosto.setText(String.valueOf((Double) prodotto.getCosto()));
+        holder.textViewCosto.setText(String.valueOf(prodotto.getCosto()));
         if (prodotto.getData() != null) {
-            holder.textViewData.setText(prodotto.getData().toString());
+            long timestamp = prodotto.getData().getTime(); // Assicurati che il timestamp sia in millisecondi
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            String formattedDate = sdf.format(new Date(timestamp));
+            holder.textViewData.setText(formattedDate);
         } else {
             holder.textViewData.setText("Data non disponibile");
         }
