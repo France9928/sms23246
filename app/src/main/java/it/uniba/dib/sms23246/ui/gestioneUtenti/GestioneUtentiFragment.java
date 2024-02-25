@@ -58,10 +58,9 @@ public class GestioneUtentiFragment extends Fragment {
                                     long limiteTempo = 60 * 60 * 1000; // 1 ora in millisecondi
 
                                     if (currentTime - requestTime > limiteTempo) {
-                                        // La richiesta è scaduta, esegui l'azione appropriata (rimuovila, notifica l'utente, ecc.)
+                                        // La richiesta è scaduta e viene rimossa
                                         String requestId = document.getId();
                                         Toast.makeText(requireContext(), "Richiesta scaduta", Toast.LENGTH_SHORT).show();
-                                        // Esegui l'azione per la richiesta scaduta
                                         rimuoviRichiestaScaduta(requestId);
                                     }
                                     else {
@@ -73,6 +72,46 @@ public class GestioneUtentiFragment extends Fragment {
 
                                         NavController navController = NavHostFragment.findNavController(GestioneUtentiFragment.this);
                                         navController.navigate(R.id.action_gestioneUtenti_to_aggiungiPatologia);
+                                    }
+                                }
+                            }
+                        } else {
+                            Toast.makeText(requireContext(), "Errore, richieste non presenti", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
+
+        Button btnRichiestaModifica = root.findViewById(R.id.btnModificaPatologia);
+        btnRichiestaModifica.setOnClickListener(v -> {
+            db.collection("richieste")
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                // Recupera il timestamp dal documento
+                                Timestamp timestamp = (Timestamp) document.get("timestamp");
+
+                                // Verifica se la richiesta è scaduta in base al timestamp
+                                if (timestamp != null) {
+                                    long currentTime = System.currentTimeMillis();
+                                    long requestTime = timestamp.getSeconds() * 1000 + timestamp.getNanoseconds() / 1_000_000; //tempo in millisecondi
+                                    long limiteTempo = 60 * 60 * 1000; // 1 ora in millisecondi
+
+                                    if (currentTime - requestTime > limiteTempo) {
+                                        // La richiesta è scaduta e viene rimossa
+                                        String requestId = document.getId();
+                                        Toast.makeText(requireContext(), "Richiesta scaduta", Toast.LENGTH_SHORT).show();
+                                        rimuoviRichiestaScaduta(requestId);
+                                    }
+                                    else {
+                                        // La richiesta non è scaduta, recupera il messaggio
+                                        String messaggio = document.getString("messaggio");
+                                        Toast.makeText(requireContext(), "Richiesta ancora attiva", Toast.LENGTH_SHORT).show();
+                                        // Imposta il messaggio nel SharedViewModel
+                                        sharedViewModel.setMessaggio(messaggio);
+
+                                        NavController navController = NavHostFragment.findNavController(GestioneUtentiFragment.this);
+                                        navController.navigate(R.id.action_gestioneUtenti_to_modificaPatologia);
                                     }
                                 }
                             }
