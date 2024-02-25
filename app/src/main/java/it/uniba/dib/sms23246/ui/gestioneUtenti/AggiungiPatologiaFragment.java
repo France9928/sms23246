@@ -22,7 +22,6 @@ import it.uniba.dib.sms23246.R;
 
 public class AggiungiPatologiaFragment extends Fragment {
     private FirebaseFirestore db;
-    private String messaggio;
     private SharedViewModel sharedViewModel;
 
     @Override
@@ -56,6 +55,7 @@ public class AggiungiPatologiaFragment extends Fragment {
                 int livelloPatologia = Integer.parseInt(livelloPatologiaString);
                 nuovoDocumento.put("livelloPatologia", livelloPatologia);
 
+                assert messaggio != null;
                 db.collection("utenti").document(messaggio)
                         .collection("patologie")
                         .add(nuovoDocumento)

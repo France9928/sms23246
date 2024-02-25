@@ -24,7 +24,6 @@ import it.uniba.dib.sms23246.databinding.FragmentGestioneutentiBinding;
 public class GestioneUtentiFragment extends Fragment {
 
     private FragmentGestioneutentiBinding binding;
-    private GestioneUtentiViewModel gestioneUtentiViewModel;
     private FirebaseFirestore db;
     private SharedViewModel sharedViewModel;
 
@@ -38,8 +37,6 @@ public class GestioneUtentiFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        gestioneUtentiViewModel =
-                new ViewModelProvider(this).get(GestioneUtentiViewModel.class);
 
         binding = FragmentGestioneutentiBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -71,23 +68,16 @@ public class GestioneUtentiFragment extends Fragment {
                                         // La richiesta non è scaduta, recupera il messaggio
                                         String messaggio = document.getString("messaggio");
                                         Toast.makeText(requireContext(), "Richiesta ancora attiva", Toast.LENGTH_SHORT).show();
-                                        // Passa il messaggio al nuovo fragment utilizzando il Bundle
-                                        //Bundle args = new Bundle();
-                                        //args.putString("messaggio", messaggio);
-                                        //AggiungiPatologiaFragment aggiungiPatologiaFragment = new AggiungiPatologiaFragment();
-                                        // Imposta gli argomenti nel Fragment di destinazione (AggiungiPatologiaFragment)
-                                        //aggiungiPatologiaFragment.setArguments(args);
-                                        // Imposta il messaggio nel ViewModel
+                                        // Imposta il messaggio nel SharedViewModel
                                         sharedViewModel.setMessaggio(messaggio);
 
                                         NavController navController = NavHostFragment.findNavController(GestioneUtentiFragment.this);
                                         navController.navigate(R.id.action_gestioneUtenti_to_aggiungiPatologia);
-                                        Log.d("AggiungiPatologiaFragment", "Messaggio ricevuto: " + messaggio);
                                     }
                                 }
                             }
                         } else {
-                            Log.e("GestioneRichieste", "Errore nel recupero delle richieste", task.getException());
+                            Toast.makeText(requireContext(), "Errore, richieste non presenti", Toast.LENGTH_SHORT).show();
                         }
                     });
         });

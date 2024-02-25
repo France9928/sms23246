@@ -25,7 +25,6 @@ public class UserFragment extends Fragment {
     private UserViewModel userViewModel;
     private PatologieAdapter patologieAdapter;
 
-    @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
