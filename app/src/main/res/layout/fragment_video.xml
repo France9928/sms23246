@@ -30,9 +30,9 @@
 
     <Button
         android:id="@+id/pulsanteEsercizi"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
-        android:text="Button"
+        android:layout_width="101dp"
+        android:layout_height="61dp"
+        android:text="Vedi Video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -42,9 +42,9 @@
 
     <Button
         android:id="@+id/pulsanteRating"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
-        android:text="Button"
+        android:layout_width="107dp"
+        android:layout_height="63dp"
+        android:text="Vedi Video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -53,22 +53,10 @@
         app:layout_constraintVertical_bias="0.797" />
 
     <Button
-        android:id="@+id/pulsanteVideo2"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
-
-    <Button
         android:id="@+id/pulsanteVideo1"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
-        android:text="Button"
+        android:layout_width="96dp"
+        android:layout_height="53dp"
+        android:text="Vedi video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -78,9 +66,9 @@
 
     <Button
         android:id="@+id/pulsanteMalattie"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
-        android:text="Button"
+        android:layout_width="98dp"
+        android:layout_height="55dp"
+        android:text="Vedi Video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -104,14 +92,14 @@
             android:id="@+id/textVideo1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Place 1 Name" />
+            android:text="Presentazione Policlinico" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
+        android:layout_width="238dp"
+        android:layout_height="53dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +113,7 @@
             android:layout_width="157dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Place 1 Name" />
+            android:text="Presentazione Ospedale di Venere" />
 
     </LinearLayout>
 
@@ -145,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Place 1 Name" />
+            android:text="Spiegazione Malattie" />
 
     </LinearLayout>
 
@@ -166,8 +154,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Place 1 Name" />
+            android:text="Esercizi per la riabilitazione" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/pulsanteVideo2"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:text="Vedi Video"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
