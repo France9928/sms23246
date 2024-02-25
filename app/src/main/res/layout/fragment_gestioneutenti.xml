@@ -7,6 +7,12 @@
     android:padding="16dp"
     tools:context="ui.gestioneUtenti.GestioneUtentiFragment">
 
+    <Button
+        android:id="@+id/btnAddPatologia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aggiungi Patologia" />
+
     <TextView
         android:id="@+id/textGestioneUtenti"
         android:layout_width="match_parent"
@@ -15,10 +21,10 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnAddPatologia"
+        android:id="@+id/btnModificaPatologia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aggiungi Patologia" />
+        android:text="Modifica Livello Patologia" />
 
 
 </LinearLayout>

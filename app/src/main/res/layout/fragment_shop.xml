@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -59,7 +58,7 @@
     <DatePicker
         android:id="@+id/editData"
         android:layout_width="match_parent"
-        android:layout_height="215dp"
+        android:layout_height="399dp"
         android:inputType="date" />
 
 

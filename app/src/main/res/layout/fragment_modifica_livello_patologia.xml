@@ -4,26 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.gestioneUtenti.AggiungiPatologiaFragment">
+    tools:context=".ui.gestioneUtenti.ModificaLivelloPatologiaFragment">
 
     <EditText
-        android:id="@+id/nomePatologiaEditText"
+        android:id="@+id/nomeModificaPatologiaEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nome Patologia"
         android:inputType="text"/>
 
     <EditText
-        android:id="@+id/gravitaPatologiaEditText"
+        android:id="@+id/livelloModificaPatologiaEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Livello Patologia"
         android:inputType="numberDecimal"/>
 
     <Button
-        android:id="@+id/aggiungiPatologiaButton"
+        android:id="@+id/modificaPatologiaButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aggiungi Patologia"/>
+        android:text="Modifica Livello Patologia"/>
 
 </LinearLayout>

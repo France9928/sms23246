@@ -36,4 +36,5 @@
     <string name="title_cassettaAttrezzi">Cassetta Attrezzi</string>
     <string name="title_aggiungiPatologia">Aggiungi patologia</string>
     <string name="title_shopConfirmed">\n</string>
+    <string name="title_modificaPatologia">Modifica livello patologia</string>
 </resources>

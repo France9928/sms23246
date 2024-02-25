@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentShopBinding;
@@ -92,7 +93,7 @@ public class ShopFragment extends Fragment {
                     // Creare un nuovo prodotto
                     Prodotto nuovoProdotto = new Prodotto();
                     nuovoProdotto.setNomeProdotto(nomeProdotto);
-                    nuovoProdotto.setCategoriaProdotto(categoriaProdotto);
+                    nuovoProdotto.setCategoriaProdotto(categoriaProdotto.toLowerCase(Locale.getDefault()));
                     nuovoProdotto.setCosto(costo);
                     Timestamp timestamp = new Timestamp(dataSelezionata);
                     nuovoProdotto.setData(timestamp.toDate());
