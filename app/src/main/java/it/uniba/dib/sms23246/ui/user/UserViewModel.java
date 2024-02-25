@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,17 +69,23 @@ public class UserViewModel extends ViewModel {
 
                     // Ottieni la lista di patologie dell'utente e aggiorna la view model
                     List<Patologia> patologie = new ArrayList<>();
-                    for (int i = 1; i <= 5; i++) {
-                        String nomePatologia = documentSnapshot.getString("patologia" + i);
-                        Long livelloPatologia = documentSnapshot.getLong("livelloPatologia" + i);
+                    CollectionReference patologieSubcollection = userDocRef.collection("patologie");
 
-                        if (nomePatologia != null && livelloPatologia != null) {
-                            int livello = livelloPatologia.intValue();
-                            Patologia patologia = new Patologia(nomePatologia, livello);
-                            patologie.add(patologia);
+                    patologieSubcollection.get().addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot patologiaSnapshot : task.getResult()) {
+                                String nomePatologia = patologiaSnapshot.getString("nomePatologia");
+                                Long livelloPatologia = patologiaSnapshot.getLong("livelloPatologia");
+
+                                if (nomePatologia != null && livelloPatologia != null) {
+                                    int livello = livelloPatologia.intValue();
+                                    Patologia patologia = new Patologia(nomePatologia, livello);
+                                    patologie.add(patologia);
+                                }
+                            }
+                            patologieList.setValue(patologie);
                         }
-                    }
-                    patologieList.setValue(patologie);
+                    });
                 }
             });
         }

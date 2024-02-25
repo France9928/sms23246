@@ -112,7 +112,6 @@ public class ShareFragment extends Fragment {
                 // Invia la richiesta al genitore (Activity) e a Firestore
                 onRichiestaInviataListener.onRichiestaInviata(userIde);
                 inviaRichiestaAFirestore(userIde);
-                Toast.makeText(requireContext(), "Richiesta inviata con successo", Toast.LENGTH_SHORT);
             }
         });
 
@@ -130,13 +129,13 @@ public class ShareFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("InviaRichiestaFragment", "Richiesta inviata a Firestore con ID: " + documentReference.getId());
+                        Toast.makeText(requireContext(), "Richiesta inviata con successo", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.e("InviaRichiestaFragment", "Errore nell'invio della richiesta a Firestore", e);
+                        Toast.makeText(requireContext(), "Errore invio richiesta", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

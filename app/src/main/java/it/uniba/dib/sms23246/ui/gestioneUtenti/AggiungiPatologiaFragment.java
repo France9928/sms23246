@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -46,26 +47,20 @@ public class AggiungiPatologiaFragment extends Fragment {
         aggiungiPatologiaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Recupera gli argomenti passati
-                //if (getArguments() != null) {
-                //    messaggio = getArguments().getString("messaggio");
-                //}
-                Log.d("AggiungiPatologiaFragment", "Messaggio ricevuto: " + messaggio);
-
-                // Questo verrà eseguito quando il pulsante viene cliccato
                 String nomePatologia = nomePatologiaEditText.getText().toString();
-                String livelloPatologia = gravitaPatologiaEditText.getText().toString();
+                String livelloPatologiaString = gravitaPatologiaEditText.getText().toString();
 
                 // Creazione di un nuovo documento con un campo "valoreNuovoCampo"
                 Map<String, Object> nuovoDocumento = new HashMap<>();
                 nuovoDocumento.put("nomePatologia", nomePatologia);
+                int livelloPatologia = Integer.parseInt(livelloPatologiaString);
                 nuovoDocumento.put("livelloPatologia", livelloPatologia);
 
                 db.collection("utenti").document(messaggio)
-                        .collection("patologia")
+                        .collection("patologie")
                         .add(nuovoDocumento)
-                        .addOnSuccessListener(aVoid -> Log.d("GestioneRichieste", "Campo aggiunto con successo"))
-                        .addOnFailureListener(e -> Log.e("GestioneRichieste", "Errore nell'aggiunta del campo", e));
+                        .addOnSuccessListener(aVoid -> Toast.makeText(requireContext(), "Patologia aggiunta con successo", Toast.LENGTH_SHORT).show())
+                        .addOnFailureListener(e -> Toast.makeText(requireContext(), "Errore nell'aggiunta", Toast.LENGTH_SHORT).show());
             }
         });
 
