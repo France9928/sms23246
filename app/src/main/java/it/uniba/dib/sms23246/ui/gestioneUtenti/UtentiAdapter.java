@@ -27,8 +27,16 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
 
     private List<Utente> utenti = new ArrayList<>();
     private Context context;
-    public UtentiAdapter(Context context) {
+
+    public interface OnAccettaRichiestaListener {
+        void onAccettaRichiesta(String messaggio);
+    }
+
+    private OnAccettaRichiestaListener accettaRichiestaListener;
+
+    public UtentiAdapter(Context context, OnAccettaRichiestaListener listener) {
         this.context = context;
+        this.accettaRichiestaListener = listener;
     }
 
 
@@ -51,12 +59,20 @@ public class UtentiAdapter extends RecyclerView.Adapter<UtentiAdapter.UtenteView
 
         // Aggiungi un listener per il clic del pulsante
         holder.btnAddPatologia.setOnClickListener(view -> {
+            // Chiamare il listener e passare l'ID dell'utente
+            if (accettaRichiestaListener != null) {
+                accettaRichiestaListener.onAccettaRichiesta(utente.getUserId());
+            }
+        });
+
+        /* Aggiungi un listener per il clic del pulsante
+        holder.btnAddPatologia.setOnClickListener(view -> {
             // Ottieni il NavController dal FragmentActivity
             NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment_activity_operator);
 
             // Naviga verso il fragmentWithoutNavBar
             navController.navigate(R.id.action_gestioneUtenti_to_aggiungiPatologia);
-        });
+        });*/
     }
 
     @Override

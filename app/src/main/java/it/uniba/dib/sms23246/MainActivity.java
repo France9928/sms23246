@@ -2,6 +2,7 @@ package it.uniba.dib.sms23246;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,8 +22,9 @@ import androidx.navigation.ui.NavigationUI;
 import java.util.Objects;
 
 import it.uniba.dib.sms23246.databinding.ActivityMainBinding;
+import it.uniba.dib.sms23246.ui.share.ShareFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ShareFragment.OnRichiestaInviataListener {
 
     private FirebaseAuth auth;
     private Button button;
@@ -100,5 +102,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+
+
+    public void onRichiestaInviata(String messaggio) {
+        // Implementa la logica di gestione della richiesta inviata dall'utente
+        // Ad esempio, puoi aprire un nuovo fragment per accettare la richiesta
+        // e passare l'ID dell'utente come argomento
+        // Qui puoi gestire l'ID dell'utente inviato dalla richiesta
+        // Ad esempio, stampa un messaggio di log
+        Log.d("MainActivity", "Richiesta inviata");
     }
 }

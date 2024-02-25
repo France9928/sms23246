@@ -1,15 +1,29 @@
 package it.uniba.dib.sms23246.ui.share;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.ui.user.UserViewModel;
 
@@ -17,6 +31,28 @@ public class ShareFragment extends Fragment {
 
     private ShareViewModel shareViewModel;
     private UserViewModel userViewModel;
+
+    public interface OnRichiestaInviataListener {
+        void onRichiestaInviata(String messaggio);
+    }
+    private OnRichiestaInviataListener onRichiestaInviataListener;
+    private FirebaseFirestore db;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        // Assicurati che il genitore implementi l'interfaccia OnRichiestaInviataListener
+        try {
+            onRichiestaInviataListener = (OnRichiestaInviataListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " deve implementare OnRichiestaInviataListener");
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,11 +91,11 @@ public class ShareFragment extends Fragment {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nome = nomeTextView.getText().toString();
-                String cognome = cognomeTextView.getText().toString();
-                String eta = etaTextView.getText().toString();
+                //String nome = nomeTextView.getText().toString();
+                //String cognome = cognomeTextView.getText().toString();
+                //String eta = etaTextView.getText().toString();
                 String userIde = userIdTextView.getText().toString();
-                String luogoNascita = luogoNascitaTextView.getText().toString();
+                /*String luogoNascita = luogoNascitaTextView.getText().toString();
 
                 String textToShare = "Nome: " + nome + "\n" +
                         "Cognome: " + cognome + "\n" +
@@ -72,10 +108,36 @@ public class ShareFragment extends Fragment {
                 sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);
+                startActivity(shareIntent);*/
+                // Invia la richiesta al genitore (Activity) e a Firestore
+                onRichiestaInviataListener.onRichiestaInviata(userIde);
+                inviaRichiestaAFirestore(userIde);
+                Toast.makeText(requireContext(), "Richiesta inviata con successo", Toast.LENGTH_SHORT);
             }
         });
 
         return root;
+    }
+
+    private void inviaRichiestaAFirestore(String messaggio) {
+        // Aggiungi il messaggio a Firestore
+        Map<String, Object> richiesta = new HashMap<>();
+        richiesta.put("messaggio", messaggio);
+        richiesta.put("timestamp", FieldValue.serverTimestamp());
+
+        db.collection("richieste")
+                .add(richiesta)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("InviaRichiestaFragment", "Richiesta inviata a Firestore con ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("InviaRichiestaFragment", "Errore nell'invio della richiesta a Firestore", e);
+                    }
+                });
     }
 }

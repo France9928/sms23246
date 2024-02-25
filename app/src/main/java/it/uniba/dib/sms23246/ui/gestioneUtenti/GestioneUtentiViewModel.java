@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GestioneUtentiViewModel extends ViewModel {
-    private final MutableLiveData<List<Utente>> userList;
+    /*private final MutableLiveData<List<Utente>> userList;
 
     public GestioneUtentiViewModel() {
         userList = new MutableLiveData<>();
@@ -52,5 +52,7 @@ public class GestioneUtentiViewModel extends ViewModel {
                     }
                     updateUserList(utenti);
                 });
-    }
+    }*/
+
+
 }
