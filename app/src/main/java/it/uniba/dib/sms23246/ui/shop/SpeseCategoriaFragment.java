@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,6 +20,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -54,16 +56,14 @@ public class SpeseCategoriaFragment extends Fragment {
         binding = FragmentSpesecategoriaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        editTextCategoriaProdotto = root.findViewById(R.id.TextCategoria);
+
         final Button buttonSpeseCategoria = root.findViewById(R.id.buttonVisualizzaSpese);
 
         RecyclerView recyclerViewProdotti = root.findViewById(R.id.recyclerViewProdotti);
         prodottoAdapter = new ProdottoAdapter(listaProdotti);
         recyclerViewProdotti.setAdapter(prodottoAdapter);
         recyclerViewProdotti.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        editTextCategoriaProdotto = root.findViewById(R.id.TextCategoria);
-
-        String categoriaProdotto = editTextCategoriaProdotto.getText().toString();
 
         buttonSpeseCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,8 @@ public class SpeseCategoriaFragment extends Fragment {
                             .collection("prodotti");
 
                     // Specifica la categoria desiderata (sostituisci con la tua categoria)
-                    String categoriaDesiderata = categoriaProdotto;
+                    String categoriaDesiderata = editTextCategoriaProdotto.getText().toString();
+                    Toast.makeText(requireContext(), "Categoria: " + categoriaDesiderata, Toast.LENGTH_SHORT).show();
 
                     // Converti la categoria in minuscolo (ignora le maiuscole e le minuscole)
                     String categoriaMinuscola = categoriaDesiderata.toLowerCase(Locale.getDefault());
@@ -95,7 +96,17 @@ public class SpeseCategoriaFragment extends Fragment {
                                 // Handle dei risultati della query
                                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                                     // Ottieni i dati del documento
-                                    Prodotto prodotto = documentSnapshot.toObject(Prodotto.class);
+                                    Prodotto prodotto = new Prodotto();
+                                    String nomeProdotto = documentSnapshot.getString("nomeProdotto");
+                                    String categoriaProdotto = documentSnapshot.getString("categoriaProdotto");
+                                    Double costoProdotto = documentSnapshot.getDouble("costoProdotto");
+                                    Timestamp dataProdotto = documentSnapshot.getTimestamp("dataProdotto");
+
+                                    prodotto.setNomeProdotto(nomeProdotto);
+                                    prodotto.setCategoriaProdotto(categoriaProdotto);
+                                    prodotto.setCosto(costoProdotto);
+                                    prodotto.setData(dataProdotto.toDate());
+
                                     listaProdotti.add(prodotto);
                                 }
                                 prodottoAdapter.notifyDataSetChanged();  // Aggiorna l'adapter con i nuovi dati

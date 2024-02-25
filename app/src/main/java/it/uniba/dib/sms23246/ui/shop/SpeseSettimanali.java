@@ -20,6 +20,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -58,7 +59,9 @@ public class SpeseSettimanali extends Fragment {
 
         binding = FragmentSpesesettimanaliBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
         final Button buttonVisualizzaSpese = root.findViewById(R.id.buttonVisualizzaSpese);
+
         RecyclerView recyclerViewProdotti = root.findViewById(R.id.recyclerViewProdotti);
         prodottoAdapter = new ProdottoAdapter(listaProdotti);
         recyclerViewProdotti.setAdapter(prodottoAdapter);
@@ -103,7 +106,17 @@ public class SpeseSettimanali extends Fragment {
 
                                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                                     // Ottieni i dati del prodotto
-                                    Prodotto prodotto = documentSnapshot.toObject(Prodotto.class);
+                                    Prodotto prodotto = new Prodotto();
+                                    String nomeProdotto = documentSnapshot.getString("nomeProdotto");
+                                    String categoriaProdotto = documentSnapshot.getString("categoriaProdotto");
+                                    Double costoProdotto = documentSnapshot.getDouble("costoProdotto");
+                                    Timestamp dataProdotto = documentSnapshot.getTimestamp("dataProdotto");
+
+                                    prodotto.setNomeProdotto(nomeProdotto);
+                                    prodotto.setCategoriaProdotto(categoriaProdotto);
+                                    prodotto.setCosto(costoProdotto);
+                                    prodotto.setData(dataProdotto.toDate());
+
                                     listaProdotti.add(prodotto);
                                 }
                                 prodottoAdapter.notifyDataSetChanged();  // Aggiorna l'adapter con i nuovi dati

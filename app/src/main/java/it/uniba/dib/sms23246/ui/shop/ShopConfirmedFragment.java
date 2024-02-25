@@ -5,11 +5,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Date;
 
@@ -68,6 +71,50 @@ public class ShopConfirmedFragment extends Fragment {
             }
 
         }
+
+        final Button buttonVisualizzaSpese = root.findViewById(R.id.buttonShop);
+
+        buttonVisualizzaSpese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = NavHostFragment.findNavController(ShopConfirmedFragment.this);
+                navController.navigate(R.id.action_Shop);
+            }
+        });
+
+
+        final Button buttonSpeseSettimanali = root.findViewById(R.id.buttonWeeklyQuery);
+
+        buttonSpeseSettimanali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = NavHostFragment.findNavController(ShopConfirmedFragment.this);
+                navController.navigate(R.id.action_ShopSettimanali);
+            }
+        });
+
+
+        final Button buttonSpeseMensili = root.findViewById(R.id.buttonMonthlyQuery);
+
+        buttonSpeseMensili.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = NavHostFragment.findNavController(ShopConfirmedFragment.this);
+                navController.navigate(R.id.action_ShopMensili);
+            }
+        });
+
+
+
+        final Button buttonSpeseCategorie = root.findViewById(R.id.buttonCategoryQuery);
+
+        buttonSpeseCategorie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = NavHostFragment.findNavController(ShopConfirmedFragment.this);
+                navController.navigate(R.id.action_ShopCategoria);
+            }
+        });
 
         return root;
     }

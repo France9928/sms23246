@@ -11,15 +11,6 @@
     android:padding="16dp">
 
     <!-- Titolo -->
-    <TextView
-        android:id="@+id/textViewWelcome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Ciao, utente!"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewTitle"
