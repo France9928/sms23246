@@ -1,46 +1,38 @@
 package it.uniba.dib.sms23246.ui.gestioneUtenti;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentGestioneutentiBinding;
-import it.uniba.dib.sms23246.ui.cassettaAttrezzi.CassettaAttrezzi;
 
 public class GestioneUtentiFragment extends Fragment {
 
     private FragmentGestioneutentiBinding binding;
     private GestioneUtentiViewModel gestioneUtentiViewModel;
     private FirebaseFirestore db;
+    private SharedViewModel sharedViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
     }
 
     @Override
@@ -54,10 +46,6 @@ public class GestioneUtentiFragment extends Fragment {
 
         Button btnAccettaRichiesta = root.findViewById(R.id.btnAddPatologia);
         btnAccettaRichiesta.setOnClickListener(v -> {
-            // Qui dovresti implementare la logica per accettare la richiesta.
-            // Ad esempio, puoi aggiornare il documento Firestore associato all'utente
-            // o notificare l'operatore sanitario dell'azione compiuta
-            // tramite una Toast o un altro meccanismo di notifica.
             db.collection("richieste")
                     .get()
                     .addOnCompleteListener(task -> {
@@ -83,9 +71,16 @@ public class GestioneUtentiFragment extends Fragment {
                                         // La richiesta non è scaduta, recupera il messaggio
                                         String messaggio = document.getString("messaggio");
                                         Toast.makeText(requireContext(), "Richiesta ancora attiva", Toast.LENGTH_SHORT).show();
+                                        // Passa il messaggio al nuovo fragment utilizzando il Bundle
+                                        //Bundle args = new Bundle();
+                                        //args.putString("messaggio", messaggio);
+                                        //AggiungiPatologiaFragment aggiungiPatologiaFragment = new AggiungiPatologiaFragment();
+                                        // Imposta gli argomenti nel Fragment di destinazione (AggiungiPatologiaFragment)
+                                        //aggiungiPatologiaFragment.setArguments(args);
+                                        // Imposta il messaggio nel ViewModel
+                                        sharedViewModel.setMessaggio(messaggio);
+
                                         NavController navController = NavHostFragment.findNavController(GestioneUtentiFragment.this);
-                                        AggiungiPatologiaFragment aggiungiPatologiaFragment = new AggiungiPatologiaFragment();
-                                        aggiungiPatologiaFragment.setMessaggio(messaggio);
                                         navController.navigate(R.id.action_gestioneUtenti_to_aggiungiPatologia);
                                         Log.d("AggiungiPatologiaFragment", "Messaggio ricevuto: " + messaggio);
                                     }
@@ -95,13 +90,6 @@ public class GestioneUtentiFragment extends Fragment {
                             Log.e("GestioneRichieste", "Errore nel recupero delle richieste", task.getException());
                         }
                     });
-
-
-            // Esempio di notifica con Toast
-            //Toast.makeText(requireContext(), "Richiesta accettata", Toast.LENGTH_SHORT).show();
-
-            // Puoi aggiornare eventualmente il documento Firestore associato all'utente
-            // es. db.collection("utenti").document(userId).update("stato", "accettato");
         });
 
         return root;
