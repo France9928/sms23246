@@ -28,7 +28,7 @@
     <string name="place_of_birth">Luogo di nascita</string>
     <string name="title_activity_operator">Sezione operatore</string>
     <string name="codice_operatore">Codice operatore</string>
-    <string name="confirmed">Confirmed</string>
+    <string name="confirmed">Conferma</string>
     <string name="userID">User Id</string>
     <string name="condivisione_dati">Condivisione Dati</string>
     <string name="title_sensori">Sensori</string>
