@@ -1,15 +1,13 @@
 package it.uniba.dib.sms23246.ui.user;
+
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentUserBinding;
 
 public class UserFragment extends Fragment {

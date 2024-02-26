@@ -23,13 +23,11 @@ import java.util.Objects;
 
 public class Login extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword;
-    Button buttonLogin;
-
+    Button buttonLogin, buttonAccessoDirettoUtente, buttonAccessoDirettoOperatore;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
     private FirebaseFirestore db;
-
 
     @Override
     public void onStart() {
@@ -42,6 +40,7 @@ public class Login extends AppCompatActivity {
 
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +49,8 @@ public class Login extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_Login);
+        buttonAccessoDirettoUtente = findViewById(R.id.btn_accessoDirettoUtente);
+        buttonAccessoDirettoOperatore = findViewById(R.id.btn_accessoDirettoOperatore);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.registerNow);
         textView.setOnClickListener(v -> {
@@ -88,11 +89,6 @@ public class Login extends AppCompatActivity {
                                 String userId = currentUser.getUid();
                                 DocumentReference userDocRef = db.collection("utenti").document(userId);
                                 userDocRef.addSnapshotListener((documentSnapshot, e) -> {
-                                    if (e != null) {
-                                        // Gestisci errori
-                                        return;
-                                    }
-
                                     if (documentSnapshot.exists()) {
                                         // Verifica se è un operatore sanitario
                                         String flagOperatore = documentSnapshot.getString("flag operatore");
@@ -111,7 +107,75 @@ public class Login extends AppCompatActivity {
                             }
                         }
                         else {
-                            // If sign in fails, display a message to the user.
+                            // Caso in cui fallisce il login
+                            Toast.makeText(Login.this, "Autenticazione fallita",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
+
+
+
+        buttonAccessoDirettoUtente.setOnClickListener(view -> {
+            progressBar.setVisibility(View.VISIBLE);
+            String email, password;
+            email = "guest@gmail.com";
+            password = "guest1";
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            db = FirebaseFirestore.getInstance();
+                            if (currentUser != null) {
+                                String userId = currentUser.getUid();
+                                DocumentReference userDocRef = db.collection("utenti").document(userId);
+                                userDocRef.addSnapshotListener((documentSnapshot, e) -> {
+                                    if (documentSnapshot.exists()) {
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            // Caso in cui fallisce il login
+                            Toast.makeText(Login.this, "Autenticazione fallita",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
+
+        buttonAccessoDirettoOperatore.setOnClickListener(view -> {
+            progressBar.setVisibility(View.VISIBLE);
+            String email, password;
+            email = "guestOperatore@gmail.com";
+            password = "guestOperatore1";
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            db = FirebaseFirestore.getInstance();
+                            if (currentUser != null) {
+                                String userId = currentUser.getUid();
+                                DocumentReference userDocRef = db.collection("utenti").document(userId);
+                                userDocRef.addSnapshotListener((documentSnapshot, e) -> {
+                                    if (documentSnapshot.exists()) {
+                                        Intent intent = new Intent(getApplicationContext(), operatorActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            // Caso in cui fallisce il login
                             Toast.makeText(Login.this, "Autenticazione fallita",
                                     Toast.LENGTH_SHORT).show();
                         }

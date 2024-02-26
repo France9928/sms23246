@@ -37,4 +37,6 @@
     <string name="title_aggiungiPatologia">Aggiungi patologia</string>
     <string name="title_shopConfirmed">\n</string>
     <string name="title_modificaPatologia">Modifica livello patologia</string>
+    <string name="accesso_diretto_utente">Accesso diretto come utente</string>
+    <string name="accesso_diretto_operatore">Accesso diretto come operatore</string>
 </resources>

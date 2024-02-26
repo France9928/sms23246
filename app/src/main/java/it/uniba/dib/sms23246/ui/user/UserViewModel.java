@@ -8,10 +8,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
@@ -49,10 +46,6 @@ public class UserViewModel extends ViewModel {
             DocumentReference userDocRef = db.collection("utenti").document(userIde);
             userId.setValue(userIde);
             userDocRef.addSnapshotListener((documentSnapshot, e) -> {
-                if (e != null) {
-                    // Gestisci errori
-                    return;
-                }
 
                 if (documentSnapshot.exists()) {
                     // Ottieni i dati dell'utente e aggiorna la view model
@@ -64,8 +57,6 @@ public class UserViewModel extends ViewModel {
                     userAge.setValue(age);
                     userLastName.setValue(lastName);
                     userBirthplace.setValue(birthplace);
-
-
 
                     // Ottieni la lista di patologie dell'utente e aggiorna la view model
                     List<Patologia> patologie = new ArrayList<>();

@@ -4,7 +4,6 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -134,7 +133,7 @@ public class Register extends AppCompatActivity {
                                 finish();
 
                             } else {
-                                // If sign in fails, display a message to the user.
+                                // Avvisa l'utente che l'autenticazione è fallita
                                 progressBar.setVisibility(View.GONE);
 
                                 Toast.makeText(Register.this, "Autenticazione fallita" + Objects.requireNonNull(task.getException()).getMessage(),
@@ -167,7 +166,7 @@ public class Register extends AppCompatActivity {
                                 finish();
 
                             } else {
-                                // If sign in fails, display a message to the user.
+                                // Avvisa l'utente che l'autenticazione è fallita
                                 progressBar.setVisibility(View.GONE);
 
                                 Toast.makeText(Register.this, "Autenticazione fallita" + Objects.requireNonNull(task.getException()).getMessage(),

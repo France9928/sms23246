@@ -18,7 +18,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
 import java.util.Objects;
 
 import it.uniba.dib.sms23246.databinding.ActivityMainBinding;
@@ -58,11 +57,6 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.OnR
         DocumentReference userDocRef = db.collection("utenti").document(userId);
 
         userDocRef.addSnapshotListener((documentSnapshot, e) -> {
-            if (e != null) {
-                // Gestisce errori
-                return;
-            }
-
             if (documentSnapshot.exists()) {
                 // Verifica che sia un operatore sanitario
                 String flagOperatore = documentSnapshot.getString("flag operatore");
@@ -106,11 +100,7 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.OnR
 
 
     public void onRichiestaInviata(String messaggio) {
-        // Implementa la logica di gestione della richiesta inviata dall'utente
-        // Ad esempio, puoi aprire un nuovo fragment per accettare la richiesta
-        // e passare l'ID dell'utente come argomento
-        // Qui puoi gestire l'ID dell'utente inviato dalla richiesta
-        // Ad esempio, stampa un messaggio di log
+        // Stampa un messaggio di log
         Log.d("MainActivity", "Richiesta inviata");
     }
 }
