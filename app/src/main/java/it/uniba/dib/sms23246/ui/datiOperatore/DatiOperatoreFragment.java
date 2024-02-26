@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentDatioperatoreBinding;
 
 public class DatiOperatoreFragment extends Fragment {
@@ -31,19 +32,23 @@ public class DatiOperatoreFragment extends Fragment {
 
         // Ottiene i dati dell'utente da UserViewModel
         datiOperatoreViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
-            nomeTextView.setText("Nome: " + nome);
+            String nomeOperatore = getResources().getString(R.string.nome);
+            nomeTextView.setText(nomeOperatore + nome);
         });
 
         datiOperatoreViewModel.getUserLastName().observe(getViewLifecycleOwner(), cognome -> {
-            cognomeTextView.setText("Cognome: " + cognome);
+            String cognomeOperatore = getResources().getString(R.string.cognome);
+            cognomeTextView.setText(cognomeOperatore + cognome);
         });
 
         datiOperatoreViewModel.getUserAge().observe(getViewLifecycleOwner(), age -> {
-            etaTextView.setText("Età: " + age);
+            String etaStringa = getResources().getString(R.string.età);
+            etaTextView.setText(etaStringa + age);
         });
 
         datiOperatoreViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), birthplace -> {
-            luogoNascitaTextView.setText("Luogo di nascita: " + birthplace);
+            String luogoOperatore = getResources().getString(R.string.place_of_birth);
+            luogoNascitaTextView.setText(luogoOperatore + birthplace);
         });
 
         return root;
