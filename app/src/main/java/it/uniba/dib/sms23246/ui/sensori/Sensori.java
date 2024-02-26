@@ -75,33 +75,39 @@ public class Sensori extends Fragment {
 
         button2 = rootView.findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
+
+            String sensore = getResources().getString(R.string.sfigmomanometro);
             @Override
+
             public void onClick(View v) {
-                showMessage("Sfigmomanometro: " + getRandomValue());
+                showMessage(sensore + getRandomValue());
             }
         });
 
         button3 = rootView.findViewById(R.id.button3);
         button3.setOnClickListener(new View.OnClickListener() {
+            String sensore = getResources().getString(R.string.emoglobinometro);
             @Override
             public void onClick(View v) {
-                showMessage("Misuratore di pressione: " + getRandomValue());
+                showMessage(sensore + getRandomValue());
             }
         });
 
         button4 = rootView.findViewById(R.id.button4);
         button4.setOnClickListener(new View.OnClickListener() {
+            String sensore = getResources().getString(R.string.bilancia);
             @Override
             public void onClick(View v) {
-                showMessage("Bilancia: " + getRandomValue());
+                showMessage(sensore + getRandomValue());
             }
         });
 
         button5 = rootView.findViewById(R.id.button5);
         button5.setOnClickListener(new View.OnClickListener() {
+            String sensore = getResources().getString(R.string.glucometro);
             @Override
             public void onClick(View v) {
-                showMessage("Glucometro: " + getRandomValue());
+                showMessage(sensore + getRandomValue());
             }
         });
 
@@ -128,5 +134,3 @@ public class Sensori extends Fragment {
         }
     }
 }
-
-
