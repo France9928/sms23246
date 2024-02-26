@@ -51,10 +51,13 @@ public class ModificaLivelloPatologiaFragment extends Fragment {
 
                 // Verifica se i campi sono vuoti
                 if (nomePatologia.isEmpty() || livelloPatologiaString.isEmpty()) {
-                    Toast.makeText(requireContext(), "Inserire nome e livello della patologia", Toast.LENGTH_SHORT).show();
+                    String nomeLivelloStringa = getResources().getString(R.string.inserire_nome_livello_patologia);
+                    Toast.makeText(requireContext(), nomeLivelloStringa, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                String modificaSuccessoStringa = getResources().getString(R.string.successo_modifica);
+                String erroreModificaStringa = getResources().getString(R.string.errore_modifica);
                 int livelloPatologia = Integer.parseInt(livelloPatologiaString);
 
                 // Creazione di un nuovo documento con un campo "livelloPatologia"
@@ -74,11 +77,9 @@ public class ModificaLivelloPatologiaFragment extends Fragment {
                                             .collection("patologie")
                                             .document(document.getId())
                                             .update(aggiornamentoLivello)
-                                            .addOnSuccessListener(aVoid -> Toast.makeText(requireContext(), "Livello della patologia aggiornato con successo", Toast.LENGTH_SHORT).show())
-                                            .addOnFailureListener(e -> Toast.makeText(requireContext(), "Errore nell'aggiornamento del livello", Toast.LENGTH_SHORT).show());
+                                            .addOnSuccessListener(aVoid -> Toast.makeText(requireContext(), modificaSuccessoStringa, Toast.LENGTH_SHORT).show())
+                                            .addOnFailureListener(e -> Toast.makeText(requireContext(), erroreModificaStringa, Toast.LENGTH_SHORT).show());
                                 }
-                            } else {
-                                Toast.makeText(requireContext(), "Errore nel recupero della patologia", Toast.LENGTH_SHORT).show();
                             }
                         });
             }

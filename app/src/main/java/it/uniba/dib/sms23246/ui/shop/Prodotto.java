@@ -56,16 +56,6 @@ public class Prodotto implements Serializable {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "Prodotto{" +
-                "nomeProdotto='" + nomeProdotto + '\'' +
-                ", categoriaProdotto='" + categoriaProdotto + '\'' +
-                ", costo=" + costo +
-                ", data='" + data + '\'' +
-                '}';
-    }
-
     // Metodo per convertire l'oggetto Prodotto in una mappa (Map) per Firebase
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();

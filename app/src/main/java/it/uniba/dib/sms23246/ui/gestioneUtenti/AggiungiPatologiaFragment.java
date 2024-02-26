@@ -50,7 +50,8 @@ public class AggiungiPatologiaFragment extends Fragment {
 
                 // Verifica se i campi sono vuoti
                 if (nomePatologia.isEmpty() || livelloPatologiaString.isEmpty()) {
-                    Toast.makeText(requireContext(), "Inserire nome e livello della patologia", Toast.LENGTH_SHORT).show();
+                    String nomeLivelloStringa = getResources().getString(R.string.inserire_nome_livello_patologia);
+                    Toast.makeText(requireContext(), nomeLivelloStringa, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -58,14 +59,16 @@ public class AggiungiPatologiaFragment extends Fragment {
                 Map<String, Object> nuovoDocumento = new HashMap<>();
                 nuovoDocumento.put("nomePatologia", nomePatologia);
                 int livelloPatologia = Integer.parseInt(livelloPatologiaString);
+                String aggiuntaSuccessoStringa = getResources().getString(R.string.successo_aggiunta);
+                String erroreAggiuntaStringa = getResources().getString(R.string.errore_aggiunta);
                 nuovoDocumento.put("livelloPatologia", livelloPatologia);
 
                 assert messaggio != null;
                 db.collection("utenti").document(messaggio)
                         .collection("patologie")
                         .add(nuovoDocumento)
-                        .addOnSuccessListener(aVoid -> Toast.makeText(requireContext(), "Patologia aggiunta con successo", Toast.LENGTH_SHORT).show())
-                        .addOnFailureListener(e -> Toast.makeText(requireContext(), "Errore nell'aggiunta", Toast.LENGTH_SHORT).show());
+                        .addOnSuccessListener(aVoid -> Toast.makeText(requireContext(), aggiuntaSuccessoStringa, Toast.LENGTH_SHORT).show())
+                        .addOnFailureListener(e -> Toast.makeText(requireContext(), erroreAggiuntaStringa, Toast.LENGTH_SHORT).show());
             }
         });
 

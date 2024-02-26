@@ -22,7 +22,7 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="40dp"
-                android:text="termometro" />
+                android:text="@string/temperatura" />
 
             <Button
                 android:id="@+id/button2"
@@ -30,7 +30,7 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
-                android:text="sfigmomanometro" />
+                android:text="@string/sfigmomanometro" />
 
             <Button
                 android:id="@+id/button3"
@@ -38,7 +38,7 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
-                android:text="misuratore di pressione" />
+                android:text="@string/emoglobinometro" />
 
             <Button
                 android:id="@+id/button4"
@@ -46,7 +46,7 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
-                android:text="bilancia" />
+                android:text="@string/bilancia" />
 
             <Button
                 android:id="@+id/button5"
@@ -54,7 +54,7 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
-                android:text="glucometro" />
+                android:text="@string/glucometro" />
 
         </LinearLayout>
     </ScrollView>

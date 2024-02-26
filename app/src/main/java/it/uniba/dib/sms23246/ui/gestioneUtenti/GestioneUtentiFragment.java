@@ -41,6 +41,9 @@ public class GestioneUtentiFragment extends Fragment {
         binding = FragmentGestioneutentiBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        String richiestaScadutaStringa = getResources().getString(R.string.richiesta_scaduta);
+        String richiestaAttivaStringa = getResources().getString(R.string.richiesta_attiva);
+
         Button btnAccettaRichiesta = root.findViewById(R.id.btnAddPatologia);
         btnAccettaRichiesta.setOnClickListener(v -> {
             db.collection("richieste")
@@ -60,13 +63,13 @@ public class GestioneUtentiFragment extends Fragment {
                                     if (currentTime - requestTime > limiteTempo) {
                                         // La richiesta è scaduta e viene rimossa
                                         String requestId = document.getId();
-                                        Toast.makeText(requireContext(), "Richiesta scaduta", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(requireContext(), richiestaScadutaStringa, Toast.LENGTH_SHORT).show();
                                         rimuoviRichiestaScaduta(requestId);
                                     }
                                     else {
                                         // La richiesta non è scaduta, recupera il messaggio
                                         String messaggio = document.getString("messaggio");
-                                        Toast.makeText(requireContext(), "Richiesta ancora attiva", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(requireContext(), richiestaAttivaStringa, Toast.LENGTH_SHORT).show();
                                         // Imposta il messaggio nel SharedViewModel
                                         sharedViewModel.setMessaggio(messaggio);
 
@@ -75,8 +78,6 @@ public class GestioneUtentiFragment extends Fragment {
                                     }
                                 }
                             }
-                        } else {
-                            Toast.makeText(requireContext(), "Errore, richieste non presenti", Toast.LENGTH_SHORT).show();
                         }
                     });
         });
@@ -100,13 +101,13 @@ public class GestioneUtentiFragment extends Fragment {
                                     if (currentTime - requestTime > limiteTempo) {
                                         // La richiesta è scaduta e viene rimossa
                                         String requestId = document.getId();
-                                        Toast.makeText(requireContext(), "Richiesta scaduta", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(requireContext(), richiestaScadutaStringa, Toast.LENGTH_SHORT).show();
                                         rimuoviRichiestaScaduta(requestId);
                                     }
                                     else {
                                         // La richiesta non è scaduta, recupera il messaggio
                                         String messaggio = document.getString("messaggio");
-                                        Toast.makeText(requireContext(), "Richiesta ancora attiva", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(requireContext(), richiestaAttivaStringa, Toast.LENGTH_SHORT).show();
                                         // Imposta il messaggio nel SharedViewModel
                                         sharedViewModel.setMessaggio(messaggio);
 
@@ -115,8 +116,6 @@ public class GestioneUtentiFragment extends Fragment {
                                     }
                                 }
                             }
-                        } else {
-                            Toast.makeText(requireContext(), "Errore, richieste non presenti", Toast.LENGTH_SHORT).show();
                         }
                     });
         });

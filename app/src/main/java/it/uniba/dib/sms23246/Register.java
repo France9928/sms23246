@@ -80,6 +80,7 @@ public class Register extends AppCompatActivity {
             try {
                 age = Integer.parseInt(String.valueOf(editTextAge.getText()));
             } catch (NumberFormatException e) {
+
                 Toast.makeText(Register.this, "Inserisci un'età valida", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;

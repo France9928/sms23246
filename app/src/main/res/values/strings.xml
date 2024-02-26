@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Asilapp</string>
     <string name="title_user">Utente</string>
     <string name="title_video">Video</string>
@@ -14,7 +14,7 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register">Regitrazione</string>
+    <string name="register">Registrazione</string>
     <string name="click_to_login">Clicca qui per il login</string>
     <string name="click_to_register">Clicca qui per la registrazione</string>
     <string name="logout">Logout</string>
@@ -58,11 +58,19 @@
     <string name="nome_prodotto">Prodotto:</string>
     <string name="costo_prodotto">Costo:</string>
     <string name="data_prodotto">Data:</string>
-    <string name="prodotto_display">Prodotto{</string>
-    <string name="nome_prodotto_display">nomeProdotto=</string>
-    <string name="categoria_prodotto_display">, categoriaProdotto=</string>
-    <string name="costo_prodotto_display">, costo=</string>
-    <string name="data_prodotto_display">, data=</string>
+    <string name="password_non_corretta">Password non corretta</string>
+    <string name="accedi">Accedi</string>
+    <string name="inserisci_password">Inserisci la password</string>
+    <string name="richiesta_scaduta">Richiesta scaduta</string>
+    <string name="richiesta_attiva">Richiesta attiva</string>
+    <string name="inserire_nome_livello_patologia">Inserire nome e livello della patologia</string>
+    <string name="successo_aggiunta">Patologia aggiunta con successo</string>
+    <string name="errore_aggiunta">Errore aggiunta</string>
+    <string name="successo_modifica">Livello aggiornato con successo</string>
+    <string name="errore_modifica">Errore modifica</string>
+    <string name="nome_patologia">Nome patologia</string>
+    <string name="livello_patologia">Livello patologia</string>
+    <string name="modifica_livello_patologia">Modifica livello patologia</string>
     <string name="titolo_video">Video</string>
     <string name="guarda_video">Guarda video</string>
     <string name="malattie">Malattie</string>

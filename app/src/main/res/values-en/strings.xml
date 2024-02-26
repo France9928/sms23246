@@ -14,7 +14,7 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register">Regitration</string>
+    <string name="register">Registration</string>
     <string name="click_to_login">Click here for login</string>
     <string name="click_to_register">Click here for registration</string>
     <string name="logout">Logout</string>
@@ -51,20 +51,28 @@
     <string name="spiegazione_malattie_video">Show genetic disease</string>
     <string name="esercizi_riabilitazione_video">Rehabilitation excercises</string>
     <string name="richiesta_inviata_con_successo">Request send successfully</string>
-    <string nsmr="errore_invio_richiesta">Error send request</string>
+    <string name="errore_invio_richiesta">Error send request</string>
     <string name="prodotto_registrato_successo">Success product registration</string>
     <string name="prodotto_registrato_fallito">Error product registration</string>
     <string name="categoria_prodotto">Category:</string>
     <string name="nome_prodotto">Product:</string>
     <string name="costo_prodotto">Cost:</string>
     <string name="data_prodotto">Date:</string>
-    <string name="prodotto_display">Product{</string>
-    <string name="nome_prodotto_display">ProductName=</string>
-    <string name="categoria_prodotto_display">, ProductCategory=</string>
-    <string name="costo_prodotto_display">, Cost=</string>
-    <string name="data_prodotto_display">, Date=</string>
-    <string name="titolo_video">Video</string>
-    <string name="guarda_video">watch video</string>
-    <string name="malattie">Diseases</string>
-    <string name="esercizi">Exercises</string>
+    <string name="password_non_corretta">Error password</string>
+    <string name="accedi">Access</string>
+    <string name="inserisci_password">Enter password</string>
+    <string name="richiesta_scaduta">Expired request</string>
+    <string name="richiesta_attiva">Active request</string>
+    <string name="inserire_nome_livello_patologia">Enter pathology name and level</string>
+    <string name="successo_aggiunta">Pathology added</string>
+    <string name="errore_aggiunta">Error add pathology</string>
+    <string name="successo_modifica">Level updated</string>
+    <string name="errore_modifica">Error level modify</string>
+    <string name="nome_patologia">Pathology name</string>
+    <string name="livello_patologia">Pathology level</string>
+    <string name="modifica_livello_patologia">Modify pathology level</string>
+    <string name="video_title">Video</string>
+    <string name="watch_video">watch video</string>
+    <string name="diseases">Diseases</string>
+    <string name="exercises">Exercises</string>
 </resources>

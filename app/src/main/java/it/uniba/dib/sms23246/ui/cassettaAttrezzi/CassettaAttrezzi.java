@@ -43,8 +43,9 @@ public class CassettaAttrezzi extends Fragment {
                     NavController navController = NavHostFragment.findNavController(CassettaAttrezzi.this);
                     navController.navigate(R.id.action_cassettaAttrezzi_to_sensori);
                 } else {
+                    String passwordNonCorrettaString = getResources().getString(R.string.password_non_corretta);
                     // Password errata, mostra un Toast e impedisce il passaggio all'altro fragment
-                    Toast.makeText(getContext(), "Password non corretta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), passwordNonCorrettaString, Toast.LENGTH_SHORT).show();
                 }
             }
         });
