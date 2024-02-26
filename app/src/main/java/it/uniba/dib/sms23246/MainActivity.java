@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.OnR
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);

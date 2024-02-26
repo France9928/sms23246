@@ -24,6 +24,7 @@ public class operatorActivity extends AppCompatActivity {
 
         binding = ActivityOperatorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         button = findViewById(R.id.logout);
 
         button.setOnClickListener(v -> {
@@ -32,6 +33,7 @@ public class operatorActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+        setSupportActionBar(findViewById(R.id.toolbar));
 
 
         BottomNavigationView navView2 = findViewById(R.id.nav_view2);

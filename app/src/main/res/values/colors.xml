@@ -13,5 +13,10 @@
     <color name="grey">#808080</color>
     <color name="button_background">#FF5733</color>
     <color name="button_text">#FFFFFF</color>
+    <color name="first1_color">#03045e</color>
+    <color name="second_color">#0077b6</color>
+    <color name="third_color">#00b4d8</color>
+    <color name="fourth_color">#90e0ef</color>
+    <color name="fifth_color">#caf0f8</color>
 
 </resources>
