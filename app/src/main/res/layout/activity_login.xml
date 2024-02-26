@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingTop="130dp"
+    android:paddingTop="120dp"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -14,6 +14,24 @@
         android:padding="15dp"
         tools:context=".Login">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ASILAPP"
+            android:textSize="30sp"
+            android:textColor="@color/second_color"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
         <TextView
             android:textSize="25sp"
             android:textStyle="bold"

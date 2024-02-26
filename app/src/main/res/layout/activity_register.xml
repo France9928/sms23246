@@ -13,7 +13,21 @@
         android:gravity="center"
         android:padding="15dp"
         tools:context=".Register">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ASILAPP"
+            android:textSize="30sp"
+            android:textColor="@color/second_color"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"/>
         <TextView
             android:textSize="25sp"
             android:textStyle="bold"
