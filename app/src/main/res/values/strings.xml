@@ -63,4 +63,8 @@
     <string name="categoria_prodotto_display">, categoriaProdotto=</string>
     <string name="costo_prodotto_display">, costo=</string>
     <string name="data_prodotto_display">, data=</string>
+    <string name="titolo_video">Video</string>
+    <string name="guarda_video">Guarda video</string>
+    <string name="malattie">Malattie</string>
+    <string name="esercizi">Esercizi</string>
 </resources>

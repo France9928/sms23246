@@ -65,22 +65,17 @@ public class VideoFragment extends Fragment {
         viewModel.getVideoLiveData().observe(getViewLifecycleOwner(), piuVideo -> {
             if ((piuVideo != null) && (piuVideo.size() >= 4)) {
                 // Card 1
-                PiuVideo video1 = piuVideo.get(0);
-                textVideo1.setText(video1.getName());
-                pulsanteVideo1.setOnClickListener(v -> onButtonClick(video1.getLink()));
+                textVideo1.setText(getString(R.string.video_title));
+                pulsanteVideo1.setText(getString(R.string.watch_video));
 
-                // Card 2
-                PiuVideo video2 = piuVideo.get(1);
-                textVideo2.setText(video2.getName());
-                pulsanteVideo2.setOnClickListener(v -> onButtonClick(video2.getLink()));
-                // Card 3
-                PiuVideo video3 = piuVideo.get(2);
-                textMalattie.setText(video3.getName());
-                pulsanteMalattie.setOnClickListener(v -> onButtonClick(video3.getLink()));
-                // Card 4
-                PiuVideo video4 = piuVideo.get(3);
-                textEsercizi.setText(video4.getName());
-                pulsanteEsercizi.setOnClickListener(v -> onButtonClick(video4.getLink()));
+                textVideo2.setText(getString(R.string.video_title));
+                pulsanteVideo2.setText(getString(R.string.watch_video));
+
+                textMalattie.setText(getString(R.string.diseases));
+                pulsanteMalattie.setText(getString(R.string.watch_video));
+
+                textEsercizi.setText(getString(R.string.exercises));
+                pulsanteEsercizi.setText(getString(R.string.watch_video));
             }
         });
     }
