@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,13 @@ public class AggiungiPatologiaFragment extends Fragment {
                 String nomePatologia = nomePatologiaEditText.getText().toString();
                 String livelloPatologiaString = gravitaPatologiaEditText.getText().toString();
 
-                // Creazione di un nuovo documento con un campo "valoreNuovoCampo"
+                // Verifica se i campi sono vuoti
+                if (nomePatologia.isEmpty() || livelloPatologiaString.isEmpty()) {
+                    Toast.makeText(requireContext(), "Inserire nome e livello della patologia", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Creazione di un nuovo documento per la patologia
                 Map<String, Object> nuovoDocumento = new HashMap<>();
                 nuovoDocumento.put("nomePatologia", nomePatologia);
                 int livelloPatologia = Integer.parseInt(livelloPatologiaString);
