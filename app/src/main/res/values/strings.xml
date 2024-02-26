@@ -42,7 +42,7 @@
     <string name="temperatura">Temperatura</string>
     <string name="glucometro">Glucometro</string>
     <string name="sfigmomanometro">Sfigmomanometro</string>
-    <string name="bilancia">Bilancia</string>
+    <string name="bilancia">Bilancia </string>
     <string name="emoglobinometro">emoglobinometro</string>
     <string name="no_sensore">Sensore non disponibile</string>
     <string name="sensore">Sensore non disponibile</string>
