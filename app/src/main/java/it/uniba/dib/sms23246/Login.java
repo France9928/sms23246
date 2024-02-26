@@ -51,6 +51,8 @@ public class Login extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_Login);
         buttonAccessoDirettoUtente = findViewById(R.id.btn_accessoDirettoUtente);
         buttonAccessoDirettoOperatore = findViewById(R.id.btn_accessoDirettoOperatore);
+        String loginSuccessoString = getResources().getString(R.string.login_effettuato_successo);
+        String autenticazioneFallitaString = getResources().getString(R.string.autenticazione_fallita);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.registerNow);
         textView.setOnClickListener(v -> {
@@ -66,13 +68,15 @@ public class Login extends AppCompatActivity {
             password = String.valueOf(editTextPassword.getText());
 
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(Login.this, "Inserisci email", Toast.LENGTH_SHORT).show();
+                String inserisciEmailString = getResources().getString(R.string.inserisci_email);
+                Toast.makeText(Login.this, inserisciEmailString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(password)) {
-                Toast.makeText(Login.this, "Inserisci Password", Toast.LENGTH_SHORT).show();
+                String inserisciPasswordString = getResources().getString(R.string.inserisci_password);
+                Toast.makeText(Login.this, inserisciPasswordString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
@@ -82,7 +86,7 @@ public class Login extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), loginSuccessoString, Toast.LENGTH_SHORT).show();
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             db = FirebaseFirestore.getInstance();
                             if (currentUser != null) {
@@ -108,7 +112,7 @@ public class Login extends AppCompatActivity {
                         }
                         else {
                             // Caso in cui fallisce il login
-                            Toast.makeText(Login.this, "Autenticazione fallita",
+                            Toast.makeText(Login.this, autenticazioneFallitaString,
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -126,7 +130,7 @@ public class Login extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), loginSuccessoString, Toast.LENGTH_SHORT).show();
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             db = FirebaseFirestore.getInstance();
                             if (currentUser != null) {
@@ -143,7 +147,7 @@ public class Login extends AppCompatActivity {
                         }
                         else {
                             // Caso in cui fallisce il login
-                            Toast.makeText(Login.this, "Autenticazione fallita",
+                            Toast.makeText(Login.this, autenticazioneFallitaString,
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -159,7 +163,7 @@ public class Login extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), loginSuccessoString, Toast.LENGTH_SHORT).show();
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             db = FirebaseFirestore.getInstance();
                             if (currentUser != null) {
@@ -176,7 +180,7 @@ public class Login extends AppCompatActivity {
                         }
                         else {
                             // Caso in cui fallisce il login
-                            Toast.makeText(Login.this, "Autenticazione fallita",
+                            Toast.makeText(Login.this, autenticazioneFallitaString,
                                     Toast.LENGTH_SHORT).show();
                         }
                     });

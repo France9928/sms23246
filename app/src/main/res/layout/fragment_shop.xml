@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:text="Gestione Spese"
+            android:text="@string/gestione_spese"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -26,21 +26,21 @@
             android:id="@+id/editTextProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Prodotto" />
+            android:hint="@string/nome_prodotto" />
 
         <!-- Campo per la registrazione della Categoria -->
         <EditText
             android:id="@+id/editTextCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Categoria" />
+            android:hint="@string/categoria_prodotto" />
 
         <!-- Campo per la registrazione del Costo -->
         <EditText
             android:id="@+id/editTextCost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Costo"
+            android:hint="@string/costo_prodotto"
             android:inputType="numberDecimal" />
 
         <!-- Campo per la registrazione della Data -->
@@ -51,7 +51,7 @@
             android:drawableLeft="@drawable/ic_calendar_24dp"
             android:drawablePadding="8dp"
             android:ems="10"
-            android:text="Data Spesa" />
+            android:text="@string/data_prodotto" />
 
         <DatePicker
             android:id="@+id/editData"
@@ -69,7 +69,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="addExpense"
-            android:text="Registra Spesa" />
+            android:text="@string/registra_spesa" />
 
         <!-- Sezione di interrogazione -->
         <TextView
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Altre Azioni"
+            android:text="@string/altre_azioni"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="weeklyQuery"
-            android:text="Spese Settimanali"
+            android:text="@string/spese_settimanali"
             android:layout_marginBottom="8dp" />
 
         <!-- Pulsante per interrogazione mensile -->
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="monthlyQuery"
-            android:text="Spese Mensili"
+            android:text="@string/spese_mensili"
             android:layout_marginBottom="8dp" />
 
         <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="categoryQuery"
-            android:text="Spese per Categoria"
+            android:text="@string/spese_categoria"
             android:layout_marginBottom="8dp" />
 
     </LinearLayout>

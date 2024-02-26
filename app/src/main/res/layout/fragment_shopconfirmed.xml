@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="Riepilogo Spesa"
+        android:text="@string/riepilogo_spesa"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -65,7 +65,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:onClick="addExpense"
-        android:text="Registra altre spese" />
+        android:text="@string/registra_altre_spese" />
 
     <!-- Sezione di interrogazione -->
     <TextView
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Altre Azioni"
+        android:text="@string/altre_azioni"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="weeklyQuery"
-        android:text="Spese Settimanali" />
+        android:text="@string/spese_settimanali" />
 
     <!-- Pulsante per interrogazione mensile -->
     <Button
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="monthlyQuery"
-        android:text="Spese Mensili" />
+        android:text="@string/spese_mensili" />
 
     <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
     <Button
@@ -103,5 +103,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="categoryQuery"
-        android:text="Spese per Categoria" />
+        android:text="@string/spese_categoria" />
 </LinearLayout>

@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="Riepilogo Spesa per Categoria"
+        android:text="@string/riepilogo_spesa_categoria"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -27,7 +27,7 @@
             android:id="@+id/textViewCategoria"
             android:layout_width="91dp"
             android:layout_height="41dp"
-            android:text="Categoria"
+            android:text="@string/categoria_prodotto"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="Categoria"
+        android:hint="@string/categoria_prodotto"
         android:inputType="text" />
     <Button
         android:id="@+id/buttonVisualizzaSpese"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="viewExpenses"
-        android:text="Visualizza le spese" />
+        android:text="@string/visualizza_spese" />
 
 
 
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Altre Azioni"
+        android:text="@string/altre_azioni"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="weeklyQuery"
-        android:text="Spese Settimanali" />
+        android:text="@string/spese_settimanali" />
 
     <!-- Pulsante per interrogazione mensile -->
     <Button
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="monthlyQuery"
-        android:text="Spese Mensili" />
+        android:text="@string/spese_mensili" />
 
     <Button
         android:id="@+id/buttonShop"
@@ -84,7 +84,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:onClick="addExpense"
-        android:text="Registra altre spese" />
+        android:text="@string/registra_altre_spese" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProdotti"

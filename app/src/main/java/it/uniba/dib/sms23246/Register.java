@@ -57,7 +57,16 @@ public class Register extends AppCompatActivity {
         editTextAge = findViewById(R.id.age);
         editTextPlaceOfBirth = findViewById(R.id.birthplace);
         editTextCode = findViewById(R.id.code);
-
+        String etaValidaString = getResources().getString(R.string.inserisci_eta_valida);
+        String inserisciNomeString = getResources().getString(R.string.inserisci_nome);
+        String inserisciCognomeString = getResources().getString(R.string.inserisci_cognome);
+        String inserisciLuogoString = getResources().getString(R.string.inserisci_luogo_nascita);
+        String inserisciEmailString = getResources().getString(R.string.inserisci_email);
+        String inserisciPasswordString = getResources().getString(R.string.inserisci_password);
+        String accountCreatoString = getResources().getString(R.string.account_creato);
+        String autenticazioneFallitaString = getResources().getString(R.string.autenticazione_fallita);
+        String codiceErratoString = getResources().getString(R.string.codice_operatore_errato);
+        String accountOperatoreCreatoString = getResources().getString(R.string.account_operatore_creato);
         buttonReg = findViewById(R.id.btn_Registration);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginNow);
@@ -81,37 +90,37 @@ public class Register extends AppCompatActivity {
                 age = Integer.parseInt(String.valueOf(editTextAge.getText()));
             } catch (NumberFormatException e) {
 
-                Toast.makeText(Register.this, "Inserisci un'età valida", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, etaValidaString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(firstName)) {
-                Toast.makeText(Register.this, "Inserisci nome", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, inserisciNomeString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(lastName)) {
-                Toast.makeText(Register.this, "Inserisci cognome", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, inserisciCognomeString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(birthplace)) {
-                Toast.makeText(Register.this, "Inserisci luogo di nascita", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, inserisciLuogoString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(Register.this, "Inserisci email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, inserisciEmailString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
 
             if (TextUtils.isEmpty(password)) {
-                Toast.makeText(Register.this, "Inserisci Password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, inserisciPasswordString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
@@ -122,7 +131,7 @@ public class Register extends AppCompatActivity {
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 progressBar.setVisibility(View.GONE);
-                                Toast.makeText(Register.this, "Account creato",
+                                Toast.makeText(Register.this, accountCreatoString,
                                         Toast.LENGTH_SHORT).show();
 
                                 // Salva i dati aggiuntivi in Firestore
@@ -137,7 +146,7 @@ public class Register extends AppCompatActivity {
                                 // Avvisa l'utente che l'autenticazione è fallita
                                 progressBar.setVisibility(View.GONE);
 
-                                Toast.makeText(Register.this, "Autenticazione fallita" + Objects.requireNonNull(task.getException()).getMessage(),
+                                Toast.makeText(Register.this, autenticazioneFallitaString + Objects.requireNonNull(task.getException()).getMessage(),
                                         Toast.LENGTH_SHORT).show();
 
                             }
@@ -145,7 +154,7 @@ public class Register extends AppCompatActivity {
             }
 
             if (!TextUtils.isEmpty(code) && !code.equals(healthOperatorCode)) {
-                Toast.makeText(Register.this, "Codice operatore errato", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, codiceErratoString, Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
@@ -155,7 +164,7 @@ public class Register extends AppCompatActivity {
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 progressBar.setVisibility(View.GONE);
-                                Toast.makeText(Register.this, "Account operatore creato",
+                                Toast.makeText(Register.this, accountOperatoreCreatoString,
                                         Toast.LENGTH_SHORT).show();
 
                                 // Salva i dati aggiuntivi in Firestore
@@ -170,7 +179,7 @@ public class Register extends AppCompatActivity {
                                 // Avvisa l'utente che l'autenticazione è fallita
                                 progressBar.setVisibility(View.GONE);
 
-                                Toast.makeText(Register.this, "Autenticazione fallita" + Objects.requireNonNull(task.getException()).getMessage(),
+                                Toast.makeText(Register.this, autenticazioneFallitaString + Objects.requireNonNull(task.getException()).getMessage(),
                                         Toast.LENGTH_SHORT).show();
 
                             }

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:text="Riepilogo Spese Mensili"
+            android:text="@string/riepilogo_spese_mensili"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/textViewData"
             android:layout_width="377dp"
             android:layout_height="41dp"
-            android:text="Seleziona il primo giorno del mese: "
+            android:text="@string/seleziona_primo_giorno_mese"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="view"
-            android:text="Visualizza spese Mensili" />
+            android:text="@string/visualizza_spese" />
 
         <!-- Sezione di interrogazione -->
         <TextView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Altre Azioni"
+            android:text="@string/altre_azioni"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -65,7 +65,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:onClick="addExpense"
-            android:text="Registra altre spese" />
+            android:text="@string/registra_altre_spese" />
 
         <!-- Pulsante per interrogazione mensile -->
         <Button
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="weeklyQuery"
-            android:text="Spese Settimanali" />
+            android:text="@string/spese_settimanali" />
 
         <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
         <Button
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="categoryQuery"
-            android:text="Spese per Categoria" />
+            android:text="@string/spese_categoria" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewProdotti"

@@ -11,7 +11,7 @@
         android:id="@+id/textViewNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome Prodotto"
+        android:text="@string/nome_prodotto"
         android:textSize="18sp"
         android:textStyle="bold"/>
 
@@ -19,21 +19,21 @@
         android:id="@+id/textViewCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoria"
+        android:text="@string/categoria_prodotto"
         android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/textViewCosto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Costo"
+        android:text="@string/costo_prodotto"
         android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/textViewData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data"
+        android:text="@string/data_prodotto"
         android:textSize="16sp"/>
 
 </LinearLayout>
