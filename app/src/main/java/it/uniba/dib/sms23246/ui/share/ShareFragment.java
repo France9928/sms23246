@@ -91,25 +91,8 @@ public class ShareFragment extends Fragment {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String nome = nomeTextView.getText().toString();
-                //String cognome = cognomeTextView.getText().toString();
-                //String eta = etaTextView.getText().toString();
                 String userIde = userIdTextView.getText().toString();
-                /*String luogoNascita = luogoNascitaTextView.getText().toString();
-
-                String textToShare = "Nome: " + nome + "\n" +
-                        "Cognome: " + cognome + "\n" +
-                        "Età: " + eta + "\n" +
-                        "User ID: " + userIde + "\n" +
-                        "Luogo nascita " + luogoNascita;
-
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
-                sendIntent.setType("text/plain");
-                Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);*/
-                // Invia la richiesta al genitore (Activity) e a Firestore
+                // Invia la richiesta al genitore e a Firestore
                 onRichiestaInviataListener.onRichiestaInviata(userIde);
                 inviaRichiestaAFirestore(userIde);
             }

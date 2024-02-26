@@ -34,15 +34,6 @@ public class UserFragment extends Fragment {
         final TextView etaTextView = binding.etaTextView;
         final TextView luogoNascitaTextView = binding.luogoNascitaTextView;
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            final TextView userIdTextView = binding.userIdTextView;
-            userViewModel.getUserId().observe(getViewLifecycleOwner(), userId -> {
-                userIdTextView.setText("User Id: " + userId);
-            });
-        }
-
 
             // Ottiene i dati dell'utente da UserViewModel
             userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
