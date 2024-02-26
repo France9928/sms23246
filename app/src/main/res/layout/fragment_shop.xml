@@ -1,114 +1,116 @@
-<!-- fragment_shop.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <!-- Titolo -->
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Gestione Spese"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <!-- Campo per la registrazione del prodotto -->
-
-    <EditText
-        android:id="@+id/editTextProduct"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Prodotto" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Campo per la registrazione della Categoria -->
-    <EditText
-        android:id="@+id/editTextCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Categoria" />
+        <!-- Titolo -->
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="Gestione Spese"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
+        <!-- Campo per la registrazione del prodotto -->
+        <EditText
+            android:id="@+id/editTextProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prodotto" />
 
-    <!-- Campo per la registrazione del Costo -->
-    <EditText
-        android:id="@+id/editTextCost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Costo"
-        android:inputType="numberDecimal" />
+        <!-- Campo per la registrazione della Categoria -->
+        <EditText
+            android:id="@+id/editTextCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Categoria" />
 
-    <!-- Campo per la registrazione della Data -->
-    <TextView
-        android:id="@+id/textDate"
-        android:layout_width="131dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_calendar_24dp"
-        android:ems="10"
-        android:text="Data Spesa" />
+        <!-- Campo per la registrazione del Costo -->
+        <EditText
+            android:id="@+id/editTextCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Costo"
+            android:inputType="numberDecimal" />
 
-    <DatePicker
-        android:id="@+id/editData"
-        android:layout_width="match_parent"
-        android:layout_height="399dp"
-        android:inputType="date" />
+        <!-- Campo per la registrazione della Data -->
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_calendar_24dp"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:text="Data Spesa" />
 
+        <DatePicker
+            android:id="@+id/editData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:spinnersShown="true"
+            android:layout_marginBottom="16dp" />
 
-    <!-- Pulsante per registrare la spesa -->
-    <Button
-        android:id="@+id/buttonShop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:onClick="addExpense"
-        android:text="Registra Spesa" />
+        <!-- Pulsante per registrare la spesa -->
+        <Button
+            android:id="@+id/buttonShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="addExpense"
+            android:text="Registra Spesa" />
 
-    <!-- Sezione di interrogazione -->
-    <TextView
-        android:id="@+id/textViewQueryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Altre Azioni"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <!-- Sezione di interrogazione -->
+        <TextView
+            android:id="@+id/textViewQueryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Altre Azioni"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <!-- Pulsante per interrogazione settimanale -->
-    <Button
-        android:id="@+id/buttonWeeklyQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="weeklyQuery"
-        android:text="Spese Settimanali" />
+        <!-- Pulsante per interrogazione settimanale -->
+        <Button
+            android:id="@+id/buttonWeeklyQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="weeklyQuery"
+            android:text="Spese Settimanali"
+            android:layout_marginBottom="8dp" />
 
-    <!-- Pulsante per interrogazione mensile -->
-    <Button
-        android:id="@+id/buttonMonthlyQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="monthlyQuery"
-        android:text="Spese Mensili" />
+        <!-- Pulsante per interrogazione mensile -->
+        <Button
+            android:id="@+id/buttonMonthlyQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="monthlyQuery"
+            android:text="Spese Mensili"
+            android:layout_marginBottom="8dp" />
 
-    <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
-    <Button
-        android:id="@+id/buttonCategoryQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="categoryQuery"
-        android:text="Spese per Categoria" />
+        <!-- Pulsante per interrogazione per categoria (es. farmaci) -->
+        <Button
+            android:id="@+id/buttonCategoryQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="categoryQuery"
+            android:text="Spese per Categoria"
+            android:layout_marginBottom="8dp" />
 
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>

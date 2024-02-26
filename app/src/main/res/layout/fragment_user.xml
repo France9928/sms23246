@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/text_user"
-            android:layout_width="213dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/dati_anagrafici"
@@ -70,7 +70,7 @@
 
         <!-- Sezione patologie all'interno di un RecyclerView -->
         <TextView
-            android:layout_width="213dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/patologie"
@@ -79,8 +79,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/patologieRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingTop="8dp"
             android:paddingBottom="8dp" />

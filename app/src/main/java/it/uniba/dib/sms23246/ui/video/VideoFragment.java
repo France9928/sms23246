@@ -65,17 +65,27 @@ public class VideoFragment extends Fragment {
         viewModel.getVideoLiveData().observe(getViewLifecycleOwner(), piuVideo -> {
             if ((piuVideo != null) && (piuVideo.size() >= 4)) {
                 // Card 1
-                textVideo1.setText(getString(R.string.video_title));
-                pulsanteVideo1.setText(getString(R.string.watch_video));
+                PiuVideo video1 = piuVideo.get(0);
+                textVideo1.setText(getString(R.string.titolo_video));
+                pulsanteVideo1.setText(getString(R.string.guarda_video));
+                pulsanteVideo1.setOnClickListener(v -> onButtonClick(video1.getLink()));
 
-                textVideo2.setText(getString(R.string.video_title));
-                pulsanteVideo2.setText(getString(R.string.watch_video));
+                PiuVideo video2 = piuVideo.get(1);
+                textVideo2.setText(getString(R.string.titolo_video));
+                pulsanteVideo2.setText(getString(R.string.guarda_video));
+                pulsanteVideo2.setOnClickListener(v -> onButtonClick(video2.getLink()));
 
-                textMalattie.setText(getString(R.string.diseases));
-                pulsanteMalattie.setText(getString(R.string.watch_video));
+                PiuVideo malattie = piuVideo.get(2);
+                textMalattie.setText(getString(R.string.malattie));
+                pulsanteMalattie.setText(getString(R.string.guarda_video));
+                pulsanteMalattie.setOnClickListener(v -> onButtonClick(malattie.getLink()));
 
-                textEsercizi.setText(getString(R.string.exercises));
-                pulsanteEsercizi.setText(getString(R.string.watch_video));
+                PiuVideo esercizi = piuVideo.get(3);
+                textEsercizi.setText(getString(R.string.esercizi));
+                pulsanteEsercizi.setText(getString(R.string.guarda_video));
+                pulsanteEsercizi.setOnClickListener(v -> onButtonClick(esercizi.getLink()));
+
+
             }
         });
     }
