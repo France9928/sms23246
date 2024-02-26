@@ -24,12 +24,12 @@
     <string name="nome">Nome: </string>
     <string name="first_name">Nome</string>
     <string name="last_name">Cognome</string>
-    <string name="age">Età</string>
+    <string name="age">Età: </string>
     <string name="place_of_birth">Luogo di nascita: </string>
     <string name="title_activity_operator">Sezione operatore</string>
     <string name="codice_operatore">Codice operatore</string>
     <string name="confirmed">Conferma</string>
-    <string name="userID">User Id</string>
+    <string name="userID">Utente Id: </string>
     <string name="condivisione_dati">Condivisione Dati</string>
     <string name="title_sensori">Sensori</string>
     <string name="title_cassettaAttrezzi">Cassetta Attrezzi</string>

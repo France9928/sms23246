@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -108,11 +109,17 @@ public class ShareFragment extends Fragment {
                 String eta = etaTextView.getText().toString();
                 String userIde = userIdTextView.getText().toString();
                 String luogoNascita = luogoNascitaTextView.getText().toString();
-                String textToShare = "Nome: " + nome + "\n" +
-                        "Cognome: " + cognome + "\n" +
-                        "Età: " + eta + "\n" +
-                        "User ID: " + userIde + "\n" +
-                        "Luogo nascita " + luogoNascita;
+                String nomestring = getResources().getString(R.string.nome);
+                String cognomestring = getResources().getString(R.string.cognome);
+                String etastring = getResources().getString(R.string.age);
+                String luogonascitastring = getResources().getString(R.string.place_of_birth);
+                String userstring = getResources().getString(R.string.userID);
+
+                String textToShare = nomestring + nome + "\n" +
+                        cognomestring + cognome + "\n" +
+                        etastring + eta + "\n" +
+                        userstring + userIde + "\n" +
+                        luogonascitastring + luogoNascita;
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
