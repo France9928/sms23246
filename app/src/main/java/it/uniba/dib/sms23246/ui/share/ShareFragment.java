@@ -143,13 +143,17 @@ public class ShareFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(requireContext(), "Richiesta inviata con successo", Toast.LENGTH_SHORT).show();
+                        String toastRichiesta = getResources().getString(R.string.richiesta_inviata_con_successo);
+
+                        Toast.makeText(requireContext(), toastRichiesta, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(requireContext(), "Errore invio richiesta", Toast.LENGTH_SHORT).show();
+                        String toastErroreRichiesta = getResources().getString(R.string.errore_invio_richiesta);
+
+                        Toast.makeText(requireContext(), toastErroreRichiesta, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
