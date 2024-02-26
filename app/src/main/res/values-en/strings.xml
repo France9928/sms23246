@@ -40,16 +40,27 @@
     <string name="accesso_diretto_operatore">Direct operator access</string>
     <string name="visita">Visit</string>
     <string name="temperatura">Temperature</string>
-    <string name="glucometro">Glucometro</string>
-    <string name="sfigmomanometro">Sfigmomanometro</string>
-    <string name="bilancia">Bilancia </string>
-    <string name="emoglobinometro">emoglobinometro</string>
-    <string name="no_sensore">Sensore non disponibile</string>
-    <string name="sensore">Sensore non disponibile</string>
-    <string name="condividi_dati_anagrafici">condividi dati anagrafici</string>
-    <string name="richiesta_aggiornamento_patologia">richiesta aggiornamento patologia</string>
-    <string name="spiegazione_malattie_video">Spiegazione malattie genetiche</string>
-    <string name="esercizi_riabilitazione_video">Esercizi riabilitazione</string>
+    <string name="glucometro">Glucometer</string>
+    <string name="sfigmomanometro">Sphygmomanometer</string>
+    <string name="bilancia">Scale</string>
+    <string name="emoglobinometro">Hemoglobinometer</string>
+    <string name="no_sensore">Sensor not found</string>
+    <string name="sensore">Sensor</string>
+    <string name="condividi_dati_anagrafici">Share your data</string>
+    <string name="richiesta_aggiornamento_patologia">Request pathology level update</string>
+    <string name="spiegazione_malattie_video">Show genetic disease</string>
+    <string name="esercizi_riabilitazione_video">Rehabilitation excercises</string>
     <string name="richiesta_inviata_con_successo">Request send successfully</string>
     <string nsmr="errore_invio_richiesta">Error send request</string>
+    <string name="prodotto_registrato_successo">Success product registration</string>
+    <string name="prodotto_registrato_fallito">Error product registration</string>
+    <string name="categoria_prodotto">Category:</string>
+    <string name="nome_prodotto">Product:</string>
+    <string name="costo_prodotto">Cost:</string>
+    <string name="data_prodotto">Date:</string>
+    <string name="prodotto_display">Product{</string>
+    <string name="nome_prodotto_display">ProductName=</string>
+    <string name="categoria_prodotto_display">, ProductCategory=</string>
+    <string name="costo_prodotto_display">, Cost=</string>
+    <string name="data_prodotto_display">, Date=</string>
 </resources>

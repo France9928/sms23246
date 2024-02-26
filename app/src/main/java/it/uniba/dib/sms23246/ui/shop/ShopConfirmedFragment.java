@@ -47,25 +47,29 @@ public class ShopConfirmedFragment extends Fragment {
                 // Utilizzo i dati del prodotto per la visualizzazione
                 TextView textViewProdotto = root.findViewById(R.id.textViewProdotto);
                 if(textViewProdotto != null){
-                    String nomeProdotto = "Prodotto:" + prodotto.getNomeProdotto();
+                    String nomeProdottoStringa = getResources().getString(R.string.nome_prodotto);
+                    String nomeProdotto = nomeProdottoStringa + prodotto.getNomeProdotto();
                     textViewProdotto.setText(nomeProdotto);
                 }
 
                 TextView textViewCategoria = root.findViewById(R.id.textViewCategoria);
                 if(textViewCategoria != null){
-                    String categoriaProdotto = "Categoria: " + prodotto.getCategoriaProdotto();
+                    String categoriaString = getResources().getString(R.string.categoria_prodotto);
+                    String categoriaProdotto = categoriaString + prodotto.getCategoriaProdotto();
                     textViewCategoria.setText(categoriaProdotto);
                 }
 
                 TextView textViewCosto = root.findViewById(R.id.textViewCosto);
                 if(textViewCosto != null) {
-                    String costoProdotto = "Costo: " + (int) prodotto.getCosto();
+                    String costoProdottoStringa = getResources().getString(R.string.costo_prodotto);
+                    String costoProdotto = costoProdottoStringa + (int) prodotto.getCosto();
                     textViewCosto.setText(costoProdotto);
                 }
 
                 TextView textViewData = root.findViewById(R.id.textViewData);
                if(textViewData != null) {
-                   String dataProdotto = "Data: " + prodotto.getData();
+                   String dataProdottoStringa = getResources().getString(R.string.data_prodotto);
+                   String dataProdotto = dataProdottoStringa + prodotto.getData();
                    textViewData.setText(dataProdotto);
                }
             }
@@ -119,6 +123,5 @@ public class ShopConfirmedFragment extends Fragment {
         return root;
     }
 
-    // Resto del codice del fragment...
     }
 

@@ -80,7 +80,8 @@ public class SpeseCategoriaFragment extends Fragment {
 
                     // Specifica la categoria desiderata (sostituisci con la tua categoria)
                     String categoriaDesiderata = editTextCategoriaProdotto.getText().toString();
-                    Toast.makeText(requireContext(), "Categoria: " + categoriaDesiderata, Toast.LENGTH_SHORT).show();
+                    String categoriaString = getResources().getString(R.string.categoria_prodotto);
+                    Toast.makeText(requireContext(), categoriaString + categoriaDesiderata, Toast.LENGTH_SHORT).show();
 
                     // Converti la categoria in minuscolo (ignora le maiuscole e le minuscole)
                     String categoriaMinuscola = categoriaDesiderata.toLowerCase(Locale.getDefault());

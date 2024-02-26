@@ -45,11 +45,22 @@
     <string name="bilancia">Bilancia </string>
     <string name="emoglobinometro">emoglobinometro</string>
     <string name="no_sensore">Sensore non disponibile</string>
-    <string name="sensore">Sensore non disponibile</string>
+    <string name="sensore">Sensore</string>
     <string name="condividi_dati_anagrafici">condividi dati anagrafici</string>
     <string name="richiesta_aggiornamento_patologia">richiesta aggiornamento patologia</string>
     <string name="spiegazione_malattie_video">Spiegazione malattie genetiche</string>
     <string name="esercizi_riabilitazione_video">Esercizi riabilitazione</string>
     <string name="richiesta_inviata_con_successo">Richiesta inviata con successo</string>
     <string name="errore_invio_richiesta">Errore invio richiesta</string>
+    <string name="prodotto_registrato_successo">Prodotto registrato con successo</string>
+    <string name="prodotto_registrato_fallito">Errore registrazione prodotto</string>
+    <string name="categoria_prodotto">Categoria:</string>
+    <string name="nome_prodotto">Prodotto:</string>
+    <string name="costo_prodotto">Costo:</string>
+    <string name="data_prodotto">Data:</string>
+    <string name="prodotto_display">Prodotto{</string>
+    <string name="nome_prodotto_display">nomeProdotto=</string>
+    <string name="categoria_prodotto_display">, categoriaProdotto=</string>
+    <string name="costo_prodotto_display">, costo=</string>
+    <string name="data_prodotto_display">, data=</string>
 </resources>

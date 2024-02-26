@@ -110,11 +110,13 @@ public class ShopFragment extends Fragment {
 
                                 NavController navController = NavHostFragment.findNavController(ShopFragment.this);
                                 navController.navigate(R.id.action_ShopConfirmed, bundle);
-                                makeText(getContext(), "Prodotto registrato con successo", LENGTH_SHORT).show();
+                                String prodottoRegistratoSuccessoString = getResources().getString(R.string.prodotto_registrato_successo);
+                                makeText(getContext(), prodottoRegistratoSuccessoString , LENGTH_SHORT).show();
                             })
                             .addOnFailureListener(e -> {
                                 // Gestisci l'errore
-                                Toast.makeText(getContext(), "Errore durante la registrazione del prodotto", Toast.LENGTH_SHORT).show();
+                                String erroreRegistrazioneProdottoString = getResources().getString(R.string.prodotto_registrato_fallito);
+                                Toast.makeText(getContext(), erroreRegistrazioneProdottoString, Toast.LENGTH_SHORT).show();
                             });
                 }
             }

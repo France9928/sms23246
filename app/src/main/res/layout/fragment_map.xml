@@ -45,7 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onButtonClick"
-                        android:text="Visita" />
+                        android:text="@string/visita" />
 
                 </LinearLayout>
 
@@ -81,7 +81,7 @@
                         android:id="@+id/button2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Visita"
+                        android:text="@string/visita"
                         android:onClick="onButtonClick" />
 
                 </LinearLayout>
@@ -118,7 +118,7 @@
                         android:id="@+id/button3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Visita"
+                        android:text="@string/visita"
                         android:onClick="onButtonClick" />
 
                 </LinearLayout>
@@ -155,7 +155,7 @@
                         android:id="@+id/button4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Visita"
+                        android:text="@string/visita"
                         android:onClick="onButtonClick" />
 
                 </LinearLayout>
@@ -192,7 +192,7 @@
                         android:id="@+id/button5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Visita"
+                        android:text="@string/visita"
                         android:onClick="onButtonClick" />
 
                 </LinearLayout>
