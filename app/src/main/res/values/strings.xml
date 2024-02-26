@@ -46,4 +46,6 @@
     <string name="emoglobinometro">emoglobinometro</string>
     <string name="no_sensore">Sensore non disponibile</string>
     <string name="sensore">Sensore non disponibile</string>
+    <string name="condividi_dati_anagrafici">condividi dati anagrafici</string>
+    <string name="richiesta_aggiornamento_patologia">richiesta aggiornamento patologia</string>
 </resources>

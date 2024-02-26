@@ -54,6 +54,7 @@ public class ShareFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
     }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         shareViewModel = new ViewModelProvider(this).get(ShareViewModel.class);
@@ -88,6 +89,7 @@ public class ShareFragment extends Fragment {
         });
 
         Button shareButton = root.findViewById(R.id.shareButton);
+        Button shareButton2 = root.findViewById(R.id.shareButton2); // Aggiunto
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +97,28 @@ public class ShareFragment extends Fragment {
                 // Invia la richiesta al genitore e a Firestore
                 onRichiestaInviataListener.onRichiestaInviata(userIde);
                 inviaRichiestaAFirestore(userIde);
+            }
+        });
+
+        shareButton2.setOnClickListener(new View.OnClickListener() { // Aggiunto
+            @Override
+            public void onClick(View view) {
+                String nome = nomeTextView.getText().toString();
+                String cognome = cognomeTextView.getText().toString();
+                String eta = etaTextView.getText().toString();
+                String userIde = userIdTextView.getText().toString();
+                String luogoNascita = luogoNascitaTextView.getText().toString();
+                String textToShare = "Nome: " + nome + "\n" +
+                        "Cognome: " + cognome + "\n" +
+                        "Età: " + eta + "\n" +
+                        "User ID: " + userIde + "\n" +
+                        "Luogo nascita " + luogoNascita;
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
 

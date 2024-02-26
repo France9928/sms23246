@@ -79,9 +79,19 @@
         android:id="@+id/shareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/condividi"
+        android:text="@string/richiesta_aggiornamento_patologia"
         android:layout_below="@id/textViewsContainer"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/shareButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewsContainer"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/condividi_dati_anagrafici" />
+
 
 </RelativeLayout>
