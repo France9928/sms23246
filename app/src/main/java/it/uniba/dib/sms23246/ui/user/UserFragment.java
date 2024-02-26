@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentUserBinding;
 
 public class UserFragment extends Fragment {
@@ -37,19 +38,23 @@ public class UserFragment extends Fragment {
 
             // Ottiene i dati dell'utente da UserViewModel
             userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
-                nomeTextView.setText("Nome: " + nome);
+                String nomeString = getResources().getString(R.string.nome);
+                nomeTextView.setText(nomeString + nome);
             });
 
             userViewModel.getUserLastName().observe(getViewLifecycleOwner(), cognome -> {
-                cognomeTextView.setText("Cognome: " + cognome);
+                String cognomeString = getResources().getString(R.string.cognome);
+                cognomeTextView.setText(cognomeString + cognome);
             });
 
             userViewModel.getUserAge().observe(getViewLifecycleOwner(), age -> {
-                etaTextView.setText("Età: " + age);
+                String etaString = getResources().getString(R.string.età);
+                etaTextView.setText(etaString + age);
             });
 
             userViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), birthplace -> {
-                luogoNascitaTextView.setText("Luogo di nascita: " + birthplace);
+                String luogoDiNascitaString = getResources().getString(R.string.place_of_birth);
+                luogoNascitaTextView.setText(luogoDiNascitaString + birthplace);
             });
 
             RecyclerView recyclerView = binding.patologieRecyclerView;

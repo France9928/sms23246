@@ -18,14 +18,14 @@
     <string name="click_to_login">Click here for login</string>
     <string name="click_to_register">Click here for registration</string>
     <string name="logout">Logout</string>
-    <string name="età">Age:</string>
+    <string name="età">Age: </string>
     <string name="condividi">share</string>
-    <string name="cognome">Surname:</string>
-    <string name="nome">Name:</string>
+    <string name="cognome">Surname: </string>
+    <string name="nome">Name: </string>
     <string name="first_name">Name</string>
     <string name="last_name">Surname</string>
     <string name="age">Age</string>
-    <string name="place_of_birth">Birthplace</string>
+    <string name="place_of_birth">Birthplace: </string>
     <string name="title_activity_operator">Operator activity</string>
     <string name="codice_operatore">Operator code</string>
     <string name="confirmed">Confirmed</string>
@@ -38,4 +38,5 @@
     <string name="title_modificaPatologia">Modify disease level</string>
     <string name="accesso_diretto_utente">Direct user access</string>
     <string name="accesso_diretto_operatore">Direct operator access</string>
+    <string name="visita">Visit</string>
 </resources>
