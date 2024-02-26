@@ -39,22 +39,22 @@ public class UserFragment extends Fragment {
             // Ottiene i dati dell'utente da UserViewModel
             userViewModel.getUserName().observe(getViewLifecycleOwner(), nome -> {
                 String nomeString = getResources().getString(R.string.nome);
-                nomeTextView.setText(nomeString + nome);
+                nomeTextView.setText(nomeString + " " + nome);
             });
 
             userViewModel.getUserLastName().observe(getViewLifecycleOwner(), cognome -> {
                 String cognomeString = getResources().getString(R.string.cognome);
-                cognomeTextView.setText(cognomeString + cognome);
+                cognomeTextView.setText(cognomeString + " " + cognome);
             });
 
             userViewModel.getUserAge().observe(getViewLifecycleOwner(), age -> {
                 String etaString = getResources().getString(R.string.età);
-                etaTextView.setText(etaString + age);
+                etaTextView.setText(etaString + " " + age);
             });
 
             userViewModel.getUserBirthplace().observe(getViewLifecycleOwner(), birthplace -> {
                 String luogoDiNascitaString = getResources().getString(R.string.place_of_birth);
-                luogoNascitaTextView.setText(luogoDiNascitaString + birthplace);
+                luogoNascitaTextView.setText(luogoDiNascitaString + " " + birthplace);
             });
 
             RecyclerView recyclerView = binding.patologieRecyclerView;
