@@ -18,7 +18,6 @@ public class VideoViewModel extends ViewModel {
         video.add(new PiuVideo("Ospedale di Venere Bari", "https://www.youtube.com/watch?v=sjIvLsD-iy8"));
         video.add(new PiuVideo("Spiegazione malattie genetiche", "https://www.youtube.com/watch?v=ontb8B6hcUE"));
         video.add(new PiuVideo("Esercizi riabilitazione", "https://www.youtube.com/watch?v=_vSmVT0SBWw"));
-        /*video.add(new PiuVideo("Ospedale di Venere Bari", "https://www.youtube.com/watch?v=sjIvLsD-iy8"));*/
 
         // Set the MutableLiveData value
         this.videoLiveData = new MutableLiveData<>(video);

@@ -24,17 +24,16 @@ public class VideoFragment extends Fragment {
 
     private VideoViewModel viewModel;
 
-    private TextView textVideo1, textVideo2, textMalattie, textEsercizi, textRating;
+    private TextView textVideo1, textVideo2, textMalattie, textEsercizi;
 
-    private Button pulsanteVideo1, pulsanteVideo2, pulsanteMalattie, pulsanteEsercizi, pulsanteRating;
+    private Button pulsanteVideo1, pulsanteVideo2, pulsanteMalattie, pulsanteEsercizi;
 
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         VideoViewModel videoViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
-
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
-        // Initialize ViewModel
+        // Inizializza il viewModel
         viewModel = new ViewModelProvider(this).get(VideoViewModel.class);
 
         //dichiarazione delle view
@@ -53,10 +52,6 @@ public class VideoFragment extends Fragment {
         // References to elements in the 4 card
         textEsercizi = view.findViewById(R.id.textEsercizi);
         pulsanteEsercizi = view.findViewById(R.id.pulsanteEsercizi);
-
-        /* References to elements in the 5 card
-        textRating = view.findViewById(R.id.textRating);
-        pulsanteRating = view.findViewById(R.id.pulsanteRating);*/
 
         metodoFaiVedereCose();
 
@@ -80,16 +75,12 @@ public class VideoFragment extends Fragment {
                 pulsanteVideo2.setOnClickListener(v -> onButtonClick(video2.getLink()));
                 // Card 3
                 PiuVideo video3 = piuVideo.get(2);
-                textMalattie.setText(video2.getName());
+                textMalattie.setText(video3.getName());
                 pulsanteMalattie.setOnClickListener(v -> onButtonClick(video3.getLink()));
                 // Card 4
                 PiuVideo video4 = piuVideo.get(3);
-                textEsercizi.setText(video2.getName());
-                pulsanteEsercizi.setOnClickListener(v -> onButtonClick(video3.getLink()));
-                /* Card 2
-                PiuVideo video5 = piuVideo.get(4);
-                textVideo2.setText(video2.getName());
-                pulsanteVideo2.setOnClickListener(v -> onButtonClick(video5.getLink()));*/
+                textEsercizi.setText(video4.getName());
+                pulsanteEsercizi.setOnClickListener(v -> onButtonClick(video4.getLink()));
             }
         });
     }

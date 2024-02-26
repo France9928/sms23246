@@ -8,9 +8,9 @@
     <string name="title_shop">Shop</string>
     <string name="title_map">Map</string>
     <string name="dati_anagrafici">User data</string>
-    <string name="patologie">Disease</string>
+    <string name="patologie">Pathologies</string>
     <string name="title_gestioneUtenti">Manage users</string>
-    <string name="title_datiOperatore">My data</string>
+    <string name="title_datiOperatore">Personal data</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -19,7 +19,7 @@
     <string name="click_to_register">Click here for registration</string>
     <string name="logout">Logout</string>
     <string name="età">Age: </string>
-    <string name="condividi">share</string>
+    <string name="condividi">Share</string>
     <string name="cognome">Surname: </string>
     <string name="nome">Name: </string>
     <string name="first_name">Name</string>
@@ -29,15 +29,27 @@
     <string name="title_activity_operator">Operator activity</string>
     <string name="codice_operatore">Operator code</string>
     <string name="confirmed">Confirmed</string>
-    <string name="UserID">User Id: </string>
+    <string name="userID">User Id: </string>
     <string name="condivisione_dati">Share data</string>
     <string name="title_sensori">Sensors</string>
     <string name="title_cassettaAttrezzi">Toolbox</string>
-    <string name="title_aggiungiPatologia">Add disease</string>
+    <string name="title_aggiungiPatologia">Add pathology</string>
     <string name="title_shopConfirmed">\n</string>
-    <string name="title_modificaPatologia">Modify disease level</string>
+    <string name="title_modificaPatologia">Modify pathology level</string>
     <string name="accesso_diretto_utente">Direct user access</string>
     <string name="accesso_diretto_operatore">Direct operator access</string>
     <string name="visita">Visit</string>
-
+    <string name="temperatura">Temperature</string>
+    <string name="glucometro">Glucometro</string>
+    <string name="sfigmomanometro">Sfigmomanometro</string>
+    <string name="bilancia">Bilancia </string>
+    <string name="emoglobinometro">emoglobinometro</string>
+    <string name="no_sensore">Sensore non disponibile</string>
+    <string name="sensore">Sensore non disponibile</string>
+    <string name="condividi_dati_anagrafici">condividi dati anagrafici</string>
+    <string name="richiesta_aggiornamento_patologia">richiesta aggiornamento patologia</string>
+    <string name="spiegazione_malattie_video">Spiegazione malattie genetiche</string>
+    <string name="esercizi_riabilitazione_video">Esercizi riabilitazione</string>
+    <string name="richiesta_inviata_con_successo">Request send successfully</string>
+    <string nsmr="errore_invio_richiesta">Error send request</string>
 </resources>

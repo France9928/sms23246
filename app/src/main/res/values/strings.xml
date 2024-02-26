@@ -48,4 +48,8 @@
     <string name="sensore">Sensore non disponibile</string>
     <string name="condividi_dati_anagrafici">condividi dati anagrafici</string>
     <string name="richiesta_aggiornamento_patologia">richiesta aggiornamento patologia</string>
+    <string name="spiegazione_malattie_video">Spiegazione malattie genetiche</string>
+    <string name="esercizi_riabilitazione_video">Esercizi riabilitazione</string>
+    <string name="richiesta_inviata_con_successo">Richiesta inviata con successo</string>
+    <string name="errore_invio_richiesta">Errore invio richiesta</string>
 </resources>

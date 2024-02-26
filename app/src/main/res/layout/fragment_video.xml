@@ -8,26 +8,6 @@
     tools:layout_editor_absoluteX="10dp"
     tools:layout_editor_absoluteY="154dp">
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="238dp"
-        android:layout_height="47dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796">
-
-        <TextView
-            android:id="@+id/textRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Place 1 Name" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/pulsanteEsercizi"
         android:layout_width="101dp"
@@ -39,18 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.61" />
-
-    <Button
-        android:id="@+id/pulsanteRating"
-        android:layout_width="107dp"
-        android:layout_height="63dp"
-        android:text="Vedi Video"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
 
     <Button
         android:id="@+id/pulsanteVideo1"

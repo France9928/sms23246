@@ -2,7 +2,10 @@ package it.uniba.dib.sms23246.ui.user;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Locale;
 
 import it.uniba.dib.sms23246.R;
 import it.uniba.dib.sms23246.databinding.FragmentUserBinding;
