@@ -39,4 +39,11 @@
     <string name="accesso_diretto_utente">Accesso diretto come utente</string>
     <string name="accesso_diretto_operatore">Accesso diretto come operatore</string>
     <string name="visita">Visita</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="glucometro">Glucometro</string>
+    <string name="sfigmomanometro">Sfigmomanometro</string>
+    <string name="bilancia">Bilancia</string>
+    <string name="emoglobinometro">emoglobinometro</string>
+    <string name="no_sensore">Sensore non disponibile</string>
+    <string name="sensore">Sensore non disponibile</string>
 </resources>

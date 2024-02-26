@@ -35,7 +35,8 @@ public class Sensori extends Fragment {
             temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
             if (temperatureSensor == null) {
                 // Il dispositivo non supporta il sensore di temperatura
-                showMessage("Sensore di temperatura non disponibile");
+                String messaggio = getResources().getString(R.string.no_sensore);
+                showMessage(messaggio);
             }
         }
     }
@@ -45,6 +46,7 @@ public class Sensori extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Infla il layout del fragment
         View rootView = inflater.inflate(R.layout.fragment_sensori, container, false);
+
 
         button1 = rootView.findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +59,8 @@ public class Sensori extends Fragment {
                         public void onSensorChanged(SensorEvent event) {
                             if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
                                 float temperatureInCelsius = event.values[0];
-                                showMessage("Temperatura: " + temperatureInCelsius + "°C");
+                                String sensore = getResources().getString(R.string.temperatura);
+                                showMessage(sensore + temperatureInCelsius + "°C");
                             }
                         }
 
